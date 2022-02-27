@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Verb } from 'src/app/models/verb';
 import { DataService } from 'src/app/services/data.service';
 
@@ -8,65 +7,60 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './verb.component.html',
   styleUrls: ['./verb.component.scss']
 })
-export class VerbComponent implements OnInit, OnDestroy {
+export class VerbComponent implements OnInit {
 
   public verbs: Array<Verb>;
   public currentVerb: Verb | undefined;
-  public intervalSub: Subscription;
-  public isPaused: boolean;
-  private currentIndex: number;
+  private index: { previous: number | undefined; current: number | undefined; next: number | undefined; };
+  private firstNext: boolean;
 
   constructor(
     private dataService: DataService
   ) {
     this.verbs = [];
-    this.intervalSub = new Subscription();
-    this.isPaused = false;
-    this.currentIndex = 0;
+    this.index = { previous: undefined, current: undefined, next: undefined };
+    this.firstNext = true;
   }
 
   ngOnInit(): void {
     this.dataService.verbs$.subscribe((verbs) => {
       this.verbs = verbs;
-      this.currentVerb = this.verbs[this.currentIndex];
-      this.run();
+      this.next();
     });
-  }
-
-  ngOnDestroy(): void {
-    this.stop();
-  }
-
-  private run(): void {
-    this.intervalSub = interval(1000).subscribe((second) => {
-      if (second % 5 === 0) {
-        this.next();
-      }
-    });
-  }
-
-  private stop(): void {
-    this.intervalSub.unsubscribe();
-  }
-
-  public pause(): void {
-    this.isPaused ? this.run() : this.stop();
-    this.isPaused = !this.isPaused;
   }
 
   public next(): void {
-    this.currentIndex++;
-    this.select();
+    this.firstNext = !this.firstNext;
+    if (!this.firstNext) {
+      this.index.previous = this.index.current;
+      if (this.index.next !== undefined) {
+        this.index.current = this.index.next;
+      } else {
+        do {
+          this.index.current = this.getRandomInt(this.verbs.length);
+        } while (this.index.current === this.index.previous);
+      }
+      this.index.next = undefined;
+      this.select();
+    }
   }
 
   public previous(): void {
-    this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.verbs.length - 1;
-    this.select();
+    if (this.index.previous !== undefined) {
+      this.firstNext = true;
+      this.index.next = this.index.current;
+      this.index.current = this.index.previous;
+      this.index.previous = undefined;
+      this.select();
+    }
   }
 
   private select(): void {
-    this.currentIndex = this.currentIndex % this.verbs.length;
-    this.currentVerb = this.verbs[this.currentIndex];
+    this.currentVerb = this.verbs[this.index.current];
+  }
+
+  private getRandomInt(max: number): number {
+    return Math.floor(Math.random() * max);
   }
 
 }

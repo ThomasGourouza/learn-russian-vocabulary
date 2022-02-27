@@ -68,5 +68,14 @@
             "undeterminated": "носить"
         },
         "priority": 1
+    },
+    {
+        "category": "Mouvement",
+        "french": "test",
+        "russian": {
+            "imperfective": "test",
+            "perfective": "test"
+        },
+        "priority": 1
     }
 ]

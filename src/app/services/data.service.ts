@@ -29,7 +29,7 @@ export class DataService {
   }
 
   private async getData(fileName: string): Promise<any> {
-    return this.http.get(`assets/data/${fileName}.json`).toPromise();
+    return this.http.get(`assets/data/${fileName}.jsonc`).toPromise();
   }
 
   get verbs$(): Observable<Array<Verb>> {
