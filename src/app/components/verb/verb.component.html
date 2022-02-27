@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col d-flex align-items-end">
                 <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
-                    chooseLabel="Charger les verbes" (onSelect)="onUploadWords($event.currentFiles[0])" [auto]="true">
+                    chooseLabel="Charger les verbes" (onSelect)="onUploadWords($event.currentFiles[0])" [auto]="true"
+                    [disabled]="!!currentVerb">
                 </p-fileUpload>
             </div>
             <div class="col-4">
@@ -31,10 +32,10 @@
                 <th scope="col">
                     <div class="wide">Imperfectif</div>
                 </th>
-                <th *ngIf="!!currentVerb.perfective" scope="col">
+                <th *ngIf="currentVerb.perfective !== '-'" scope="col">
                     <div class="wide">Perfectif</div>
                 </th>
-                <th *ngIf="!!currentVerb.undeterminated" scope="col">
+                <th *ngIf="currentVerb.undeterminated !== '-'" scope="col">
                     <div class="wide">Indéterminé</div>
                 </th>
             </tr>
@@ -45,10 +46,10 @@
                 <td>
                     <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.imperfective }}</div>
                 </td>
-                <td *ngIf="!!currentVerb.perfective">
+                <td *ngIf="currentVerb.perfective !== '-'">
                     <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.perfective }}</div>
                 </td>
-                <td *ngIf="!!currentVerb.undeterminated">
+                <td *ngIf="currentVerb.undeterminated !== '-'">
                     <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.undeterminated }}
                     </div>
                 </td>
