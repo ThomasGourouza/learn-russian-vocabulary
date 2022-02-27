@@ -9,6 +9,8 @@ import { AdjectiveComponent } from './components/adjective/adjective.component';
 import { NounComponent } from './components/noun/noun.component';
 import { PhraseComponent } from './components/phrase/phrase.component';
 import { ConjunctionComponent } from './components/conjunction/conjunction.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { ConjunctionComponent } from './components/conjunction/conjunction.compo
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

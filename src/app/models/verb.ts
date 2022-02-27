@@ -1,5 +1,4 @@
 export interface Verb {
-    category?: string;
     french: string;
     russian: VerbForm;
     priority?: number;
@@ -7,7 +6,7 @@ export interface Verb {
 
 export interface VerbForm {
     imperfective: string;
-    perfective: string;
+    perfective?: string;
     undeterminated?: string;
 }
 

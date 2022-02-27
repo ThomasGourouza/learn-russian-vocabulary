@@ -1,3 +1,16 @@
+<div class="d-flex justify-content-center space-bellow">
+    <div class="row col-1">
+        <div class="big">
+            Priority:
+        </div>
+        <select class="form-select" [(ngModel)]="priority" (ngModelChange)="changePriority($event)">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+</div>
+
 <div class="row">
     <div class="col d-flex justify-content-center big">
         <div *ngIf="!!currentVerb">
@@ -9,7 +22,7 @@
                     <th scope="col">
                         <div class="wide">Imperfectif</div>
                     </th>
-                    <th scope="col">
+                    <th *ngIf="!!currentVerb.russian.perfective" scope="col">
                         <div class="wide">Perfectif</div>
                     </th>
                     <th *ngIf="!!currentVerb.russian.undeterminated" scope="col">
@@ -23,11 +36,12 @@
                     <td>
                         <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.russian.imperfective }}</div>
                     </td>
-                    <td>
+                    <td *ngIf="!!currentVerb.russian.perfective">
                         <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.russian.perfective }}</div>
                     </td>
                     <td *ngIf="!!currentVerb.russian.undeterminated">
-                        <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.russian.undeterminated }}</div>
+                        <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.russian.undeterminated }}
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -36,6 +50,7 @@
 </div>
 
 <div class="vertical-align d-flex justify-content-center">
-    <button class="btn btn-primary space-around big" [disabled]="index.previous === undefined" (click)="previous()">Précédent</button>
+    <button class="btn btn-primary space-around big" [disabled]="index.previous === undefined"
+        (click)="previous()">Précédent</button>
     <button class="btn btn-primary space-around big" (click)="next()">Suivant</button>
 </div>

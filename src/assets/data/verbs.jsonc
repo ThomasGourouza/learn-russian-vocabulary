@@ -1,6 +1,5 @@
 [
     {
-        "category": "Mouvement",
         "french": "aller à pied",
         "russian": {
             "imperfective": "идти",
@@ -10,7 +9,6 @@
         "priority": 1
     },
     {
-        "category": "Mouvement",
         "french": "aller en voiture",
         "russian": {
             "imperfective": "eхaть",
@@ -20,7 +18,6 @@
         "priority": 1
     },
     {
-        "category": "Mouvement",
         "french": "courir",
         "russian": {
             "imperfective": "бежать",
@@ -30,7 +27,6 @@
         "priority": 1
     },
     {
-        "category": "Mouvement",
         "french": "escalader",
         "russian": {
             "imperfective": "лезть",
@@ -40,7 +36,6 @@
         "priority": 1
     },
     {
-        "category": "Mouvement",
         "french": "voler",
         "russian": {
             "imperfective": "лететь",
@@ -50,7 +45,6 @@
         "priority": 1
     },
     {
-        "category": "Mouvement",
         "french": "nager",
         "russian": {
             "imperfective": "плыть",
@@ -60,7 +54,6 @@
         "priority": 1
     },
     {
-        "category": "Mouvement",
         "french": "porter",
         "russian": {
             "imperfective": "нести",
@@ -70,12 +63,1453 @@
         "priority": 1
     },
     {
-        "category": "Mouvement",
-        "french": "test",
+        "french": "être fier de",
         "russian": {
-            "imperfective": "test",
-            "perfective": "test"
+            "imperfective": "гордиться (+instr)"
         },
         "priority": 1
+    },
+    {
+        "french": "menacer",
+        "russian": {
+            "imperfective": "угрожать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "regretter",
+        "russian": {
+            "imperfective": "сожалеть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "sentir (nez)",
+        "russian": {
+            "imperfective": "пахнуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "s’ennuyer",
+        "russian": {
+            "imperfective": "скучать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "signifier",
+        "russian": {
+            "imperfective": "значить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "accepter",
+        "russian": {
+            "imperfective": "принимать",
+            "perfective": "принять"
+        },
+        "priority": 1
+    },
+    {
+        "french": "annuler",
+        "russian": {
+            "imperfective": "отменять",
+            "perfective": "отменить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "apporter",
+        "russian": {
+            "imperfective": "приносить",
+            "perfective": "принести"
+        },
+        "priority": 1
+    },
+    {
+        "french": "appuyer",
+        "russian": {
+            "imperfective": "нажимать",
+            "perfective": "нажать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "attacher, connecter",
+        "russian": {
+            "imperfective": "вязать",
+            "perfective": "связать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "attraper",
+        "russian": {
+            "imperfective": "ловить",
+            "perfective": "поймать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "bouillir",
+        "russian": {
+            "imperfective": "варить",
+            "perfective": "сварить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "brûler",
+        "russian": {
+            "imperfective": "гореть",
+            "perfective": "сгореть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "caresser",
+        "russian": {
+            "imperfective": "гладить",
+            "perfective": "погладить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "chasser",
+        "russian": {
+            "imperfective": "охотиться",
+            "perfective": "поохотиться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "clarifier",
+        "russian": {
+            "imperfective": "разъяснять",
+            "perfective": "разъяснить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "cogner",
+        "russian": {
+            "imperfective": "ударять",
+            "perfective": "ударить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "combattre",
+        "russian": {
+            "imperfective": "сражаться",
+            "perfective": "сразиться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "compléter",
+        "russian": {
+            "imperfective": "завершать",
+            "perfective": "завершить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "cracher",
+        "russian": {
+            "imperfective": "плевать",
+            "perfective": "плюнуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "découvrir",
+        "russian": {
+            "imperfective": "выискивать",
+            "perfective": "выискать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "défendre",
+        "russian": {
+            "imperfective": "защищать",
+            "perfective": "защитить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "défier",
+        "russian": {
+            "imperfective": "оспаривать",
+            "perfective": "оспорить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "descendre",
+        "russian": {
+            "imperfective": "спускаться",
+            "perfective": "потанцевать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "détruire",
+        "russian": {
+            "imperfective": "уничтожать",
+            "perfective": "уничтожить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "devenir",
+        "russian": {
+            "imperfective": "становиться",
+            "perfective": "стать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "douter",
+        "russian": {
+            "imperfective": "сомневаться",
+            "perfective": "усомниться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "empêcher",
+        "russian": {
+            "imperfective": "предотвращать",
+            "perfective": "предотвратить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "enseigner",
+        "russian": {
+            "imperfective": "преподавать",
+            "perfective": "преподать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "escalader",
+        "russian": {
+            "imperfective": "забираться",
+            "perfective": "забраться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "esquiver",
+        "russian": {
+            "imperfective": "увёртываться",
+            "perfective": "увернуться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "essuyer",
+        "russian": {
+            "imperfective": "вытирать",
+            "perfective": "вытереть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "éternuer",
+        "russian": {
+            "imperfective": "чихать",
+            "perfective": "чихнуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "étudier",
+        "russian": {
+            "imperfective": "изучать",
+            "perfective": "изучить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "faire du ski",
+        "russian": {
+            "imperfective": "кататься",
+            "perfective": "покататься"
+        },
+        "priority": 1
+    },
+    {
+        "french": "frotter",
+        "russian": {
+            "imperfective": "тереть",
+            "perfective": "потереть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "gagner (earn)",
+        "russian": {
+            "imperfective": "зарабатывать",
+            "perfective": "заработать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "garder, protéger",
+        "russian": {
+            "imperfective": "охранять",
+            "perfective": "охранить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "geler",
+        "russian": {
+            "imperfective": "замерзать",
+            "perfective": "замёрзнуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "guérir",
+        "russian": {
+            "imperfective": "заживать",
+            "perfective": "зажить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "hésiter",
+        "russian": {
+            "imperfective": "колебаться",
+            "perfective": "поколебаться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "inventer",
+        "russian": {
+            "imperfective": "выдумывать",
+            "perfective": "выдумать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "inviter",
+        "russian": {
+            "imperfective": "приглашать",
+            "perfective": "пригласить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "lier",
+        "russian": {
+            "imperfective": "вязать",
+            "perfective": "связать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "mériter",
+        "russian": {
+            "imperfective": "заслуживать",
+            "perfective": "заслужить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "monter",
+        "russian": {
+            "imperfective": "подниматься",
+            "perfective": "подняться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "offrir",
+        "russian": {
+            "imperfective": "предлагать",
+            "perfective": "предложить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "permettre",
+        "russian": {
+            "imperfective": "разрешать",
+            "perfective": "разрешить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "piquer",
+        "russian": {
+            "imperfective": "колоть",
+            "perfective": "кольнуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "pousser",
+        "russian": {
+            "imperfective": "толкать",
+            "perfective": "толкнуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "prêter",
+        "russian": {
+            "imperfective": "одалживать",
+            "perfective": "одолжить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "prononcer",
+        "russian": {
+            "imperfective": "произносить",
+            "perfective": "произнести"
+        },
+        "priority": 1
+    },
+    {
+        "french": "réaliser",
+        "russian": {
+            "imperfective": "осознавать",
+            "perfective": "осознать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "respirer",
+        "russian": {
+            "imperfective": "дышать",
+            "perfective": "подышать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "retarder",
+        "russian": {
+            "imperfective": "задерживать",
+            "perfective": "задержать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "réussir",
+        "russian": {
+            "imperfective": "преуспевать",
+            "perfective": "преуспеть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "s'échapper",
+        "russian": {
+            "imperfective": "спасаться",
+            "perfective": "спастись"
+        },
+        "priority": 1
+    },
+    {
+        "french": "s'occuper de",
+        "russian": {
+            "imperfective": "беречься",
+            "perfective": "поберечься"
+        },
+        "priority": 1
+    },
+    {
+        "french": "sauver, sauvegarder",
+        "russian": {
+            "imperfective": "сохранять",
+            "perfective": "сохранить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "sauver, secourir",
+        "russian": {
+            "imperfective": "спасать",
+            "perfective": "спасти"
+        },
+        "priority": 1
+    },
+    {
+        "french": "se battre",
+        "russian": {
+            "imperfective": "бороться",
+            "perfective": "поборо́ться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "se débarasser",
+        "russian": {
+            "imperfective": "отрабатывать",
+            "perfective": "отработать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "se lever",
+        "russian": {
+            "imperfective": "стоять",
+            "perfective": "постоять"
+        },
+        "priority": 1
+    },
+    {
+        "french": "se repentir",
+        "russian": {
+            "imperfective": "раскаиваться",
+            "perfective": "раскаяться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "se soucier de",
+        "russian": {
+            "imperfective": "заботиться",
+            "perfective": "позаботиться (о)"
+        },
+        "priority": 1
+    },
+    {
+        "french": "se tenir debout",
+        "russian": {
+            "imperfective": "стоять",
+            "perfective": "постоять"
+        },
+        "priority": 1
+    },
+    {
+        "french": "se trouver (visiter)",
+        "russian": {
+            "imperfective": "бывать",
+            "perfective": "побывать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "serrer",
+        "russian": {
+            "imperfective": "сжимать",
+            "perfective": "сжать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "soigner",
+        "russian": {
+            "imperfective": "лечить",
+            "perfective": "полечить"
+        },
+        "priority": 1
+    },
+    {
+        "french": "suivre",
+        "russian": {
+            "imperfective": "следовать",
+            "perfective": "последовать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "tenter",
+        "russian": {
+            "imperfective": "пытаться",
+            "perfective": "попытаться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "tirer",
+        "russian": {
+            "imperfective": "тянуть",
+            "perfective": "потянуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "tourner",
+        "russian": {
+            "imperfective": "поворачиваться",
+            "perfective": "повернуться"
+        },
+        "priority": 1
+    },
+    {
+        "french": "tousser",
+        "russian": {
+            "imperfective": "кашлять",
+            "perfective": "кашлянуть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "trouver le temps de faire",
+        "russian": {
+            "imperfective": "успевать",
+            "perfective": "успеть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "vendre",
+        "russian": {
+            "imperfective": "продавать",
+            "perfective": "продать"
+        },
+        "priority": 1
+    },
+    {
+        "french": "vomir",
+        "russian": {
+            "imperfective": "блевать",
+            "perfective": "блевануть"
+        },
+        "priority": 1
+    },
+    {
+        "french": "allumer",
+        "russian": {
+            "imperfective": "включать",
+            "perfective": "включить"
+        },
+        "priority": 2
+    },
+    {
+        "french": "arrêter",
+        "russian": {
+            "imperfective": "останавливаться",
+            "perfective": "остановиться"
+        },
+        "priority": 2
+    },
+    {
+        "french": "avoir l'air",
+        "russian": {
+            "imperfective": "выглядеть",
+            "perfective": "выглядывать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "bouger",
+        "russian": {
+            "imperfective": "двигаться",
+            "perfective": "двинуться"
+        },
+        "priority": 2
+    },
+    {
+        "french": "chercher/trouver",
+        "russian": {
+            "imperfective": "искать",
+            "perfective": "поискать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "commencer à (chgmt d'état)",
+        "russian": {
+            "imperfective": "становиться",
+            "perfective": "стать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "dîner",
+        "russian": {
+            "imperfective": "ужинать",
+            "perfective": "поужинать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "envoyer",
+        "russian": {
+            "imperfective": "отправлять",
+            "perfective": "отправить"
+        },
+        "priority": 2
+    },
+    {
+        "french": "éteindre",
+        "russian": {
+            "imperfective": "выключать",
+            "perfective": "выключить"
+        },
+        "priority": 2
+    },
+    {
+        "french": "être occupé",
+        "russian": {
+            "imperfective": "занимать",
+            "perfective": "занят"
+        },
+        "priority": 2
+    },
+    {
+        "french": "être sur le point de",
+        "russian": {
+            "imperfective": "собираться",
+            "perfective": "собраться"
+        },
+        "priority": 2
+    },
+    {
+        "french": "ressentir",
+        "russian": {
+            "imperfective": "чувствовать",
+            "perfective": "почувствовать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "frapper",
+        "russian": {
+            "imperfective": "попадать",
+            "perfective": "попасть"
+        },
+        "priority": 2
+    },
+    {
+        "french": "gagner",
+        "russian": {
+            "imperfective": "выигрывать",
+            "perfective": "выиграть"
+        },
+        "priority": 2
+    },
+    {
+        "french": "imaginer",
+        "russian": {
+            "imperfective": "представлять себе",
+            "perfective": "представитьсебе"
+        },
+        "priority": 2
+    },
+    {
+        "french": "inscrire",
+        "russian": {
+            "imperfective": "записывать",
+            "perfective": "записать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "mentir",
+        "russian": {
+            "imperfective": "врать",
+            "perfective": "соврать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "perdre (jeu)",
+        "russian": {
+            "imperfective": "проигрывать",
+            "perfective": "проиграть"
+        },
+        "priority": 2
+    },
+    {
+        "french": "préciser",
+        "russian": {
+            "imperfective": "уточнять",
+            "perfective": "уточнить"
+        },
+        "priority": 2
+    },
+    {
+        "french": "prendre (le bus)",
+        "russian": {
+            "imperfective": "садиться",
+            "perfective": "сесть (наавтобус)"
+        },
+        "priority": 2
+    },
+    {
+        "french": "prendre le déjeuner",
+        "russian": {
+            "imperfective": "обедать",
+            "perfective": "пообедать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "prendre petit déjeuner",
+        "russian": {
+            "imperfective": "завтракать",
+            "perfective": "позавтракать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "recevoir",
+        "russian": {
+            "imperfective": "получать",
+            "perfective": "получить"
+        },
+        "priority": 2
+    },
+    {
+        "french": "reconnaître",
+        "russian": {
+            "imperfective": "узнавать",
+            "perfective": "узнать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "rester",
+        "russian": {
+            "imperfective": "оставаться",
+            "perfective": "остаться"
+        },
+        "priority": 2
+    },
+    {
+        "french": "se présenter",
+        "russian": {
+            "imperfective": "представляться",
+            "perfective": "представиться"
+        },
+        "priority": 2
+    },
+    {
+        "french": "sonner",
+        "russian": {
+            "imperfective": "звучать",
+            "perfective": "прозвучать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "souffrir",
+        "russian": {
+            "imperfective": "страдать",
+            "perfective": "пострадать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "tomber malade",
+        "russian": {
+            "imperfective": "заболевать",
+            "perfective": "заболеть"
+        },
+        "priority": 2
+    },
+    {
+        "french": "trouver",
+        "russian": {
+            "imperfective": "находить",
+            "perfective": "найти"
+        },
+        "priority": 2
+    },
+    {
+        "french": "trouver une idée",
+        "russian": {
+            "imperfective": "придумывать",
+            "perfective": "придумать"
+        },
+        "priority": 2
+    },
+    {
+        "french": "acheter",
+        "russian": {
+            "imperfective": "купить",
+            "perfective": "покупать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "aider",
+        "russian": {
+            "imperfective": "помогать",
+            "perfective": "помочь"
+        },
+        "priority": 3
+    },
+    {
+        "french": "aimer",
+        "russian": {
+            "imperfective": "любить",
+            "perfective": "полюбить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "améliorer",
+        "russian": {
+            "imperfective": "улучшать",
+            "perfective": "улучшить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "appeler",
+        "russian": {
+            "imperfective": "звать",
+            "perfective": "позвать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "attaquer",
+        "russian": {
+            "imperfective": "нападать",
+            "perfective": "напасть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "attendre",
+        "russian": {
+            "imperfective": "ждать",
+            "perfective": "подождать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "avoir l'habitude",
+        "russian": {
+            "imperfective": "привыкать",
+            "perfective": "привыкнуть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "bien manger",
+        "russian": {
+            "imperfective": "наедаться",
+            "perfective": "наесться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "choisir",
+        "russian": {
+            "imperfective": "выбирать",
+            "perfective": "выбрать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "commencer",
+        "russian": {
+            "imperfective": "начинаться",
+            "perfective": "начаться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "comprendre",
+        "russian": {
+            "imperfective": "понимать",
+            "perfective": "понять"
+        },
+        "priority": 3
+    },
+    {
+        "french": "conseiller",
+        "russian": {
+            "imperfective": "советовать",
+            "perfective": "посоветовать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "danser",
+        "russian": {
+            "imperfective": "танцевать",
+            "perfective": "потанцевать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "décider, résoudre",
+        "russian": {
+            "imperfective": "решать",
+            "perfective": "решить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "demander, prier",
+        "russian": {
+            "imperfective": "просить",
+            "perfective": "попросить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "dessiner",
+        "russian": {
+            "imperfective": "рисовать",
+            "perfective": "нарисовать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "détester",
+        "russian": {
+            "imperfective": "ненавидеть",
+            "perfective": "возненавидеть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "deviner",
+        "russian": {
+            "imperfective": "угадывать",
+            "perfective": "угадать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "donner",
+        "russian": {
+            "imperfective": "давать",
+            "perfective": "дать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "dormir",
+        "russian": {
+            "imperfective": "спать",
+            "perfective": "поспать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "écouter",
+        "russian": {
+            "imperfective": "слушать",
+            "perfective": "послушать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "embrasser",
+        "russian": {
+            "imperfective": "целовать",
+            "perfective": "поцеловать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "enlever",
+        "russian": {
+            "imperfective": "убирать",
+            "perfective": "убрать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "entendre",
+        "russian": {
+            "imperfective": "слышать",
+            "perfective": "услышать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "espérer",
+        "russian": {
+            "imperfective": "надеяться",
+            "perfective": "понадеяться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "essayer",
+        "russian": {
+            "imperfective": "пробовать",
+            "perfective": "попробовать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "expliquer",
+        "russian": {
+            "imperfective": "объяснять",
+            "perfective": "объяснить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "faire",
+        "russian": {
+            "imperfective": "делать",
+            "perfective": "сделать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "fermer",
+        "russian": {
+            "imperfective": "закрывать",
+            "perfective": "закрыть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "jeter, lancer",
+        "russian": {
+            "imperfective": "бросать",
+            "perfective": "бросить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "montrer",
+        "russian": {
+            "imperfective": "показывать",
+            "perfective": "показать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "mourir",
+        "russian": {
+            "imperfective": "умирать",
+            "perfective": "умереть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "nettoyer",
+        "russian": {
+            "imperfective": "чистить",
+            "perfective": "почистить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "oublier",
+        "russian": {
+            "imperfective": "забывать",
+            "perfective": "забыть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "ouvrir",
+        "russian": {
+            "imperfective": "открывать",
+            "perfective": "открыть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "paraître, sembler",
+        "russian": {
+            "imperfective": "казаться",
+            "perfective": "показаться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "penser",
+        "russian": {
+            "imperfective": "думать",
+            "perfective": "подумать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "perdre (qqch)",
+        "russian": {
+            "imperfective": "терять",
+            "perfective": "потерять"
+        },
+        "priority": 3
+    },
+    {
+        "french": "plaisanter",
+        "russian": {
+            "imperfective": "шутить",
+            "perfective": "пошутить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "pouvoir",
+        "russian": {
+            "imperfective": "мочь",
+            "perfective": "смочь"
+        },
+        "priority": 3
+    },
+    {
+        "french": "prendre",
+        "russian": {
+            "imperfective": "брать",
+            "perfective": "взять"
+        },
+        "priority": 3
+    },
+    {
+        "french": "prendre dans les bras",
+        "russian": {
+            "imperfective": "обнимать",
+            "perfective": "обнять"
+        },
+        "priority": 3
+    },
+    {
+        "french": "questionner",
+        "russian": {
+            "imperfective": "спрашивать",
+            "perfective": "спросить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "raconter",
+        "russian": {
+            "imperfective": "рассказывать",
+            "perfective": "рассказать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "ranger",
+        "russian": {
+            "imperfective": "убираться",
+            "perfective": "убраться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "regarder",
+        "russian": {
+            "imperfective": "смотреть",
+            "perfective": "посмотреть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "remarquer",
+        "russian": {
+            "imperfective": "замечать",
+            "perfective": "заметить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "rencontrer",
+        "russian": {
+            "imperfective": "встречаться",
+            "perfective": "встретиться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "répondre",
+        "russian": {
+            "imperfective": "отвечать",
+            "perfective": "ответить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "s'adonner avec passion",
+        "russian": {
+            "imperfective": "увлекаться",
+            "perfective": "увлечься"
+        },
+        "priority": 3
+    },
+    {
+        "french": "s’asseoir",
+        "russian": {
+            "imperfective": "сидеть",
+            "perfective": "посидеть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "s’avérer",
+        "russian": {
+            "imperfective": "получаться",
+            "perfective": "получиться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "s’occuper (pratiquer)",
+        "russian": {
+            "imperfective": "заниматься",
+            "perfective": "заняться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "savoir faire",
+        "russian": {
+            "imperfective": "уметь",
+            "perfective": "суметь"
+        },
+        "priority": 3
+    },
+    {
+        "french": "savoir, connaître",
+        "russian": {
+            "imperfective": "знать",
+            "perfective": "узнать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "se faire avoir",
+        "russian": {
+            "imperfective": "попадаться",
+            "perfective": "попасться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "se passer",
+        "russian": {
+            "imperfective": "случаться",
+            "perfective": "случиться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "se promener",
+        "russian": {
+            "imperfective": "гулять",
+            "perfective": "погулять"
+        },
+        "priority": 3
+    },
+    {
+        "french": "se reposer",
+        "russian": {
+            "imperfective": "отдыхать",
+            "perfective": "отдохнуть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "se souvenir de",
+        "russian": {
+            "imperfective": "помнить",
+            "perfective": "запомнить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "sourire",
+        "russian": {
+            "imperfective": "улыбаться",
+            "perfective": "улыбнуться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "suffire",
+        "russian": {
+            "imperfective": "хватать",
+            "perfective": "хватить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "télécharger",
+        "russian": {
+            "imperfective": "скачивать",
+            "perfective": "скачать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "téléphoner",
+        "russian": {
+            "imperfective": "звонить",
+            "perfective": "позвонить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "terminer",
+        "russian": {
+            "imperfective": "заканчивать",
+            "perfective": "закончить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "tomber",
+        "russian": {
+            "imperfective": "падать",
+            "perfective": "упасть"
+        },
+        "priority": 3
+    },
+    {
+        "french": "traduire",
+        "russian": {
+            "imperfective": "переводить",
+            "perfective": "перевести"
+        },
+        "priority": 3
+    },
+    {
+        "french": "travailler",
+        "russian": {
+            "imperfective": "работать",
+            "perfective": "поработать"
+        },
+        "priority": 3
+    },
+    {
+        "french": "trop manger",
+        "russian": {
+            "imperfective": "объедаться",
+            "perfective": "объесться"
+        },
+        "priority": 3
+    },
+    {
+        "french": "tuer",
+        "russian": {
+            "imperfective": "убивать",
+            "perfective": "убить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "vivre, habiter",
+        "russian": {
+            "imperfective": "жить",
+            "perfective": "пожить"
+        },
+        "priority": 3
+    },
+    {
+        "french": "vouloir",
+        "russian": {
+            "imperfective": "хотеть",
+            "perfective": "захотеть"
+        },
+        "priority": 3
     }
 ]

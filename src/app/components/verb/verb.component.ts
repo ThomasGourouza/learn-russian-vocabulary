@@ -9,24 +9,39 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class VerbComponent implements OnInit {
 
-  public verbs: Array<Verb>;
+  private verbs: Array<Verb>;
+  private selectedVerbs: Array<Verb>;
   public currentVerb: Verb | undefined;
-  private index: { previous: number | undefined; current: number | undefined; next: number | undefined; };
+  public index: { previous: number | undefined; current: number | undefined; next: number | undefined; };
   private firstNext: boolean;
+  public priority: number;
 
   constructor(
     private dataService: DataService
   ) {
     this.verbs = [];
+    this.selectedVerbs = [];
     this.index = { previous: undefined, current: undefined, next: undefined };
     this.firstNext = true;
+    this.priority = 1;
   }
 
   ngOnInit(): void {
     this.dataService.verbs$.subscribe((verbs) => {
       this.verbs = verbs;
+      this.selectVerbs(this.priority);
       this.next();
     });
+  }
+
+  private selectVerbs(priority: number): void {
+    this.selectedVerbs = this.verbs.filter((verb) => +verb.priority === +priority);
+  }
+
+  public changePriority(priority: number): void {
+    this.selectVerbs(priority);
+    this.index.previous = undefined;
+    this.index.next = undefined;
   }
 
   public next(): void {
@@ -37,7 +52,7 @@ export class VerbComponent implements OnInit {
         this.index.current = this.index.next;
       } else {
         do {
-          this.index.current = this.getRandomInt(this.verbs.length);
+          this.index.current = this.getRandomInt(this.selectedVerbs.length);
         } while (this.index.current === this.index.previous);
       }
       this.index.next = undefined;
@@ -56,7 +71,7 @@ export class VerbComponent implements OnInit {
   }
 
   private select(): void {
-    this.currentVerb = this.verbs[this.index.current];
+    this.currentVerb = this.selectedVerbs[this.index.current];
   }
 
   private getRandomInt(max: number): number {
