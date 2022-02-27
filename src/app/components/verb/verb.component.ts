@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Verb } from 'src/app/models/verb';
 import { DataService } from 'src/app/services/data.service';
+import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
   selector: 'app-verb',
@@ -9,15 +10,18 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class VerbComponent implements OnInit {
 
+  @Output() somename = new EventEmitter();
+
   private verbs: Array<Verb>;
   private selectedVerbs: Array<Verb>;
   public currentVerb: Verb | undefined;
   public index: { previous: number | undefined; current: number | undefined; next: number | undefined; };
-  private firstNext: boolean;
+  public firstNext: boolean;
   public priority: number;
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private excelService: ExcelService
   ) {
     this.verbs = [];
     this.selectedVerbs = [];
@@ -32,10 +36,13 @@ export class VerbComponent implements OnInit {
       this.selectVerbs(this.priority);
       this.next();
     });
+    this.excelService.uploadedWords$.subscribe((a) => {
+        console.log(a);
+    });
   }
 
   private selectVerbs(priority: number): void {
-    this.selectedVerbs = this.verbs.filter((verb) => +verb.priority === +priority);
+    this.selectedVerbs = this.verbs.filter((verb) => !!verb.priority && +verb.priority === +priority);
   }
 
   public changePriority(priority: number): void {
@@ -70,8 +77,14 @@ export class VerbComponent implements OnInit {
     }
   }
 
+  public onUploadWords(file: File): void {
+    this.excelService.excelToJSON(file);
+  }
+
   private select(): void {
-    this.currentVerb = this.selectedVerbs[this.index.current];
+    if (this.index.current !== undefined) {
+      this.currentVerb = this.selectedVerbs[this.index.current];
+    }
   }
 
   private getRandomInt(max: number): number {
