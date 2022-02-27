@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { DataService } from './services/data.service';
 import { AdjectiveComponent } from './components/adjective/adjective.component';
 import { NounComponent } from './components/noun/noun.component';
 import { PhraseComponent } from './components/phrase/phrase.component';
@@ -9,11 +9,13 @@ import { ConjunctionComponent } from './components/conjunction/conjunction.compo
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExcelService } from './services/excel.service';
-import { VerbModule } from './components/verb/verb.component.module';
+import { VerbComponent } from './components/verb/verb.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
     AppComponent,
+    VerbComponent,
     AdjectiveComponent,
     NounComponent,
     PhraseComponent,
@@ -21,13 +23,13 @@ import { VerbModule } from './components/verb/verb.component.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    VerbModule
+    FileUploadModule
   ],
   providers: [
-    DataService,
     ExcelService
   ],
   bootstrap: [AppComponent]

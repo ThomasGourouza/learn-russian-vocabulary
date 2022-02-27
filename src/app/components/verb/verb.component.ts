@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Verb } from 'src/app/models/verb';
-import { DataService } from 'src/app/services/data.service';
 import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
@@ -20,7 +19,6 @@ export class VerbComponent implements OnInit {
   public priority: number;
 
   constructor(
-    private dataService: DataService,
     private excelService: ExcelService
   ) {
     this.verbs = [];
@@ -31,13 +29,10 @@ export class VerbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.verbs$.subscribe((verbs) => {
-      this.verbs = verbs;
+    this.excelService.uploadedWords$.subscribe((words: Array<Verb>) => {
+      this.verbs = words;
       this.selectVerbs(this.priority);
       this.next();
-    });
-    this.excelService.uploadedWords$.subscribe((a) => {
-        console.log(a);
     });
   }
 

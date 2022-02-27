@@ -1,60 +1,67 @@
-<!-- <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel" chooseLabel="Upload"
-    (onSelect)="onUploadWords($event.currentFiles[0])" [auto]="true">
-</p-fileUpload> -->
-
-<div class="d-flex justify-content-center space-bellow">
-    <div class="row col-1">
-        <div class="big">
-            Priority:
+<div class="d-flex justify-content-center">
+    <div class="space-bellow col-3">
+        <div class="row">
+            <div class="col d-flex align-items-end">
+                <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
+                    chooseLabel="Charger les verbes" (onSelect)="onUploadWords($event.currentFiles[0])" [auto]="true">
+                </p-fileUpload>
+            </div>
+            <div class="col-4">
+                <div class="big">
+                    Priority:
+                </div>
+                <select class="form-select" [(ngModel)]="priority" (ngModelChange)="changePriority($event)"
+                    [disabled]="!currentVerb">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
         </div>
-        <select class="form-select" [(ngModel)]="priority" (ngModelChange)="changePriority($event)">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
     </div>
 </div>
 
 <div class="row">
     <div class="col d-flex justify-content-center big">
-        <div *ngIf="!!currentVerb">
-            <table>
-                <tr>
-                    <th scope="col">
-                        <div class="wide">Français</div>
-                    </th>
-                    <th scope="col">
-                        <div class="wide">Imperfectif</div>
-                    </th>
-                    <th *ngIf="!!currentVerb.russian.perfective" scope="col">
-                        <div class="wide">Perfectif</div>
-                    </th>
-                    <th *ngIf="!!currentVerb.russian.undeterminated" scope="col">
-                        <div class="wide">Indéterminé</div>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="wide vertical-align">{{ currentVerb.french }}</div>
-                    </td>
-                    <td>
-                        <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.russian.imperfective }}</div>
-                    </td>
-                    <td *ngIf="!!currentVerb.russian.perfective">
-                        <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.russian.perfective }}</div>
-                    </td>
-                    <td *ngIf="!!currentVerb.russian.undeterminated">
-                        <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.russian.undeterminated }}
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <table *ngIf="!!currentVerb; else noData">
+            <tr>
+                <th scope="col">
+                    <div class="wide">Français</div>
+                </th>
+                <th scope="col">
+                    <div class="wide">Imperfectif</div>
+                </th>
+                <th *ngIf="!!currentVerb.perfective" scope="col">
+                    <div class="wide">Perfectif</div>
+                </th>
+                <th *ngIf="!!currentVerb.undeterminated" scope="col">
+                    <div class="wide">Indéterminé</div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="wide vertical-align">{{ currentVerb.french }}</div>
+                </td>
+                <td>
+                    <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.imperfective }}</div>
+                </td>
+                <td *ngIf="!!currentVerb.perfective">
+                    <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.perfective }}</div>
+                </td>
+                <td *ngIf="!!currentVerb.undeterminated">
+                    <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.undeterminated }}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <ng-template #noData>
+            Pas de données.
+        </ng-template>
     </div>
 </div>
 
 <div class="vertical-align d-flex justify-content-center">
-    <button class="btn btn-primary space-around big" [disabled]="index.previous === undefined"
+    <button class="btn btn-primary space-around big" [disabled]="index.previous === undefined || !currentVerb"
         (click)="previous()">Précédent</button>
-    <button class="btn btn-primary space-around big" (click)="next()">Suivant</button>
+    <button class="btn btn-primary space-around big" [disabled]="!currentVerb" (click)="next()">Suivant</button>
 </div>

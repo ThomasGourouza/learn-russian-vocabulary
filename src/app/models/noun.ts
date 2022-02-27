@@ -1,11 +1,7 @@
 export interface Noun {
     category?: string;
-    french: NounDetail;
-    russian: NounDetail;
-    priority?: number;
-}
-
-export interface NounDetail {
-    value: string;
+    french: string;
+    russian: string;
     gender: string;
+    priority?: number;
 }
