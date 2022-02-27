@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-3">
+        <div *ngIf="verbs.length > 0">
+            <table>
+                <tr>
+                    <th scope="col">
+                        <div class="wide">Français</div>
+                    </th>
+                    <th scope="col">
+                        <div class="wide">Imperfectif</div>
+                    </th>
+                    <th scope="col">
+                        <div class="wide">Perfectif</div>
+                    </th>
+                    <th scope="col">
+                        <div class="wide">Indéterminé</div>
+                    </th>
+                </tr>
+                <tr *ngFor="let verb of verbs">
+                    <td [ngClass]="{'selected': currentVerb?.russian?.imperfective === verb.russian.imperfective}">
+                        <div class="wide vertical-align">{{ verb.french }}</div>
+                    </td>
+                    <td [ngClass]="{'selected': currentVerb?.russian?.imperfective === verb.russian.imperfective}">
+                        <div class="wide vertical-align">{{ verb.russian.imperfective }}</div>
+                    </td>
+                    <td [ngClass]="{'selected': currentVerb?.russian?.imperfective === verb.russian.imperfective}">
+                        <div class="wide vertical-align">{{ verb.russian.perfective }}</div>
+                    </td>
+                    <td [ngClass]="{'selected': currentVerb?.russian?.imperfective === verb.russian.imperfective}">
+                        <div class="wide vertical-align">{{ verb.russian.undeterminated }}</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center big">
+        <div *ngIf="!!currentVerb">
+            <table>
+                <tr>
+                    <th scope="col">
+                        <div class="wide">Français</div>
+                    </th>
+                    <th scope="col">
+                        <div class="wide">Imperfectif</div>
+                    </th>
+                    <th scope="col">
+                        <div class="wide">Perfectif</div>
+                    </th>
+                    <th scope="col">
+                        <div class="wide">Indéterminé</div>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="wide vertical-align">{{ currentVerb.french }}</div>
+                    </td>
+                    <td>
+                        <div class="wide vertical-align">{{ currentVerb.russian.imperfective }}</div>
+                    </td>
+                    <td>
+                        <div class="wide vertical-align">{{ currentVerb.russian.perfective }}</div>
+                    </td>
+                    <td>
+                        <div class="wide vertical-align">{{ currentVerb.russian.undeterminated }}</div>
+                    </td>
+                </tr>
+            </table>
+            <div class="vertical-align">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-primary" (click)="pause()">{{ isPaused ? "Reprendre" : "Pause"}}</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-primary" (click)="previous()">Précédent</button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-primary" (click)="next()">Suivant</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

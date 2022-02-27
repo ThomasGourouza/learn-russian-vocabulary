@@ -1,0 +1,72 @@
+[
+    {
+        "category": "Mouvement",
+        "french": "aller à pied",
+        "russian": {
+            "imperfective": "идти",
+            "perfective": "пойти",
+            "undeterminated": "ходить"
+        },
+        "priority": 1
+    },
+    {
+        "category": "Mouvement",
+        "french": "aller en voiture",
+        "russian": {
+            "imperfective": "eхaть",
+            "perfective": "eзжать",
+            "undeterminated": "ездить"
+        },
+        "priority": 1
+    },
+    {
+        "category": "Mouvement",
+        "french": "courir",
+        "russian": {
+            "imperfective": "бежать",
+            "perfective": "побежать",
+            "undeterminated": "бегать"
+        },
+        "priority": 1
+    },
+    {
+        "category": "Mouvement",
+        "french": "escalader",
+        "russian": {
+            "imperfective": "лезть",
+            "perfective": "полезть",
+            "undeterminated": "лазить"
+        },
+        "priority": 1
+    },
+    {
+        "category": "Mouvement",
+        "french": "voler",
+        "russian": {
+            "imperfective": "лететь",
+            "perfective": "полететь",
+            "undeterminated": "летать"
+        },
+        "priority": 1
+    },
+    {
+        "category": "Mouvement",
+        "french": "nager",
+        "russian": {
+            "imperfective": "плыть",
+            "perfective": "поплыть",
+            "undeterminated": "плавать"
+        },
+        "priority": 1
+    },
+    {
+        "category": "Mouvement",
+        "french": "porter",
+        "russian": {
+            "imperfective": "нести",
+            "perfective": "понести",
+            "undeterminated": "носить"
+        },
+        "priority": 1
+    }
+]
