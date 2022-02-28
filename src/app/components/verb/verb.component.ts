@@ -17,6 +17,7 @@ export class VerbComponent implements OnInit {
   public index: { previous: number | undefined; current: number | undefined; next: number | undefined; };
   public firstNext: boolean;
   public priority: number;
+  public counter: number;
 
   constructor(
     private excelService: ExcelService
@@ -25,7 +26,8 @@ export class VerbComponent implements OnInit {
     this.selectedVerbs = [];
     this.index = { previous: undefined, current: undefined, next: undefined };
     this.firstNext = true;
-    this.priority = 1;
+    this.priority = 3;
+    this.counter = 0;
   }
 
   ngOnInit(): void {
@@ -59,12 +61,18 @@ export class VerbComponent implements OnInit {
       }
       this.index.next = undefined;
       this.select();
+    } else {
+      this.counter++;
     }
   }
 
   public previous(): void {
     if (this.index.previous !== undefined) {
-      this.firstNext = true;
+      if (this.firstNext) {
+        this.counter--;
+      } else {
+        this.firstNext = true;
+      }
       this.index.next = this.index.current;
       this.index.current = this.index.previous;
       this.index.previous = undefined;

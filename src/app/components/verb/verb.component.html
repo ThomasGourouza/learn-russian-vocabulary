@@ -66,3 +66,7 @@
         (click)="previous()">Précédent</button>
     <button class="btn btn-primary space-around big" [disabled]="!currentVerb" (click)="next()">Suivant</button>
 </div>
+
+<div class="vertical-align d-flex justify-content-center">
+    <div *ngIf="counter > 0" class="space-around big">Vous avez vu {{ counter }} verbe{{ counter > 1 ? 's' : ''}}.</div>
+</div>
