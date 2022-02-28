@@ -4,4 +4,5 @@ export interface Verb {
     perfective?: string;
     undeterminated?: string;
     priority?: number;
+    conjugation?: string;
 }
