@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Verb } from 'src/app/models/verb';
+import { DataService } from 'src/app/services/data.service';
 import { ExcelService } from 'src/app/services/excel.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-verb',
@@ -20,8 +22,11 @@ export class VerbComponent implements OnInit {
   public counter: number;
 
   constructor(
-    private excelService: ExcelService
+    private excelService: ExcelService,
+    private navigationService: NavigationService,
+    private dataService: DataService
   ) {
+    this.navigationService.setTabIndex(1);
     this.verbs = [];
     this.selectedVerbs = [];
     this.index = { previous: undefined, current: undefined, next: undefined };
@@ -31,11 +36,23 @@ export class VerbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.excelService.uploadedWords$.subscribe((words: Array<Verb>) => {
-      this.verbs = words;
-      this.selectVerbs(this.priority);
-      this.next();
+    if (this.dataService.verbs.length > 0) {
+      console.log('coucou');
+      
+      this.initVerbs(this.dataService.verbs);
+    }
+    this.excelService.uploadedWords$.subscribe((verbs: Array<Verb>) => {
+      this.dataService.setVerbs(verbs);
+      this.initVerbs(verbs);
     });
+  }
+
+  private initVerbs(verbs: Array<Verb>): void {
+    this.verbs = verbs;
+    console.log(this.verbs);
+    
+    this.selectVerbs(this.priority);
+    this.next();
   }
 
   private selectVerbs(priority: number): void {

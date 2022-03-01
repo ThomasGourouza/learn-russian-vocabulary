@@ -11,6 +11,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExcelService } from './services/excel.service';
 import { VerbComponent } from './components/verb/verb.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { AppRoutingModule } from './app-routing.module';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { NavigationService } from './services/navigation.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -19,18 +25,24 @@ import { FileUploadModule } from 'primeng/fileupload';
     AdjectiveComponent,
     NounComponent,
     PhraseComponent,
-    ConjunctionComponent
+    ConjunctionComponent,
+    NavigationComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FileUploadModule
+    FileUploadModule,
+    TabMenuModule
   ],
   providers: [
-    ExcelService
+    ExcelService,
+    NavigationService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })
