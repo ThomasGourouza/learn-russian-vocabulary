@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { NavigationService } from './services/navigation.service';
-import { DataService } from './services/data.service';
+import { VerbsService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { DataService } from './services/data.service';
   providers: [
     ExcelService,
     NavigationService,
-    DataService
+    VerbsService
   ],
   bootstrap: [AppComponent]
 })
