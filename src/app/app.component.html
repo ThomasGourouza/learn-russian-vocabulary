@@ -1,6 +1,18 @@
 <app-navigation></app-navigation>
 <div class="mx-5 main-page">
-  <div class="vertical-align">
-    <router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-3">
+      <div>
+        <img src="../assets/russian-eagle.png" alt="Russian Eagle" height="250px" width="250px">
+      </div>
+    </div>
+    <div class="col">
+      <p-card>
+        <router-outlet></router-outlet>
+      </p-card>
+    </div>
+    <div class="col-3">
+      <app-counter></app-counter>
+    </div>
   </div>
 </div>

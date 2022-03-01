@@ -18,6 +18,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { NavigationService } from './services/navigation.service';
 import { VerbsService } from './services/verbs.service';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { CounterComponent } from './components/counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ButtonModule } from 'primeng/button';
     PhraseComponent,
     ConjunctionComponent,
     NavigationComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     FileUploadModule,
     TabMenuModule,
-    ButtonModule
+    ButtonModule,
+    CardModule
   ],
   providers: [
     ExcelService,

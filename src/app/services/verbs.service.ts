@@ -65,7 +65,7 @@ export class VerbsService {
   get priority(): number | undefined {
     return this._priority;
   }
-  public setPriority(priority: number): void {
+  public setPriority(priority: number | undefined): void {
     this._priority = priority;
   }
 
