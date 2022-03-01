@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-    <div class="space-bellow col-3">
+    <div class="space-bellow col-8">
         <div class="row">
             <div class="col d-flex align-items-end">
                 <div *ngIf="verbsService.verbs.length > 0; else loadVerbs">
@@ -15,12 +15,10 @@
                 </ng-template>
             </div>
             <div class="col-3">
-                <div class="big">
-                    Priorité:
-                </div>
+                <strong>Priorité:</strong>
                 <select class="form-select" [ngModel]="verbsService.priority" (ngModelChange)="changePriority($event)"
                     [disabled]="verbsService.verbs.length === 0 || !isGoodData()">
-                    <option selected></option>
+                    <option selected value="0"></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -68,21 +66,29 @@
                 </tr>
             </table>
             <ng-template #selectPriority>
-                <div *ngIf="verbsService.priority === undefined; else noDataForSelectedPriority">
-                    <div *ngIf="isGoodData();else wrongData">
-                        Choix de la priorité.
+                <p-card>
+                    <div class="big">
+                        <div *ngIf="verbsService.priority === undefined; else noDataForSelectedPriority">
+                            <div *ngIf="isGoodData();else wrongData">
+                                Choix de la priorité.
+                            </div>
+                            <ng-template #wrongData>
+                                Données invalides!
+                            </ng-template>
+                        </div>
+                        <ng-template #noDataForSelectedPriority>
+                            Pas de données pour cette priorité.
+                        </ng-template>
                     </div>
-                    <ng-template #wrongData>
-                        Données invalides!
-                    </ng-template>
-                </div>
-                <ng-template #noDataForSelectedPriority>
-                    Pas de données pour cette priorité.
-                </ng-template>
+                </p-card>
             </ng-template>
         </div>
         <ng-template #noData>
-            Pas de données.
+            <p-card>
+                <div class="big">
+                    Pas de données.
+                </div>
+            </p-card>
         </ng-template>
     </div>
 </div>
@@ -90,12 +96,7 @@
 <div class="vertical-align d-flex justify-content-center">
     <button class="btn btn-secondary space-around big"
         [disabled]="verbsService.index.previous === undefined || !verbsService.currentVerb"
-        (click)="previous()">Précédent</button>
+        (click)="previous()">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</button>
     <button class="btn btn-secondary space-around big" [disabled]="!verbsService.currentVerb"
-        (click)="next()">Suivant</button>
-</div>
-
-<div class="vertical-align d-flex justify-content-center">
-    <div *ngIf="verbsService.counter > 0" class="space-around big">Vous avez vu {{ verbsService.counter }} verbe{{
-        verbsService.counter > 1 ? 's' : ''}}.</div>
+        (click)="next()">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</button>
 </div>

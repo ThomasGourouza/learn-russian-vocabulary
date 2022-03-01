@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center">
+    <div *ngIf="verbsService.counter > 0">
+        <p-card>
+            <div class="big space-around">
+                Vous avez vu {{ verbsService.counter }} verbe{{ verbsService.counter > 1 ? 's' : ''}}.
+            </div>
+        </p-card>
+    </div>
+</div>

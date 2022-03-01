@@ -62,16 +62,21 @@ export class VerbComponent implements OnInit {
     return valid;
   }
 
-  public changePriority(priority: number): void {
-    this.verbsService.setPriority(priority);
+  public changePriority(priority: string): void {
     this.verbsService.setCounter(0);
     this.verbsService.setFirstNext(true);
-    this.selectVerbs();
-    this.verbsService.setIndex({
-      previous: undefined,
-      current: this.verbsService.index.current,
-      next: undefined
-    });
+    if (priority === '0') {
+      this.verbsService.setPriority(undefined);
+      this.verbsService.setCurrentVerb(undefined);
+    } else {
+      this.verbsService.setPriority(+priority);
+      this.selectVerbs();
+      this.verbsService.setIndex({
+        previous: undefined,
+        current: this.verbsService.index.current,
+        next: undefined
+      });
+    }
   }
 
   public next(): void {
