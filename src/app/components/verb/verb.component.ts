@@ -37,8 +37,6 @@ export class VerbComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.dataService.verbs.length > 0) {
-      console.log('coucou');
-      
       this.initVerbs(this.dataService.verbs);
     }
     this.excelService.uploadedWords$.subscribe((verbs: Array<Verb>) => {
@@ -49,8 +47,6 @@ export class VerbComponent implements OnInit {
 
   private initVerbs(verbs: Array<Verb>): void {
     this.verbs = verbs;
-    console.log(this.verbs);
-    
     this.selectVerbs(this.priority);
     this.next();
   }
