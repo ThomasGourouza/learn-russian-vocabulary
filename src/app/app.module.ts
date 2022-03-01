@@ -14,9 +14,10 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import {TabMenuModule} from 'primeng/tabmenu';
+import { TabMenuModule } from 'primeng/tabmenu';
 import { NavigationService } from './services/navigation.service';
-import { VerbsService } from './services/data.service';
+import { VerbsService } from './services/verbs.service';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { VerbsService } from './services/data.service';
     FormsModule,
     ReactiveFormsModule,
     FileUploadModule,
-    TabMenuModule
+    TabMenuModule,
+    ButtonModule
   ],
   providers: [
     ExcelService,

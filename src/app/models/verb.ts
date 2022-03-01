@@ -5,4 +5,5 @@ export interface Verb {
     undeterminated?: string;
     priority?: number;
     conjugation?: string;
+    hidden?: string;
 }

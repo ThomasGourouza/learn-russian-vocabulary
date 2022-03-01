@@ -5,20 +5,25 @@ import { Verb } from '../models/verb';
 @Injectable()
 export class VerbsService {
 
-  private _verbs: Array<Verb>;
-  private _selectedVerbs: Array<Verb>;
-  private _currentVerb: Verb | undefined;
-  private _index: Index;
-  private _firstNext: boolean;
-  private _priority: number;
-  private _counter: number;
+  private _verbs!: Array<Verb>;
+  private _selectedVerbs!: Array<Verb>;
+  private _currentVerb!: Verb | undefined;
+  private _index!: Index;
+  private _firstNext!: boolean;
+  private _priority!: number | undefined;
+  private _counter!: number;
 
   constructor() {
+    this.initVerbsVariables();
+  }
+
+  public initVerbsVariables(): void {
     this._verbs = [];
     this._selectedVerbs = [];
+    this._currentVerb = undefined;
     this._index = { previous: undefined, current: undefined, next: undefined };
     this._firstNext = true;
-    this._priority = 3;
+    this._priority = undefined;
     this._counter = 0;
   }
 
@@ -39,7 +44,7 @@ export class VerbsService {
   get currentVerb(): Verb | undefined {
     return this._currentVerb;
   }
-  public setCurrentVerb(currentVerb: Verb): void {
+  public setCurrentVerb(currentVerb: Verb | undefined): void {
     this._currentVerb = currentVerb;
   }
 
@@ -57,7 +62,7 @@ export class VerbsService {
     this._firstNext = firstNext;
   }
 
-  get priority(): number {
+  get priority(): number | undefined {
     return this._priority;
   }
   public setPriority(priority: number): void {

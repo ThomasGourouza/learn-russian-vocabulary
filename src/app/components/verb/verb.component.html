@@ -2,17 +2,25 @@
     <div class="space-bellow col-3">
         <div class="row">
             <div class="col d-flex align-items-end">
-                <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
-                    chooseLabel="Charger les verbes" (onSelect)="onUploadWords($event.currentFiles[0])" [auto]="true"
-                    [disabled]="!!currentVerb">
-                </p-fileUpload>
+                <div *ngIf="verbsService.verbs.length > 0; else loadVerbs">
+                    <button pButton type="button" label="Effacer les verbes" icon="pi pi-trash" iconPos="left"
+                        class="p-button-secondary" (click)="onReload()"
+                        [disabled]="verbsService.verbs.length === 0"></button>
+                </div>
+                <ng-template #loadVerbs>
+                    <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
+                        chooseLabel="Charger des verbes" (onSelect)="onUploadWords($event.currentFiles[0])"
+                        [auto]="true" [disabled]="verbsService.verbs.length > 0">
+                    </p-fileUpload>
+                </ng-template>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="big">
                     Priorité:
                 </div>
-                <select class="form-select" [(ngModel)]="priority" (ngModelChange)="changePriority($event)"
-                    [disabled]="!currentVerb">
+                <select class="form-select" [ngModel]="verbsService.priority" (ngModelChange)="changePriority($event)"
+                    [disabled]="verbsService.verbs.length === 0 || !isGoodData()">
+                    <option selected></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -24,37 +32,55 @@
 
 <div class="row">
     <div class="col d-flex justify-content-center big">
-        <table *ngIf="!!currentVerb; else noData">
-            <tr>
-                <th scope="col">
-                    <div class="wide">Français</div>
-                </th>
-                <th scope="col">
-                    <div class="wide">Imperfectif</div>
-                </th>
-                <th *ngIf="currentVerb.perfective !== '-'" scope="col">
-                    <div class="wide">Perfectif</div>
-                </th>
-                <th *ngIf="currentVerb.undeterminated !== '-'" scope="col">
-                    <div class="wide">Indéterminé</div>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="wide vertical-align">{{ currentVerb.french }}</div>
-                </td>
-                <td>
-                    <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.imperfective }}</div>
-                </td>
-                <td *ngIf="currentVerb.perfective !== '-'">
-                    <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.perfective }}</div>
-                </td>
-                <td *ngIf="currentVerb.undeterminated !== '-'">
-                    <div *ngIf="firstNext" class="wide vertical-align">{{ currentVerb.undeterminated }}
+        <div *ngIf="verbsService.verbs.length > 0; else noData">
+            <table *ngIf="!!verbsService.currentVerb else selectPriority">
+                <tr>
+                    <th scope="col">
+                        <div class="wide">Français</div>
+                    </th>
+                    <th scope="col">
+                        <div class="wide">Imperfectif</div>
+                    </th>
+                    <th *ngIf="verbsService.currentVerb?.perfective !== '-'" scope="col">
+                        <div class="wide">Perfectif</div>
+                    </th>
+                    <th *ngIf="verbsService.currentVerb?.undeterminated !== '-'" scope="col">
+                        <div class="wide">Indéterminé</div>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="wide vertical-align">{{ verbsService.currentVerb?.french }}</div>
+                    </td>
+                    <td>
+                        <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
+                            verbsService.currentVerb?.imperfective }}</div>
+                    </td>
+                    <td *ngIf="verbsService.currentVerb?.perfective !== '-'">
+                        <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
+                            verbsService.currentVerb?.perfective }}</div>
+                    </td>
+                    <td *ngIf="verbsService.currentVerb?.undeterminated !== '-'">
+                        <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
+                            verbsService.currentVerb?.undeterminated }}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <ng-template #selectPriority>
+                <div *ngIf="verbsService.priority === undefined; else noDataForSelectedPriority">
+                    <div *ngIf="isGoodData();else wrongData">
+                        Choix de la priorité.
                     </div>
-                </td>
-            </tr>
-        </table>
+                    <ng-template #wrongData>
+                        Données invalides!
+                    </ng-template>
+                </div>
+                <ng-template #noDataForSelectedPriority>
+                    Pas de données pour cette priorité.
+                </ng-template>
+            </ng-template>
+        </div>
         <ng-template #noData>
             Pas de données.
         </ng-template>
@@ -62,11 +88,14 @@
 </div>
 
 <div class="vertical-align d-flex justify-content-center">
-    <button class="btn btn-primary space-around big" [disabled]="index.previous === undefined || !currentVerb"
+    <button class="btn btn-secondary space-around big"
+        [disabled]="verbsService.index.previous === undefined || !verbsService.currentVerb"
         (click)="previous()">Précédent</button>
-    <button class="btn btn-primary space-around big" [disabled]="!currentVerb" (click)="next()">Suivant</button>
+    <button class="btn btn-secondary space-around big" [disabled]="!verbsService.currentVerb"
+        (click)="next()">Suivant</button>
 </div>
 
 <div class="vertical-align d-flex justify-content-center">
-    <div *ngIf="counter > 0" class="space-around big">Vous avez vu {{ counter }} verbe{{ counter > 1 ? 's' : ''}}.</div>
+    <div *ngIf="verbsService.counter > 0" class="space-around big">Vous avez vu {{ verbsService.counter }} verbe{{
+        verbsService.counter > 1 ? 's' : ''}}.</div>
 </div>
