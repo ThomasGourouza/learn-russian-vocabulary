@@ -17,7 +17,7 @@
             <div class="col-3">
                 <strong>Priorité:</strong>
                 <select class="form-select" [ngModel]="verbsService.priority" (ngModelChange)="changePriority($event)"
-                    [disabled]="verbsService.verbs.length === 0 || !isGoodData()">
+                    [disabled]="verbsService.verbs.length === 0 || !verbsService.isValidData">
                     <option selected value="0"></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -29,67 +29,42 @@
 </div>
 
 <div class="row">
-    <div class="col d-flex justify-content-center big">
-        <div *ngIf="verbsService.verbs.length > 0; else noData">
-            <table *ngIf="!!verbsService.currentVerb else selectPriority">
-                <tr>
-                    <th scope="col">
-                        <div class="wide">Français</div>
-                    </th>
-                    <th scope="col">
-                        <div class="wide">Imperfectif</div>
-                    </th>
-                    <th *ngIf="verbsService.currentVerb?.perfective !== '-'" scope="col">
-                        <div class="wide">Perfectif</div>
-                    </th>
-                    <th *ngIf="verbsService.currentVerb?.undeterminated !== '-'" scope="col">
-                        <div class="wide">Indéterminé</div>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="wide vertical-align">{{ verbsService.currentVerb?.french }}</div>
-                    </td>
-                    <td>
-                        <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
-                            verbsService.currentVerb?.imperfective }}</div>
-                    </td>
-                    <td *ngIf="verbsService.currentVerb?.perfective !== '-'">
-                        <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
-                            verbsService.currentVerb?.perfective }}</div>
-                    </td>
-                    <td *ngIf="verbsService.currentVerb?.undeterminated !== '-'">
-                        <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
-                            verbsService.currentVerb?.undeterminated }}
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <ng-template #selectPriority>
-                <p-card>
-                    <div class="big">
-                        <div *ngIf="verbsService.priority === undefined; else noDataForSelectedPriority">
-                            <div *ngIf="isGoodData();else wrongData">
-                                Choix de la priorité.
-                            </div>
-                            <ng-template #wrongData>
-                                Données invalides!
-                            </ng-template>
-                        </div>
-                        <ng-template #noDataForSelectedPriority>
-                            Pas de données pour cette priorité.
-                        </ng-template>
+    <div class="col d-flex justify-content-center big"
+        *ngIf="verbsService.verbs.length > 0 && !!verbsService.currentVerb">
+        <table>
+            <tr>
+                <th scope="col">
+                    <div class="wide">Français</div>
+                </th>
+                <th scope="col">
+                    <div class="wide">Imperfectif</div>
+                </th>
+                <th *ngIf="verbsService.currentVerb?.perfective !== '-'" scope="col">
+                    <div class="wide">Perfectif</div>
+                </th>
+                <th *ngIf="verbsService.currentVerb?.undeterminated !== '-'" scope="col">
+                    <div class="wide">Indéterminé</div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="wide vertical-align">{{ verbsService.currentVerb?.french }}</div>
+                </td>
+                <td>
+                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
+                        verbsService.currentVerb?.imperfective }}</div>
+                </td>
+                <td *ngIf="verbsService.currentVerb?.perfective !== '-'">
+                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
+                        verbsService.currentVerb?.perfective }}</div>
+                </td>
+                <td *ngIf="verbsService.currentVerb?.undeterminated !== '-'">
+                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
+                        verbsService.currentVerb?.undeterminated }}
                     </div>
-                </p-card>
-            </ng-template>
-        </div>
-        <ng-template #noData>
-            <p-card>
-                <div class="big">
-                    Pas de données.
-                </div>
-            </p-card>
-        </ng-template>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 

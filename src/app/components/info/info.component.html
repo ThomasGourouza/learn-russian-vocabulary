@@ -1,0 +1,27 @@
+<p-card>
+    <div class="d-flex justify-content-center big space-around">
+        <div *ngIf="verbsService.verbs.length > 0; else noData">
+            <div *ngIf="!!verbsService.currentVerb else selectPriority">
+                <div *ngIf="verbsService.counter > 0">
+                    Vous avez vu {{ verbsService.counter }} verbe{{ verbsService.counter > 1 ? 's' : ''}}.
+                </div>
+            </div>
+            <ng-template #selectPriority>
+                <div *ngIf="verbsService.priority === undefined; else noDataForSelectedPriority">
+                    <div *ngIf="verbsService.isValidData; else wrongData">
+                        Choix de la priorité.
+                    </div>
+                    <ng-template #wrongData>
+                        Données invalides!
+                    </ng-template>
+                </div>
+                <ng-template #noDataForSelectedPriority>
+                    Pas de données pour cette priorité.
+                </ng-template>
+            </ng-template>
+        </div>
+        <ng-template #noData>
+            Pas de données.
+        </ng-template>
+    </div>
+</p-card>

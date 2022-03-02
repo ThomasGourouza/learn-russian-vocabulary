@@ -27,6 +27,7 @@ export class VerbComponent implements OnInit {
   ngOnInit(): void {
     this.excelService.uploadedWords$.subscribe((verbs: Array<Verb>) => {
       this.verbsService.setVerbs(verbs.filter((verb) => verb?.hidden !== '-'));
+      this.checkData(this.verbsService.verbs);
     });
   }
 
@@ -38,10 +39,10 @@ export class VerbComponent implements OnInit {
     this.verbsService.initVerbsVariables();
   }
 
-  public isGoodData(): boolean {
-    const verbs = this.verbsService.verbs;
+  private checkData(verbs: Array<Verb>): void {
     if (verbs.length < 2) {
-      return false;
+      this.verbsService.setIsValidData(false);
+      return;
     }
     const validKeys = [
       'french',
@@ -53,13 +54,11 @@ export class VerbComponent implements OnInit {
       'hidden'
     ];
     const keys = Object.keys(verbs[0]);
-    let valid = true;
     keys.forEach((key) => {
       if (!validKeys.includes(key)) {
-        valid = false;
+        this.verbsService.setIsValidData(false);
       }
     });
-    return valid;
   }
 
   public changePriority(priority: string): void {

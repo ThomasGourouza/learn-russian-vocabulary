@@ -12,6 +12,7 @@ export class VerbsService {
   private _firstNext!: boolean;
   private _priority!: number | undefined;
   private _counter!: number;
+  private _isValidData!: boolean;
 
   constructor() {
     this.initVerbsVariables();
@@ -25,6 +26,7 @@ export class VerbsService {
     this._firstNext = true;
     this._priority = undefined;
     this._counter = 0;
+    this._isValidData = true;
   }
 
   get verbs(): Array<Verb> {
@@ -74,6 +76,13 @@ export class VerbsService {
   }
   public setCounter(counter: number): void {
     this._counter = counter;
+  }
+
+  get isValidData(): boolean {
+    return this._isValidData;
+  }
+  public setIsValidData(isValidData: boolean): void {
+    this._isValidData = isValidData;
   }
 
 }

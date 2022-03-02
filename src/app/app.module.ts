@@ -19,7 +19,7 @@ import { NavigationService } from './services/navigation.service';
 import { VerbsService } from './services/verbs.service';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { CounterComponent } from './components/counter/counter.component';
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { CounterComponent } from './components/counter/counter.component';
     ConjunctionComponent,
     NavigationComponent,
     WelcomeComponent,
-    CounterComponent
+    InfoComponent
   ],
   imports: [
     BrowserModule,
