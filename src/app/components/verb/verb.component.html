@@ -29,8 +29,7 @@
 </div>
 
 <div class="row">
-    <div class="col d-flex justify-content-center big"
-        *ngIf="verbsService.verbs.length > 0 && !!verbsService.currentVerb">
+    <div class="col d-flex justify-content-center big">
         <table>
             <tr>
                 <th scope="col">
@@ -39,28 +38,45 @@
                 <th scope="col">
                     <div class="wide">Imperfectif</div>
                 </th>
-                <th *ngIf="verbsService.currentVerb?.perfective !== '-'" scope="col">
+                <th *ngIf="!(verbsService.verbs.length > 0 && !!verbsService.currentVerb)
+                           || (verbsService.currentVerb?.perfective !== '-')" scope="col">
                     <div class="wide">Perfectif</div>
                 </th>
-                <th *ngIf="verbsService.currentVerb?.undeterminated !== '-'" scope="col">
+                <th *ngIf="!!verbsService.currentVerb
+                           && verbsService.currentVerb.undeterminated !== '-'" scope="col">
                     <div class="wide">Indéterminé</div>
                 </th>
             </tr>
             <tr>
                 <td>
-                    <div class="wide vertical-align">{{ verbsService.currentVerb?.french }}</div>
+                    <div class="wide vertical-align">
+                        <span *ngIf="verbsService.verbs.length > 0 && !!verbsService.currentVerb">
+                            {{ verbsService.currentVerb?.french }}
+                        </span>&nbsp;
+                    </div>
                 </td>
                 <td>
-                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
-                        verbsService.currentVerb?.imperfective }}</div>
+                    <div class="wide vertical-align">
+                        <span *ngIf="verbsService.verbs.length > 0 && !!verbsService.currentVerb
+                                    && verbsService.firstNext">
+                            {{ verbsService.currentVerb?.imperfective }}
+                        </span>
+                    </div>
                 </td>
-                <td *ngIf="verbsService.currentVerb?.perfective !== '-'">
-                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
-                        verbsService.currentVerb?.perfective }}</div>
+                <td *ngIf="!(verbsService.verbs.length > 0 && !!verbsService.currentVerb) 
+                           || (!!verbsService.currentVerb && verbsService.currentVerb.perfective !== '-')">
+                        <div class="wide vertical-align">
+                            <span *ngIf="verbsService.firstNext">
+                                {{ verbsService.currentVerb?.perfective }}
+                            </span>
+                        </div>
                 </td>
-                <td *ngIf="verbsService.currentVerb?.undeterminated !== '-'">
-                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">{{
-                        verbsService.currentVerb?.undeterminated }}
+                <td *ngIf="!!verbsService.currentVerb 
+                           && verbsService.currentVerb.undeterminated !== '-'">
+                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">
+                        <span>
+                            {{ verbsService.currentVerb?.undeterminated }}
+                        </span>
                     </div>
                 </td>
             </tr>

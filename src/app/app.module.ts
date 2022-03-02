@@ -20,6 +20,7 @@ import { VerbsService } from './services/verbs.service';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InfoComponent } from './components/info/info.component';
+import { InfoVerbsComponent } from './components/info/info-verbs/info-verbs.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { InfoComponent } from './components/info/info.component';
     ConjunctionComponent,
     NavigationComponent,
     WelcomeComponent,
-    InfoComponent
+    InfoComponent,
+    InfoVerbsComponent
   ],
   imports: [
     BrowserModule,
