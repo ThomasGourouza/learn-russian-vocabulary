@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navigationService: NavigationService
+  ) {
+    this.navigationService.setTabIndex(0);
+  }
 
   ngOnInit(): void {
   }
