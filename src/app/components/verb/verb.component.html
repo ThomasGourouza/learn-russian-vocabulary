@@ -85,9 +85,13 @@
 </div>
 
 <div class="vertical-align d-flex justify-content-center">
-    <button class="btn btn-secondary space-around big"
+    <button class="btn btn-secondary space-around"
         [disabled]="verbsService.index.previous === undefined || !verbsService.currentVerb"
-        (click)="previous()">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</button>
-    <button class="btn btn-secondary space-around big" [disabled]="!verbsService.currentVerb"
-        (click)="next()">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</button>
+        (click)="previous()">
+        <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>
+    </button>
+    <button class="btn btn-secondary space-around" [disabled]="!verbsService.currentVerb"
+        (click)="next()">
+        <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
+    </button>
 </div>
