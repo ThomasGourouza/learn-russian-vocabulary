@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { VerbsService } from 'src/app/services/verbs.service';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent {
 
   constructor(
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    public verbsService: VerbsService
   ) {
     this.navigationService.setTabIndex(0);
-  }
-
-  ngOnInit(): void {
   }
 
 }

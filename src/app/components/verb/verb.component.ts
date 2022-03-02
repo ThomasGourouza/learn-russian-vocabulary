@@ -26,7 +26,7 @@ export class VerbComponent implements OnInit {
 
   ngOnInit(): void {
     this.excelService.uploadedWords$.subscribe((verbs: Array<Verb>) => {
-      this.verbsService.setVerbs(verbs.filter((verb) => verb?.hidden !== '-'));
+      this.verbsService.setVerbs(verbs.filter((verb) => verb?.show !== '-'));
       this.checkData(this.verbsService.verbs);
     });
   }
@@ -50,8 +50,8 @@ export class VerbComponent implements OnInit {
       'perfective',
       'undeterminated',
       'priority',
-      'conjugation',
-      'hidden'
+      'show',
+      'conjugation'
     ];
     const keys = Object.keys(verbs[0]);
     keys.forEach((key) => {

@@ -1,1 +1,6 @@
-<p>welcome works!</p>
+<div class="d-flex justify-content-center big space-around">
+    <span *ngIf="verbsService.counter > 0">
+        Vous avez vu <strong>{{ verbsService.counter }}</strong>
+        verbe{{ verbsService.counter > 1 ? 's' : ''}} de priorité {{ verbsService.priority }}.
+    </span>&nbsp;
+</div>
