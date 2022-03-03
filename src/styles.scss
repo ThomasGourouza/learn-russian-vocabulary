@@ -1,3 +1,45 @@
 body {
-    background-color: rgb(206, 217, 218);
+  background-color: rgb(206, 217, 218);
+}
+table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+th {
+  background-color: aliceblue;
+}
+td {
+  background-color: rgb(247, 251, 255);
+}
+.wide {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.vertical-align {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.medium {
+  font-size: large;
+}
+.big {
+  font-size: x-large;
+}
+.biggest {
+  font-size: xx-large;
+}
+.selected {
+  background-color: rgb(167, 212, 255);
+  font-weight: bold;
+}
+.space-around {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.space-bellow {
+  margin-bottom: 3em;
 }

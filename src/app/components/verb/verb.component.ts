@@ -3,16 +3,11 @@ import { Verb } from 'src/app/models/verb';
 import { VerbsService } from 'src/app/services/verbs.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import { NavigationService } from 'src/app/services/navigation.service';
-export interface Index {
-  previous: number | undefined;
-  current: number | undefined;
-  next: number | undefined;
-}
+import { Index } from 'src/app/models';
 
 @Component({
   selector: 'app-verb',
-  templateUrl: './verb.component.html',
-  styleUrls: ['./verb.component.scss']
+  templateUrl: './verb.component.html'
 })
 export class VerbComponent implements OnInit {
 
@@ -25,14 +20,14 @@ export class VerbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.excelService.uploadedWords$.subscribe((verbs: Array<Verb>) => {
+    this.excelService.uploadedVerbs$.subscribe((verbs: Array<Verb>) => {
       this.verbsService.setVerbs(verbs.filter((verb) => verb?.show !== '-'));
       this.checkData(this.verbsService.verbs);
     });
   }
 
   public onUploadWords(file: File): void {
-    this.excelService.excelToJSON(file);
+    this.excelService.excelToJSON('verbs', file);
   }
 
   public onReload(): void {

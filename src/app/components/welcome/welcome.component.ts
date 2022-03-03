@@ -4,8 +4,7 @@ import { VerbsService } from 'src/app/services/verbs.service';
 
 @Component({
   selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss']
+  templateUrl: './welcome.component.html'
 })
 export class WelcomeComponent {
 

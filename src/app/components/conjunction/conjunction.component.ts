@@ -4,8 +4,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-conjunction',
-  templateUrl: './conjunction.component.html',
-  styleUrls: ['./conjunction.component.scss']
+  templateUrl: './conjunction.component.html'
 })
 export class ConjunctionComponent implements OnInit {
 

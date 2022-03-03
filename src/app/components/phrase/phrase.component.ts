@@ -4,8 +4,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-phrase',
-  templateUrl: './phrase.component.html',
-  styleUrls: ['./phrase.component.scss']
+  templateUrl: './phrase.component.html'
 })
 export class PhraseComponent implements OnInit {
 

@@ -3,7 +3,7 @@ import { Index } from '../models';
 import { Verb } from '../models/verb';
 
 @Injectable()
-export class VerbsService {
+export class NounsService {
 
   private _verbs!: Array<Verb>;
   private _selectedVerbs!: Array<Verb>;

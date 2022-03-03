@@ -4,8 +4,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-adjective',
-  templateUrl: './adjective.component.html',
-  styleUrls: ['./adjective.component.scss']
+  templateUrl: './adjective.component.html'
 })
 export class AdjectiveComponent implements OnInit {
 

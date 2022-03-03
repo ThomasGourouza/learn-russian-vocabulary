@@ -1,8 +1,15 @@
 <p-card *ngIf="tabIndex !== 0">
-    <div class="d-flex justify-content-center big space-around">
-        <div *ngIf="tabIndex === 1; else default">
-            <app-info-verbs></app-info-verbs>
+    <div class="d-flex justify-content-center medium space-around">
+        <div [ngSwitch]="tabIndex">
+            <div *ngSwitchCase="1">
+                <app-info-verbs></app-info-verbs>
+            </div>
+            <div *ngSwitchCase="2">
+                <app-info-nouns></app-info-nouns>
+            </div>
+            <div *ngSwitchDefault>
+                &nbsp;
+            </div>
         </div>
-        <ng-template #default>&nbsp;</ng-template>
     </div>
 </p-card>

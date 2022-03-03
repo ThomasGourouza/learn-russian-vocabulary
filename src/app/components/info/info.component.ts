@@ -3,8 +3,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-info',
-  templateUrl: './info.component.html',
-  styleUrls: ['./info.component.scss']
+  templateUrl: './info.component.html'
 })
 export class InfoComponent implements OnInit {
 

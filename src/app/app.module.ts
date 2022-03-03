@@ -21,6 +21,8 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InfoComponent } from './components/info/info.component';
 import { InfoVerbsComponent } from './components/info/info-verbs/info-verbs.component';
+import { NounsService } from './services/nouns.service';
+import { InfoNounsComponent } from './components/info/info-nouns/info-nouns.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { InfoVerbsComponent } from './components/info/info-verbs/info-verbs.comp
     NavigationComponent,
     WelcomeComponent,
     InfoComponent,
-    InfoVerbsComponent
+    InfoVerbsComponent,
+    InfoNounsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { InfoVerbsComponent } from './components/info/info-verbs/info-verbs.comp
   providers: [
     ExcelService,
     NavigationService,
-    VerbsService
+    VerbsService,
+    NounsService
   ],
   bootstrap: [AppComponent]
 })
