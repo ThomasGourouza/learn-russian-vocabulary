@@ -4,6 +4,8 @@ import { VerbsService } from 'src/app/services/verbs.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { Index } from 'src/app/models';
+import { MessageService } from 'primeng/api';
+import { Text } from 'src/app/models/text';
 
 @Component({
   selector: 'app-verb',
@@ -14,7 +16,8 @@ export class VerbComponent implements OnInit {
   constructor(
     private excelService: ExcelService,
     private navigationService: NavigationService,
-    public verbsService: VerbsService
+    public verbsService: VerbsService,
+    private messageService: MessageService
   ) {
     this.navigationService.setTabIndex(1);
   }
@@ -32,11 +35,13 @@ export class VerbComponent implements OnInit {
 
   public onReload(): void {
     this.verbsService.initVerbsVariables();
+    this.messageService.add({ severity: 'warn', summary: 'Verbes éffacés.' });
   }
 
   private checkData(verbs: Array<Verb>): void {
     if (verbs.length < 2) {
       this.verbsService.setIsValidData(false);
+      this.messageService.add({ severity: 'error', summary: Text.notEnoughText, detail: Text.addMoreDataText });
       return;
     }
     const validKeys = [
@@ -54,6 +59,10 @@ export class VerbComponent implements OnInit {
         this.verbsService.setIsValidData(false);
       }
     });
+    const message = (this.verbsService.isValidData) ?
+      { severity: 'info', summary: Text.validVerbsText, detail: Text.selectPriorityText }
+      : { severity: 'error', summary: Text.invalidText, detail: Text.removeText };
+    this.messageService.add(message);
   }
 
   public changePriority(priority: string): void {

@@ -5,6 +5,8 @@ import { NounsService } from 'src/app/services/nouns.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { Index } from 'src/app/models';
+import { Message, MessageService } from 'primeng/api';
+import { Text } from 'src/app/models/text';
 
 @Component({
   selector: 'app-noun',
@@ -17,7 +19,8 @@ export class NounComponent implements OnInit {
   constructor(
     private excelService: ExcelService,
     private navigationService: NavigationService,
-    public nounsService: NounsService
+    public nounsService: NounsService,
+    private messageService: MessageService
   ) {
     this.navigationService.setTabIndex(2);
     this.nouns = [];
@@ -36,11 +39,13 @@ export class NounComponent implements OnInit {
 
   public onReload(): void {
     this.nounsService.initVerbsVariables();
+    this.messageService.add({ severity: 'warn', summary: 'Noms éffacés.' });
   }
 
   private checkData(verbs: Array<Verb>): void {
     if (verbs.length < 2) {
       this.nounsService.setIsValidData(false);
+      this.messageService.add({ severity: 'error', summary: Text.notEnoughText, detail: Text.addMoreDataText });
       return;
     }
     const validKeys = [
@@ -58,6 +63,10 @@ export class NounComponent implements OnInit {
         this.nounsService.setIsValidData(false);
       }
     });
+    const message = (this.nounsService.isValidData) ?
+      { severity: 'info', summary: Text.validNounsText, detail: Text.selectPriorityText }
+      : { severity: 'error', summary: Text.invalidText, detail: Text.removeText };
+    this.messageService.add(message);
   }
 
   public changePriority(priority: string): void {

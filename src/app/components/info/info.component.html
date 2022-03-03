@@ -1,15 +1,15 @@
-<p-card *ngIf="tabIndex !== 0">
-    <div class="d-flex justify-content-center medium space-around">
+<p-card>
+    <div *ngIf="tabIndex !== 0; else welcome">
         <div [ngSwitch]="tabIndex">
-            <div *ngSwitchCase="1">
-                <app-info-verbs></app-info-verbs>
-            </div>
-            <div *ngSwitchCase="2">
-                <app-info-nouns></app-info-nouns>
-            </div>
-            <div *ngSwitchDefault>
-                &nbsp;
-            </div>
+            <app-info-verbs *ngSwitchCase="1"></app-info-verbs>
+            <app-info-nouns *ngSwitchCase="2"></app-info-nouns>
+            <div *ngSwitchDefault></div>
         </div>
     </div>
+    <ng-template #welcome>
+        <div>
+            <app-info-verbs></app-info-verbs><br>
+            <app-info-nouns></app-info-nouns>
+        </div>
+    </ng-template>
 </p-card>

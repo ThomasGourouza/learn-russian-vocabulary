@@ -3,13 +3,13 @@
         <div class="row">
             <div class="col d-flex align-items-end">
                 <div *ngIf="nounsService.verbs.length > 0; else loadVerbs">
-                    <button pButton type="button" label="Effacer les verbes" icon="pi pi-trash" iconPos="left"
+                    <button pButton type="button" label="Effacer les noms" icon="pi pi-trash" iconPos="left"
                         class="p-button-secondary" (click)="onReload()"
                         [disabled]="nounsService.verbs.length === 0"></button>
                 </div>
                 <ng-template #loadVerbs>
                     <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
-                        chooseLabel="Charger des verbes" (onSelect)="onUploadWords($event.currentFiles[0])"
+                        chooseLabel="Charger des noms" (onSelect)="onUploadWords($event.currentFiles[0])"
                         [auto]="true" [disabled]="nounsService.verbs.length > 0">
                     </p-fileUpload>
                 </ng-template>
