@@ -1,15 +1,22 @@
 <p-card>
-    <div *ngIf="tabIndex !== 0; else welcome">
-        <div [ngSwitch]="tabIndex">
-            <app-info-verbs *ngSwitchCase="1"></app-info-verbs>
-            <app-info-nouns *ngSwitchCase="2"></app-info-nouns>
-            <div *ngSwitchDefault></div>
+    <div class="summary">
+        <div *ngIf="[0, 1].includes(tabIndex)" class="summary-item">
+            <app-info-content [name]="{ title: 'Verbes', singular: 'verbe' }"
+                                [data]="verbsService.verbs"
+                                [currentData]="verbsService.currentVerb"
+                                [counter]="verbsService.counter"
+                                [priority]="verbsService.priority"
+                                [isValidData]="verbsService.isValidData">
+            </app-info-content>
+        </div>
+        <div *ngIf="[0, 2].includes(tabIndex)" class="summary-item">
+            <app-info-content [name]="{ title: 'Noms', singular: 'nom' }"
+                                [data]="verbsService.verbs"
+                                [currentData]="verbsService.currentVerb"
+                                [counter]="verbsService.counter"
+                                [priority]="verbsService.priority"
+                                [isValidData]="verbsService.isValidData">
+            </app-info-content>
         </div>
     </div>
-    <ng-template #welcome>
-        <div>
-            <app-info-verbs></app-info-verbs><br>
-            <app-info-nouns></app-info-nouns>
-        </div>
-    </ng-template>
 </p-card>

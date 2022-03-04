@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center">
+    <h4>{{ name.title }}</h4>
+</div>
+<div class="medium">
+    <div *ngIf="data.length > 0; else noData">
+        <div *ngIf="!!currentData else selectPriority">
+            <span *ngIf="counter > 0">
+                Vous avez vu <strong>{{ counter }}</strong> 
+                {{ name.singular }}{{ counter > 1 ? 's' : ''}} de priorité {{ priority }}.
+            </span>&nbsp;
+        </div>
+        <ng-template #selectPriority>
+            <div *ngIf="priority === undefined; else noDataForSelectedPriority">
+                <div *ngIf="isValidData; else wrongData">
+                    Selection de la priorité.
+                </div>
+                <ng-template #wrongData>
+                    Données invalides!
+                </ng-template>
+            </div>
+            <ng-template #noDataForSelectedPriority>
+                Pas de {{ name.singular }}s. Veuillez changer de priorité.
+            </ng-template>
+        </ng-template>
+    </div>
+    <ng-template #noData>
+        Pas de données.
+    </ng-template>
+</div>
