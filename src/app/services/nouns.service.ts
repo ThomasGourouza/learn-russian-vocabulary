@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Index } from '../models';
-import { Verb } from '../models/verb';
+import { Noun } from '../models/noun';
 
 @Injectable()
 export class NounsService {
 
-  private _verbs!: Array<Verb>;
-  private _selectedVerbs!: Array<Verb>;
-  private _currentVerb!: Verb | undefined;
+  private _nouns!: Array<Noun>;
+  private _selectedNouns!: Array<Noun>;
+  private _currentNoun!: Noun | undefined;
   private _index!: Index;
   private _firstNext!: boolean;
   private _priority!: number | undefined;
@@ -15,13 +15,13 @@ export class NounsService {
   private _isValidData!: boolean;
 
   constructor() {
-    this.initVerbsVariables();
+    this.initNounsVariables();
   }
 
-  public initVerbsVariables(): void {
-    this._verbs = [];
-    this._selectedVerbs = [];
-    this._currentVerb = undefined;
+  public initNounsVariables(): void {
+    this._nouns = [];
+    this._selectedNouns = [];
+    this._currentNoun = undefined;
     this._index = { previous: undefined, current: undefined, next: undefined };
     this._firstNext = true;
     this._priority = undefined;
@@ -29,25 +29,25 @@ export class NounsService {
     this._isValidData = true;
   }
 
-  get verbs(): Array<Verb> {
-    return this._verbs;
+  get nouns(): Array<Noun> {
+    return this._nouns;
   }
-  public setVerbs(verbs: Array<Verb>): void {
-    this._verbs = verbs;
-  }
-
-  get selectedVerbs(): Array<Verb> {
-    return this._selectedVerbs;
-  }
-  public setSelectedVerbs(selectedVerbs: Array<Verb>): void {
-    this._selectedVerbs = selectedVerbs;
+  public setNouns(nouns: Array<Noun>): void {
+    this._nouns = nouns;
   }
 
-  get currentVerb(): Verb | undefined {
-    return this._currentVerb;
+  get selectedNouns(): Array<Noun> {
+    return this._selectedNouns;
   }
-  public setCurrentVerb(currentVerb: Verb | undefined): void {
-    this._currentVerb = currentVerb;
+  public setSelectedNouns(selectedNouns: Array<Noun>): void {
+    this._selectedNouns = selectedNouns;
+  }
+
+  get currentNoun(): Noun | undefined {
+    return this._currentNoun;
+  }
+  public setCurrentNoun(currentNoun: Noun | undefined): void {
+    this._currentNoun = currentNoun;
   }
 
   get index(): Index {

@@ -3,7 +3,7 @@ export interface Verb {
     imperfective: string;
     perfective?: string;
     undeterminated?: string;
-    priority?: number;
+    priority: number;
     conjugation?: string;
     show?: string;
 }

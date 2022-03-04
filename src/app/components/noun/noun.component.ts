@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Verb } from 'src/app/models/verb';
 import { Noun } from 'src/app/models/noun';
 import { NounsService } from 'src/app/services/nouns.service';
 import { ExcelService } from 'src/app/services/excel.service';
@@ -27,9 +26,9 @@ export class NounComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.excelService.uploadedNouns$.subscribe((verbs: Array<Verb>) => {
-      this.nounsService.setVerbs(verbs.filter((verb) => verb?.show !== '-'));
-      this.checkData(this.nounsService.verbs);
+    this.excelService.uploadedNouns$.subscribe((nouns: Array<Noun>) => {
+      this.nounsService.setNouns(nouns.filter((noun) => noun?.show !== '-'));
+      this.checkData(this.nounsService.nouns);
     });
   }
 
@@ -38,26 +37,24 @@ export class NounComponent implements OnInit {
   }
 
   public onReload(): void {
-    this.nounsService.initVerbsVariables();
+    this.nounsService.initNounsVariables();
     this.messageService.add({ severity: 'warn', summary: 'Noms éffacés.' });
   }
 
-  private checkData(verbs: Array<Verb>): void {
-    if (verbs.length < 2) {
+  private checkData(nouns: Array<Noun>): void {
+    if (nouns.length < 2) {
       this.nounsService.setIsValidData(false);
       this.messageService.add({ severity: 'error', summary: Text.notEnoughText, detail: Text.addMoreDataText });
       return;
     }
     const validKeys = [
       'french',
-      'imperfective',
-      'perfective',
-      'undeterminated',
+      'russian',
+      'gender',
       'priority',
-      'show',
-      'conjugation'
+      'declension'
     ];
-    const keys = Object.keys(verbs[0]);
+    const keys = Object.keys(nouns[0]);
     keys.forEach((key) => {
       if (!validKeys.includes(key)) {
         this.nounsService.setIsValidData(false);
@@ -74,10 +71,10 @@ export class NounComponent implements OnInit {
     this.nounsService.setFirstNext(true);
     if (priority === '0') {
       this.nounsService.setPriority(undefined);
-      this.nounsService.setCurrentVerb(undefined);
+      this.nounsService.setCurrentNoun(undefined);
     } else {
       this.nounsService.setPriority(+priority);
-      this.selectVerbs();
+      this.selectNouns();
       this.nounsService.setIndex({
         previous: undefined,
         current: this.nounsService.index.current,
@@ -87,7 +84,7 @@ export class NounComponent implements OnInit {
   }
 
   public next(): void {
-    if (this.nounsService.selectedVerbs.length > 1) {
+    if (this.nounsService.selectedNouns.length > 1) {
       this.nounsService.setFirstNext(!this.nounsService.firstNext)
       if (!this.nounsService.firstNext) {
         const index: Index = {
@@ -99,11 +96,11 @@ export class NounComponent implements OnInit {
           index.current = this.nounsService.index.next;
         } else {
           do {
-            index.current = this.getRandomInt(this.nounsService.selectedVerbs.length);
+            index.current = this.getRandomInt(this.nounsService.selectedNouns.length);
           } while (index.current === index.previous);
         }
         this.nounsService.setIndex(index);
-        this.selectCurrentVerb();
+        this.selectCurrentNoun();
       } else {
         this.nounsService.setCounter(this.nounsService.counter + 1);
       }
@@ -123,26 +120,39 @@ export class NounComponent implements OnInit {
         next: this.nounsService.index.current
       };
       this.nounsService.setIndex(index);
-      this.selectCurrentVerb();
+      this.selectCurrentNoun();
     }
   }
 
-  private selectVerbs(): void {
+  public print(gender: string | undefined): string {
+    switch (gender) {
+      case 'M':
+        return 'Masculin';
+      case 'F':
+        return 'Féminin';
+      case 'N':
+        return 'Neutre';
+      default:
+        return '';
+    }
+  }
+
+  private selectNouns(): void {
     if (this.nounsService.priority !== undefined) {
-      this.nounsService.setCurrentVerb(undefined);
+      this.nounsService.setCurrentNoun(undefined);
       const priority = +this.nounsService.priority;
-      const selectedVerbs = this.nounsService.verbs.filter((verb) =>
-        !!verb.priority && +verb.priority === priority
+      const selectedNouns = this.nounsService.nouns.filter((noun) =>
+        +noun.priority === priority
       );
-      this.nounsService.setSelectedVerbs(selectedVerbs);
+      this.nounsService.setSelectedNouns(selectedNouns);
       this.next();
     }
   }
 
-  private selectCurrentVerb(): void {
+  private selectCurrentNoun(): void {
     const currentIndex = this.nounsService.index.current;
     if (currentIndex !== undefined) {
-      this.nounsService.setCurrentVerb(this.nounsService.selectedVerbs[currentIndex]);
+      this.nounsService.setCurrentNoun(this.nounsService.selectedNouns[currentIndex]);
     }
   }
 

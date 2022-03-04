@@ -128,7 +128,7 @@ export class VerbComponent implements OnInit {
       this.verbsService.setCurrentVerb(undefined);
       const priority = +this.verbsService.priority;
       const selectedVerbs = this.verbsService.verbs.filter((verb) =>
-        !!verb.priority && +verb.priority === priority
+        +verb.priority === priority
       );
       this.verbsService.setSelectedVerbs(selectedVerbs);
       this.next();
