@@ -7,17 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
 import { VerbComponent } from './components/verb/verb.component';
 import { NounComponent } from './components/noun/noun.component';
 import { AdjectiveComponent } from './components/adjective/adjective.component';
 import { ConjunctionComponent } from './components/conjunction/conjunction.component';
 import { PhraseComponent } from './components/phrase/phrase.component';
 
+import { InteractiveTableComponent } from './components/interactive-table/interactive-table.component';
+import { TableVerbComponent } from './components/interactive-table/table-verb/table-verb.component';
+import { TableNounComponent } from './components/interactive-table/table-noun/table-noun.component';
+
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { InfoComponent } from './components/info/info.component';
-import { InfoVerbsComponent } from './components/info/info-verbs/info-verbs.component';
-import { InfoNounsComponent } from './components/info/info-nouns/info-nouns.component';
+import { InfoContentComponent } from './components/info/info-content/info-content.component';
 
 import { ExcelService } from './services/excel.service';
 import { NavigationService } from './services/navigation.service';
@@ -30,7 +34,6 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { InteractiveTableComponent } from './components/interactive-table/interactive-table.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +43,13 @@ import { InteractiveTableComponent } from './components/interactive-table/intera
     NounComponent,
     PhraseComponent,
     ConjunctionComponent,
+    InteractiveTableComponent,
+    TableVerbComponent,
+    TableNounComponent,
     NavigationComponent,
     WelcomeComponent,
     InfoComponent,
-    InfoVerbsComponent,
-    InfoNounsComponent,
-    InteractiveTableComponent
+    InfoContentComponent
   ],
   imports: [
     BrowserModule,

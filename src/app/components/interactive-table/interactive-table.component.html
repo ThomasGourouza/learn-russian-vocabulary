@@ -2,21 +2,20 @@
     <div class="space-bellow col-8">
         <div class="row">
             <div class="col d-flex align-items-end">
-                <div *ngIf="data.length > 0; else loadNouns">
-                    <button pButton type="button" label="Effacer les noms" icon="pi pi-trash" iconPos="left"
-                        class="p-button-secondary" (click)="onReload()"
-                        [disabled]="data.length === 0"></button>
+                <div *ngIf="data.length > 0; else loadData">
+                    <button pButton type="button" label="Effacer les {{ name }}" icon="pi pi-trash" iconPos="left"
+                        class="p-button-secondary" (click)="onReload()" [disabled]="data.length === 0"></button>
                 </div>
-                <ng-template #loadNouns>
+                <ng-template #loadData>
                     <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
-                        chooseLabel="Charger des noms" (onSelect)="onUploadWords($event.currentFiles[0])"
+                        chooseLabel="Charger des {{ name }}" (onSelect)="onUploadWords($event.currentFiles[0])"
                         [auto]="true" [disabled]="data.length > 0">
                     </p-fileUpload>
                 </ng-template>
             </div>
             <div class="col-3">
                 <strong>Priorité:</strong>
-                <select class="form-select" [ngModel]="priority" (ngModelChange)="changePriority($event)"
+                <select class="form-select" [ngModel]="priority" (ngModelChange)="onChangePriority($event)"
                     [disabled]="data.length === 0 || !isValidData">
                     <option selected value="0"></option>
                     <option value="1">1</option>
@@ -30,55 +29,30 @@
 
 <div class="row">
     <div class="col d-flex justify-content-center big">
-        <table>
-            <tr>
-                <th scope="col">
-                    <div class="wide">Français</div>
-                </th>
-                <th scope="col">
-                    <div class="wide">Russe</div>
-                </th>
-                <th scope="col">
-                    <div class="wide">Genre</div>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="data.length > 0 && !!currentData">
-                            {{ currentData?.french }}
-                        </span>&nbsp;
-                    </div>
-                </td>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="data.length > 0 && !!currentData
-                                    && firstNext">
-                            {{ currentData?.russian }}
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="data.length > 0 && !!currentData
-                                    && firstNext">
-                            {{ print(currentData?.gender) }}
-                        </span>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div [ngSwitch]="name">
+            <div *ngSwitchCase="'verbes'">
+                <app-table-verb [data]="data" 
+                                [currentData]="currentData" 
+                                [firstNext]="firstNext">
+                </app-table-verb>
+            </div>
+            <div *ngSwitchCase="'noms'">
+                <app-table-noun [data]="data" 
+                                [currentData]="currentData"
+                                [firstNext]="firstNext">
+                </app-table-noun>
+            </div>
+            <div *ngSwitchDefault></div>
+        </div>
     </div>
 </div>
 
 <div class="vertical-align d-flex justify-content-center">
-    <button class="btn btn-secondary space-around"
-        [disabled]="index.previous === undefined || !currentData"
-        (click)="previous()">
+    <button class="btn btn-secondary space-around" [disabled]="index.previous === undefined || !currentData"
+        (click)="onPrevious()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>
     </button>
-    <button class="btn btn-secondary space-around" [disabled]="!currentData"
-        (click)="next()">
+    <button class="btn btn-secondary space-around" [disabled]="!currentData" (click)="onNext()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
     </button>
 </div>

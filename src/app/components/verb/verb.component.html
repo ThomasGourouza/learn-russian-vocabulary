@@ -1,97 +1,12 @@
-<div class="d-flex justify-content-center">
-    <div class="space-bellow col-8">
-        <div class="row">
-            <div class="col d-flex align-items-end">
-                <div *ngIf="verbsService.verbs.length > 0; else loadVerbs">
-                    <button pButton type="button" label="Effacer les verbes" icon="pi pi-trash" iconPos="left"
-                        class="p-button-secondary" (click)="onReload()"
-                        [disabled]="verbsService.verbs.length === 0"></button>
-                </div>
-                <ng-template #loadVerbs>
-                    <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
-                        chooseLabel="Charger des verbes" (onSelect)="onUploadWords($event.currentFiles[0])"
-                        [auto]="true" [disabled]="verbsService.verbs.length > 0">
-                    </p-fileUpload>
-                </ng-template>
-            </div>
-            <div class="col-3">
-                <strong>Priorité:</strong>
-                <select class="form-select" [ngModel]="verbsService.priority" (ngModelChange)="changePriority($event)"
-                    [disabled]="verbsService.verbs.length === 0 || !verbsService.isValidData">
-                    <option selected value="0"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col d-flex justify-content-center big">
-        <table>
-            <tr>
-                <th scope="col">
-                    <div class="wide">Français</div>
-                </th>
-                <th scope="col">
-                    <div class="wide">Imperfectif</div>
-                </th>
-                <th *ngIf="!(verbsService.verbs.length > 0 && !!verbsService.currentVerb)
-                           || (verbsService.currentVerb?.perfective !== '-')" scope="col">
-                    <div class="wide">Perfectif</div>
-                </th>
-                <th *ngIf="!!verbsService.currentVerb
-                           && verbsService.currentVerb.undeterminated !== '-'" scope="col">
-                    <div class="wide">Indéterminé</div>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="verbsService.verbs.length > 0 && !!verbsService.currentVerb">
-                            {{ verbsService.currentVerb?.french }}
-                        </span>&nbsp;
-                    </div>
-                </td>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="verbsService.verbs.length > 0 && !!verbsService.currentVerb
-                                    && verbsService.firstNext">
-                            {{ verbsService.currentVerb?.imperfective }}
-                        </span>
-                    </div>
-                </td>
-                <td *ngIf="!(verbsService.verbs.length > 0 && !!verbsService.currentVerb) 
-                           || (!!verbsService.currentVerb && verbsService.currentVerb.perfective !== '-')">
-                        <div class="wide vertical-align">
-                            <span *ngIf="verbsService.firstNext">
-                                {{ verbsService.currentVerb?.perfective }}
-                            </span>
-                        </div>
-                </td>
-                <td *ngIf="!!verbsService.currentVerb 
-                           && verbsService.currentVerb.undeterminated !== '-'">
-                    <div *ngIf="verbsService.firstNext" class="wide vertical-align">
-                        <span>
-                            {{ verbsService.currentVerb?.undeterminated }}
-                        </span>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<div class="vertical-align d-flex justify-content-center">
-    <button class="btn btn-secondary space-around"
-        [disabled]="verbsService.index.previous === undefined || !verbsService.currentVerb"
-        (click)="previous()">
-        <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>
-    </button>
-    <button class="btn btn-secondary space-around" [disabled]="!verbsService.currentVerb"
-        (click)="next()">
-        <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
-    </button>
-</div>
+<app-interactive-table [name]="'verbes'"
+                       [data]="verbsService.verbs"
+                       [currentData]="verbsService.currentVerb"
+                       [priority]="verbsService.priority"
+                       [isValidData]="verbsService.isValidData"
+                       [firstNext]="verbsService.firstNext"
+                       [index]="verbsService.index"
+                       (reload)="onReload()"
+                       (changePriority)="onChangePriority($event)"
+                       (previous)="onPrevious()"
+                       (next)="onNext()">
+</app-interactive-table>

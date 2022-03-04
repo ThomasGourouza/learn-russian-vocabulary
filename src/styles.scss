@@ -1,6 +1,9 @@
 body {
   background-color: rgb(206, 217, 218);
 }
+.main-page {
+  margin-top: 3em;
+}
 table,
 th,
 td {
@@ -42,4 +45,7 @@ td {
 }
 .space-bellow {
   margin-bottom: 3em;
+}
+.summary .summary-item:not(:last-child) {
+  margin-bottom: 2em;
 }

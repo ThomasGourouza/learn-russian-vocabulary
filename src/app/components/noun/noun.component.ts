@@ -32,10 +32,6 @@ export class NounComponent implements OnInit {
     });
   }
 
-  public onUploadWords(file: File): void {
-    this.excelService.excelToJSON('nouns', file);
-  }
-
   public onReload(): void {
     this.nounsService.initNounsVariables();
     this.messageService.add({ severity: 'warn', summary: 'Noms éffacés.' });
@@ -66,7 +62,7 @@ export class NounComponent implements OnInit {
     this.messageService.add(message);
   }
 
-  public changePriority(priority: string): void {
+  public onChangePriority(priority: string): void {
     this.nounsService.setCounter(0);
     this.nounsService.setFirstNext(true);
     if (priority === '0') {
@@ -83,7 +79,7 @@ export class NounComponent implements OnInit {
     }
   }
 
-  public next(): void {
+  public onNext(): void {
     if (this.nounsService.selectedNouns.length > 1) {
       this.nounsService.setFirstNext(!this.nounsService.firstNext)
       if (!this.nounsService.firstNext) {
@@ -107,7 +103,7 @@ export class NounComponent implements OnInit {
     }
   }
 
-  public previous(): void {
+  public onPrevious(): void {
     if (this.nounsService.index.previous !== undefined) {
       if (this.nounsService.firstNext) {
         this.nounsService.setCounter(this.nounsService.counter - 1);
@@ -124,7 +120,7 @@ export class NounComponent implements OnInit {
     }
   }
 
-  public print(gender: string | undefined): string {
+  public print(gender: string): string {
     switch (gender) {
       case 'M':
         return 'Masculin';
@@ -145,7 +141,7 @@ export class NounComponent implements OnInit {
         +noun.priority === priority
       );
       this.nounsService.setSelectedNouns(selectedNouns);
-      this.next();
+      this.onNext();
     }
   }
 

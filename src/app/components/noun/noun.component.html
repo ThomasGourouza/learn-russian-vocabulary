@@ -1,84 +1,12 @@
-<div class="d-flex justify-content-center">
-    <div class="space-bellow col-8">
-        <div class="row">
-            <div class="col d-flex align-items-end">
-                <div *ngIf="nounsService.nouns.length > 0; else loadNouns">
-                    <button pButton type="button" label="Effacer les noms" icon="pi pi-trash" iconPos="left"
-                        class="p-button-secondary" (click)="onReload()"
-                        [disabled]="nounsService.nouns.length === 0"></button>
-                </div>
-                <ng-template #loadNouns>
-                    <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
-                        chooseLabel="Charger des noms" (onSelect)="onUploadWords($event.currentFiles[0])"
-                        [auto]="true" [disabled]="nounsService.nouns.length > 0">
-                    </p-fileUpload>
-                </ng-template>
-            </div>
-            <div class="col-3">
-                <strong>Priorité:</strong>
-                <select class="form-select" [ngModel]="nounsService.priority" (ngModelChange)="changePriority($event)"
-                    [disabled]="nounsService.nouns.length === 0 || !nounsService.isValidData">
-                    <option selected value="0"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col d-flex justify-content-center big">
-        <table>
-            <tr>
-                <th scope="col">
-                    <div class="wide">Français</div>
-                </th>
-                <th scope="col">
-                    <div class="wide">Russe</div>
-                </th>
-                <th scope="col">
-                    <div class="wide">Genre</div>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="nounsService.nouns.length > 0 && !!nounsService.currentNoun">
-                            {{ nounsService.currentNoun?.french }}
-                        </span>&nbsp;
-                    </div>
-                </td>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="nounsService.nouns.length > 0 && !!nounsService.currentNoun
-                                    && nounsService.firstNext">
-                            {{ nounsService.currentNoun?.russian }}
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="wide vertical-align">
-                        <span *ngIf="nounsService.nouns.length > 0 && !!nounsService.currentNoun
-                                    && nounsService.firstNext">
-                            {{ print(nounsService.currentNoun?.gender) }}
-                        </span>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<div class="vertical-align d-flex justify-content-center">
-    <button class="btn btn-secondary space-around"
-        [disabled]="nounsService.index.previous === undefined || !nounsService.currentNoun"
-        (click)="previous()">
-        <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>
-    </button>
-    <button class="btn btn-secondary space-around" [disabled]="!nounsService.currentNoun"
-        (click)="next()">
-        <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
-    </button>
-</div>
+<app-interactive-table [name]="'noms'"
+                       [data]="nounsService.nouns"
+                       [currentData]="nounsService.currentNoun"
+                       [priority]="nounsService.priority"
+                       [isValidData]="nounsService.isValidData"
+                       [firstNext]="nounsService.firstNext"
+                       [index]="nounsService.index"
+                       (reload)="onReload()"
+                       (changePriority)="onChangePriority($event)"
+                       (previous)="onPrevious()"
+                       (next)="onNext()">
+</app-interactive-table>

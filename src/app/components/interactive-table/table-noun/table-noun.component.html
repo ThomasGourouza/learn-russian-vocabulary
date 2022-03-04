@@ -1,0 +1,38 @@
+<table>
+    <tr>
+        <th scope="col">
+            <div class="wide">Français</div>
+        </th>
+        <th scope="col">
+            <div class="wide">Russe</div>
+        </th>
+        <th scope="col">
+            <div class="wide">Genre</div>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="wide vertical-align">
+                <span *ngIf="data.length > 0 && !!currentData">
+                    {{ currentData?.french }}
+                </span>&nbsp;
+            </div>
+        </td>
+        <td>
+            <div class="wide vertical-align">
+                <span *ngIf="data.length > 0 && !!currentData
+                            && firstNext">
+                    {{ currentData?.russian }}
+                </span>
+            </div>
+        </td>
+        <td>
+            <div class="wide vertical-align">
+                <span *ngIf="data.length > 0 && !!currentData
+                            && firstNext">
+                    {{ print(currentData.gender) }}
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>

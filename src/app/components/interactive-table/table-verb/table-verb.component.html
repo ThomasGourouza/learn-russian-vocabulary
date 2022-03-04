@@ -1,0 +1,51 @@
+<table>
+    <tr>
+        <th scope="col">
+            <div class="wide">Français</div>
+        </th>
+        <th scope="col">
+            <div class="wide">Imperfectif</div>
+        </th>
+        <th *ngIf="!(data.length > 0 && !!currentData)
+                   || (currentData?.perfective !== '-')" scope="col">
+            <div class="wide">Perfectif</div>
+        </th>
+        <th *ngIf="!!currentData
+                   && currentData.undeterminated !== '-'" scope="col">
+            <div class="wide">Indéterminé</div>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="wide vertical-align">
+                <span *ngIf="data.length > 0 && !!currentData">
+                    {{ currentData?.french }}
+                </span>&nbsp;
+            </div>
+        </td>
+        <td>
+            <div class="wide vertical-align">
+                <span *ngIf="data.length > 0 && !!currentData
+                            && firstNext">
+                    {{ currentData?.imperfective }}
+                </span>
+            </div>
+        </td>
+        <td *ngIf="!(data.length > 0 && !!currentData) 
+                   || (!!currentData && currentData.perfective !== '-')">
+                <div class="wide vertical-align">
+                    <span *ngIf="firstNext">
+                        {{ currentData?.perfective }}
+                    </span>
+                </div>
+        </td>
+        <td *ngIf="!!currentData 
+                   && currentData.undeterminated !== '-'">
+            <div *ngIf="firstNext" class="wide vertical-align">
+                <span>
+                    {{ currentData?.undeterminated }}
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>

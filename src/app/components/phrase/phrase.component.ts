@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Phrase } from 'src/app/models/phrase';
 import { NavigationService } from 'src/app/services/navigation.service';
 
@@ -6,7 +6,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
   selector: 'app-phrase',
   templateUrl: './phrase.component.html'
 })
-export class PhraseComponent implements OnInit {
+export class PhraseComponent {
 
   public phrases: Array<Phrase>;
 
@@ -15,9 +15,6 @@ export class PhraseComponent implements OnInit {
   ) {
     this.navigationService.setTabIndex(5);
     this.phrases = [];
-  }
-
-  ngOnInit(): void {
   }
 
 }

@@ -31,10 +31,10 @@ export class ExcelService {
       });
       workbook.SheetNames.forEach((sheetName) => {
         switch (name) {
-          case 'verbs':
+          case 'verbes':
             this._uploadedVerbs$.next(XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]));
             break;
-          case 'nouns':
+          case 'noms':
             this._uploadedNouns$.next(XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]));
             break;
           default:

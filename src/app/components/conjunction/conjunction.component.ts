@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Conjunction } from 'src/app/models/conjunction';
 import { NavigationService } from 'src/app/services/navigation.service';
 
@@ -6,7 +6,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
   selector: 'app-conjunction',
   templateUrl: './conjunction.component.html'
 })
-export class ConjunctionComponent implements OnInit {
+export class ConjunctionComponent {
 
   public conjunctions: Array<Conjunction>;
 
@@ -15,9 +15,6 @@ export class ConjunctionComponent implements OnInit {
   ) {
     this.navigationService.setTabIndex(4);
     this.conjunctions = [];
-  }
-
-  ngOnInit(): void {
   }
 
 }

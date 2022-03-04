@@ -29,10 +29,6 @@ export class VerbComponent implements OnInit {
     });
   }
 
-  public onUploadWords(file: File): void {
-    this.excelService.excelToJSON('verbs', file);
-  }
-
   public onReload(): void {
     this.verbsService.initVerbsVariables();
     this.messageService.add({ severity: 'warn', summary: 'Verbes éffacés.' });
@@ -65,7 +61,7 @@ export class VerbComponent implements OnInit {
     this.messageService.add(message);
   }
 
-  public changePriority(priority: string): void {
+  public onChangePriority(priority: string): void {
     this.verbsService.setCounter(0);
     this.verbsService.setFirstNext(true);
     if (priority === '0') {
@@ -82,7 +78,7 @@ export class VerbComponent implements OnInit {
     }
   }
 
-  public next(): void {
+  public onNext(): void {
     if (this.verbsService.selectedVerbs.length > 1) {
       this.verbsService.setFirstNext(!this.verbsService.firstNext)
       if (!this.verbsService.firstNext) {
@@ -106,7 +102,7 @@ export class VerbComponent implements OnInit {
     }
   }
 
-  public previous(): void {
+  public onPrevious(): void {
     if (this.verbsService.index.previous !== undefined) {
       if (this.verbsService.firstNext) {
         this.verbsService.setCounter(this.verbsService.counter - 1);
@@ -131,7 +127,7 @@ export class VerbComponent implements OnInit {
         +verb.priority === priority
       );
       this.verbsService.setSelectedVerbs(selectedVerbs);
-      this.next();
+      this.onNext();
     }
   }
 
