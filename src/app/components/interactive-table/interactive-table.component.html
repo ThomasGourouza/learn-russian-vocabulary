@@ -42,7 +42,12 @@
                                 [firstNext]="firstNext">
                 </app-table-noun>
             </div>
-            <div *ngSwitchDefault></div>
+            <div *ngSwitchDefault>
+                <app-table-default [data]="data" 
+                                [currentItem]="currentItem"
+                                [firstNext]="firstNext">
+                </app-table-default>
+            </div>
         </div>
     </div>
 </div>

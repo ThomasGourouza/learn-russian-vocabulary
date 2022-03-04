@@ -1,0 +1,27 @@
+<table>
+    <tr>
+        <th scope="col">
+            <div class="wide">Français</div>
+        </th>
+        <th scope="col">
+            <div class="wide">Russe</div>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="wide vertical-align">
+                <span *ngIf="data.length > 0 && !!currentItem">
+                    {{ currentItem?.french }}
+                </span>&nbsp;
+            </div>
+        </td>
+        <td>
+            <div class="wide vertical-align">
+                <span *ngIf="data.length > 0 && !!currentItem
+                            && firstNext">
+                    {{ currentItem?.russian }}
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>

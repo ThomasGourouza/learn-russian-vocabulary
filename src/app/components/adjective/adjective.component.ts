@@ -31,7 +31,7 @@ export class AdjectiveComponent implements OnInit {
 
   public onReload(): void {
     this.adjectivesService.initAdjectivesVariables();
-    this.messageService.add({ 
+    this.messageService.add({
       severity: 'warn',
       summary: `${this.adjectivesService.name.charAt(0).toUpperCase()}${this.adjectivesService.name.slice(1)} éffacés.`
     });

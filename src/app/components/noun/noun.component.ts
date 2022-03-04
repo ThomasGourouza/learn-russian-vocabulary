@@ -31,7 +31,7 @@ export class NounComponent implements OnInit {
 
   public onReload(): void {
     this.nounsService.initNounsVariables();
-    this.messageService.add({ 
+    this.messageService.add({
       severity: 'warn',
       summary: `${this.nounsService.name.charAt(0).toUpperCase()}${this.nounsService.name.slice(1)} éffacés.`
     });

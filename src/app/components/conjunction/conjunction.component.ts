@@ -31,7 +31,7 @@ export class ConjunctionComponent implements OnInit {
 
   public onReload(): void {
     this.conjunctionsService.initConjunctionsVariables();
-    this.messageService.add({ 
+    this.messageService.add({
       severity: 'warn',
       summary: `${this.conjunctionsService.name.charAt(0).toUpperCase()}${this.conjunctionsService.name.slice(1)} éffacés.`
     });
