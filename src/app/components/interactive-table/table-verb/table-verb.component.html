@@ -6,44 +6,44 @@
         <th scope="col">
             <div class="wide">Imperfectif</div>
         </th>
-        <th *ngIf="!(data.length > 0 && !!currentData)
-                   || (currentData?.perfective !== '-')" scope="col">
+        <th *ngIf="!(data.length > 0 && !!currentItem)
+                   || (currentItem?.perfective !== '-')" scope="col">
             <div class="wide">Perfectif</div>
         </th>
-        <th *ngIf="!!currentData
-                   && currentData.undeterminated !== '-'" scope="col">
+        <th *ngIf="!!currentItem
+                   && currentItem.undeterminated !== '-'" scope="col">
             <div class="wide">Indéterminé</div>
         </th>
     </tr>
     <tr>
         <td>
             <div class="wide vertical-align">
-                <span *ngIf="data.length > 0 && !!currentData">
-                    {{ currentData?.french }}
+                <span *ngIf="data.length > 0 && !!currentItem">
+                    {{ currentItem?.french }}
                 </span>&nbsp;
             </div>
         </td>
         <td>
             <div class="wide vertical-align">
-                <span *ngIf="data.length > 0 && !!currentData
+                <span *ngIf="data.length > 0 && !!currentItem
                             && firstNext">
-                    {{ currentData?.imperfective }}
+                    {{ currentItem?.imperfective }}
                 </span>
             </div>
         </td>
-        <td *ngIf="!(data.length > 0 && !!currentData) 
-                   || (!!currentData && currentData.perfective !== '-')">
+        <td *ngIf="!(data.length > 0 && !!currentItem) 
+                   || (!!currentItem && currentItem.perfective !== '-')">
                 <div class="wide vertical-align">
                     <span *ngIf="firstNext">
-                        {{ currentData?.perfective }}
+                        {{ currentItem?.perfective }}
                     </span>
                 </div>
         </td>
-        <td *ngIf="!!currentData 
-                   && currentData.undeterminated !== '-'">
+        <td *ngIf="!!currentItem 
+                   && currentItem.undeterminated !== '-'">
             <div *ngIf="firstNext" class="wide vertical-align">
                 <span>
-                    {{ currentData?.undeterminated }}
+                    {{ currentItem?.undeterminated }}
                 </span>
             </div>
         </td>

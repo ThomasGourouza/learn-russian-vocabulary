@@ -5,23 +5,37 @@ import { Verb } from '../models/verb';
 @Injectable()
 export class VerbsService {
 
-  private _verbs!: Array<Verb>;
-  private _selectedVerbs!: Array<Verb>;
-  private _currentVerb!: Verb | undefined;
+  private _name: string;
+  private _tabIndex: number;
+  private _data!: Array<Verb>;
+  private _selectedData!: Array<Verb>;
+  private _currentItem!: Verb | undefined;
   private _index!: Index;
   private _firstNext!: boolean;
   private _priority!: number | undefined;
   private _counter!: number;
   private _isValidData!: boolean;
+  private _validKeys: Array<string>;
 
   constructor() {
+    this._name = 'verbes';
+    this._tabIndex = 1;
+    this._validKeys = [
+      'french',
+      'imperfective',
+      'perfective',
+      'undeterminated',
+      'priority',
+      'conjugation',
+      'show'
+    ];
     this.initVerbsVariables();
   }
 
   public initVerbsVariables(): void {
-    this._verbs = [];
-    this._selectedVerbs = [];
-    this._currentVerb = undefined;
+    this._data = [];
+    this._selectedData = [];
+    this._currentItem = undefined;
     this._index = { previous: undefined, current: undefined, next: undefined };
     this._firstNext = true;
     this._priority = undefined;
@@ -29,25 +43,25 @@ export class VerbsService {
     this._isValidData = true;
   }
 
-  get verbs(): Array<Verb> {
-    return this._verbs;
+  get data(): Array<Verb> {
+    return this._data;
   }
-  public setVerbs(verbs: Array<Verb>): void {
-    this._verbs = verbs;
-  }
-
-  get selectedVerbs(): Array<Verb> {
-    return this._selectedVerbs;
-  }
-  public setSelectedVerbs(selectedVerbs: Array<Verb>): void {
-    this._selectedVerbs = selectedVerbs;
+  public setData(data: Array<Verb>): void {
+    this._data = data;
   }
 
-  get currentVerb(): Verb | undefined {
-    return this._currentVerb;
+  get selectedData(): Array<Verb> {
+    return this._selectedData;
   }
-  public setCurrentVerb(currentVerb: Verb | undefined): void {
-    this._currentVerb = currentVerb;
+  public setSelectedData(selectedData: Array<Verb>): void {
+    this._selectedData = selectedData;
+  }
+
+  get currentItem(): Verb | undefined {
+    return this._currentItem;
+  }
+  public setCurrentItem(currentItem: Verb | undefined): void {
+    this._currentItem = currentItem;
   }
 
   get index(): Index {
@@ -83,6 +97,16 @@ export class VerbsService {
   }
   public setIsValidData(isValidData: boolean): void {
     this._isValidData = isValidData;
+  }
+
+  get validKeys(): Array<string> {
+    return this._validKeys;
+  }
+  get name(): string {
+    return this._name;
+  }
+  get tabIndex(): number {
+    return this._tabIndex;
   }
 
 }

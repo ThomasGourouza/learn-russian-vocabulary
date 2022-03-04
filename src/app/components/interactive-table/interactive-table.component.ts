@@ -9,7 +9,7 @@ export class InteractiveTableComponent {
 
   @Input() public name!: string;
   @Input() public data!: Array<any>;
-  @Input() public currentData: any | undefined;
+  @Input() public currentItem: any | undefined;
   @Input() public priority: number | undefined;
   @Input() public isValidData!: boolean;
   @Input() public firstNext!: boolean;

@@ -3,7 +3,7 @@
 </div>
 <div class="medium">
     <div *ngIf="data.length > 0; else noData">
-        <div *ngIf="!!currentData else selectPriority">
+        <div *ngIf="!!currentItem else selectPriority">
             <span *ngIf="counter > 0">
                 Vous avez vu <strong>{{ counter }}</strong> 
                 {{ name.singular }}{{ counter > 1 ? 's' : ''}} de priorité {{ priority }}.

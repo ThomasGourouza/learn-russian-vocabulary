@@ -27,6 +27,9 @@ import { ExcelService } from './services/excel.service';
 import { NavigationService } from './services/navigation.service';
 import { VerbsService } from './services/verbs.service';
 import { NounsService } from './services/nouns.service';
+import { AdjectivesService } from './services/adjectives.service';
+import { ConjunctionsService } from './services/conjunctions.service';
+import { PhrasesService } from './services/phrases.service';
 
 import { FileUploadModule } from 'primeng/fileupload';
 import { TabMenuModule } from 'primeng/tabmenu';
@@ -70,6 +73,9 @@ import { MessageService } from 'primeng/api';
     NavigationService,
     VerbsService,
     NounsService,
+    AdjectivesService,
+    ConjunctionsService,
+    PhrasesService,
     MessageService
   ],
   bootstrap: [AppComponent]

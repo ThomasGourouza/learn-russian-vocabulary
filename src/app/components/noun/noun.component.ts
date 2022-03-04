@@ -4,7 +4,7 @@ import { NounsService } from 'src/app/services/nouns.service';
 import { ExcelService } from 'src/app/services/excel.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { Index } from 'src/app/models';
-import { Message, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
 
 @Component({
@@ -13,28 +13,28 @@ import { Text } from 'src/app/models/text';
 })
 export class NounComponent implements OnInit {
 
-  public nouns: Array<Noun>;
-
   constructor(
     private excelService: ExcelService,
     private navigationService: NavigationService,
     public nounsService: NounsService,
     private messageService: MessageService
   ) {
-    this.navigationService.setTabIndex(2);
-    this.nouns = [];
+    this.navigationService.setTabIndex(this.nounsService.tabIndex);
   }
 
   ngOnInit(): void {
     this.excelService.uploadedNouns$.subscribe((nouns: Array<Noun>) => {
-      this.nounsService.setNouns(nouns.filter((noun) => noun?.show !== '-'));
-      this.checkData(this.nounsService.nouns);
+      this.nounsService.setData(nouns.filter((noun) => noun?.show !== '-'));
+      this.checkData(this.nounsService.data);
     });
   }
 
   public onReload(): void {
     this.nounsService.initNounsVariables();
-    this.messageService.add({ severity: 'warn', summary: 'Noms éffacés.' });
+    this.messageService.add({ 
+      severity: 'warn',
+      summary: `${this.nounsService.name.charAt(0).toUpperCase()}${this.nounsService.name.slice(1)} éffacés.`
+    });
   }
 
   private checkData(nouns: Array<Noun>): void {
@@ -43,16 +43,9 @@ export class NounComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: Text.notEnoughText, detail: Text.addMoreDataText });
       return;
     }
-    const validKeys = [
-      'french',
-      'russian',
-      'gender',
-      'priority',
-      'declension'
-    ];
     const keys = Object.keys(nouns[0]);
     keys.forEach((key) => {
-      if (!validKeys.includes(key)) {
+      if (!this.nounsService.validKeys.includes(key)) {
         this.nounsService.setIsValidData(false);
       }
     });
@@ -67,7 +60,7 @@ export class NounComponent implements OnInit {
     this.nounsService.setFirstNext(true);
     if (priority === '0') {
       this.nounsService.setPriority(undefined);
-      this.nounsService.setCurrentNoun(undefined);
+      this.nounsService.setCurrentItem(undefined);
     } else {
       this.nounsService.setPriority(+priority);
       this.selectNouns();
@@ -80,7 +73,7 @@ export class NounComponent implements OnInit {
   }
 
   public onNext(): void {
-    if (this.nounsService.selectedNouns.length > 1) {
+    if (this.nounsService.selectedData.length > 1) {
       this.nounsService.setFirstNext(!this.nounsService.firstNext)
       if (!this.nounsService.firstNext) {
         const index: Index = {
@@ -92,11 +85,11 @@ export class NounComponent implements OnInit {
           index.current = this.nounsService.index.next;
         } else {
           do {
-            index.current = this.getRandomInt(this.nounsService.selectedNouns.length);
+            index.current = this.getRandomInt(this.nounsService.selectedData.length);
           } while (index.current === index.previous);
         }
         this.nounsService.setIndex(index);
-        this.selectCurrentNoun();
+        this.selectCurrentItem();
       } else {
         this.nounsService.setCounter(this.nounsService.counter + 1);
       }
@@ -116,39 +109,26 @@ export class NounComponent implements OnInit {
         next: this.nounsService.index.current
       };
       this.nounsService.setIndex(index);
-      this.selectCurrentNoun();
-    }
-  }
-
-  public print(gender: string): string {
-    switch (gender) {
-      case 'M':
-        return 'Masculin';
-      case 'F':
-        return 'Féminin';
-      case 'N':
-        return 'Neutre';
-      default:
-        return '';
+      this.selectCurrentItem();
     }
   }
 
   private selectNouns(): void {
     if (this.nounsService.priority !== undefined) {
-      this.nounsService.setCurrentNoun(undefined);
+      this.nounsService.setCurrentItem(undefined);
       const priority = +this.nounsService.priority;
-      const selectedNouns = this.nounsService.nouns.filter((noun) =>
+      const selectedData = this.nounsService.data.filter((noun) =>
         +noun.priority === priority
       );
-      this.nounsService.setSelectedNouns(selectedNouns);
+      this.nounsService.setSelectedData(selectedData);
       this.onNext();
     }
   }
 
-  private selectCurrentNoun(): void {
+  private selectCurrentItem(): void {
     const currentIndex = this.nounsService.index.current;
     if (currentIndex !== undefined) {
-      this.nounsService.setCurrentNoun(this.nounsService.selectedNouns[currentIndex]);
+      this.nounsService.setCurrentItem(this.nounsService.selectedData[currentIndex]);
     }
   }
 

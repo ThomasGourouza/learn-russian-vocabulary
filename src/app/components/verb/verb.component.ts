@@ -19,19 +19,22 @@ export class VerbComponent implements OnInit {
     public verbsService: VerbsService,
     private messageService: MessageService
   ) {
-    this.navigationService.setTabIndex(1);
+    this.navigationService.setTabIndex(this.verbsService.tabIndex);
   }
 
   ngOnInit(): void {
     this.excelService.uploadedVerbs$.subscribe((verbs: Array<Verb>) => {
-      this.verbsService.setVerbs(verbs.filter((verb) => verb?.show !== '-'));
-      this.checkData(this.verbsService.verbs);
+      this.verbsService.setData(verbs.filter((verb) => verb?.show !== '-'));
+      this.checkData(this.verbsService.data);
     });
   }
 
   public onReload(): void {
     this.verbsService.initVerbsVariables();
-    this.messageService.add({ severity: 'warn', summary: 'Verbes éffacés.' });
+    this.messageService.add({
+      severity: 'warn',
+      summary: `${this.verbsService.name.charAt(0).toUpperCase()}${this.verbsService.name.slice(1)} éffacés.`
+    });
   }
 
   private checkData(verbs: Array<Verb>): void {
@@ -40,18 +43,9 @@ export class VerbComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: Text.notEnoughText, detail: Text.addMoreDataText });
       return;
     }
-    const validKeys = [
-      'french',
-      'imperfective',
-      'perfective',
-      'undeterminated',
-      'priority',
-      'show',
-      'conjugation'
-    ];
     const keys = Object.keys(verbs[0]);
     keys.forEach((key) => {
-      if (!validKeys.includes(key)) {
+      if (!this.verbsService.validKeys.includes(key)) {
         this.verbsService.setIsValidData(false);
       }
     });
@@ -66,7 +60,7 @@ export class VerbComponent implements OnInit {
     this.verbsService.setFirstNext(true);
     if (priority === '0') {
       this.verbsService.setPriority(undefined);
-      this.verbsService.setCurrentVerb(undefined);
+      this.verbsService.setCurrentItem(undefined);
     } else {
       this.verbsService.setPriority(+priority);
       this.selectVerbs();
@@ -79,7 +73,7 @@ export class VerbComponent implements OnInit {
   }
 
   public onNext(): void {
-    if (this.verbsService.selectedVerbs.length > 1) {
+    if (this.verbsService.selectedData.length > 1) {
       this.verbsService.setFirstNext(!this.verbsService.firstNext)
       if (!this.verbsService.firstNext) {
         const index: Index = {
@@ -91,11 +85,11 @@ export class VerbComponent implements OnInit {
           index.current = this.verbsService.index.next;
         } else {
           do {
-            index.current = this.getRandomInt(this.verbsService.selectedVerbs.length);
+            index.current = this.getRandomInt(this.verbsService.selectedData.length);
           } while (index.current === index.previous);
         }
         this.verbsService.setIndex(index);
-        this.selectCurrentVerb();
+        this.selectCurrentItem();
       } else {
         this.verbsService.setCounter(this.verbsService.counter + 1);
       }
@@ -115,26 +109,26 @@ export class VerbComponent implements OnInit {
         next: this.verbsService.index.current
       };
       this.verbsService.setIndex(index);
-      this.selectCurrentVerb();
+      this.selectCurrentItem();
     }
   }
 
   private selectVerbs(): void {
     if (this.verbsService.priority !== undefined) {
-      this.verbsService.setCurrentVerb(undefined);
+      this.verbsService.setCurrentItem(undefined);
       const priority = +this.verbsService.priority;
-      const selectedVerbs = this.verbsService.verbs.filter((verb) =>
+      const selectedData = this.verbsService.data.filter((verb) =>
         +verb.priority === priority
       );
-      this.verbsService.setSelectedVerbs(selectedVerbs);
+      this.verbsService.setSelectedData(selectedData);
       this.onNext();
     }
   }
 
-  private selectCurrentVerb(): void {
+  private selectCurrentItem(): void {
     const currentIndex = this.verbsService.index.current;
     if (currentIndex !== undefined) {
-      this.verbsService.setCurrentVerb(this.verbsService.selectedVerbs[currentIndex]);
+      this.verbsService.setCurrentItem(this.verbsService.selectedData[currentIndex]);
     }
   }
 

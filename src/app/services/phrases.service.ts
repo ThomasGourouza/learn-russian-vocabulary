@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Index } from '../models';
-import { Noun } from '../models/noun';
+import { Phrase } from '../models/phrase';
 
 @Injectable()
-export class NounsService {
+export class PhrasesService {
 
   private _name: string;
   private _tabIndex: number;
-  private _data!: Array<Noun>;
-  private _selectedData!: Array<Noun>;
-  private _currentItem!: Noun | undefined;
+  private _data!: Array<Phrase>;
+  private _selectedData!: Array<Phrase>;
+  private _currentItem!: Phrase | undefined;
   private _index!: Index;
   private _firstNext!: boolean;
   private _priority!: number | undefined;
@@ -18,20 +18,18 @@ export class NounsService {
   private _validKeys: Array<string>;
 
   constructor() {
-    this._name = 'noms';
-    this._tabIndex = 2;
+    this._name = 'expressions';
+    this._tabIndex = 5;
     this._validKeys = [
       'french',
       'russian',
-      'gender',
       'priority',
-      'declension',
       'show'
     ];
-    this.initNounsVariables();
+    this.initPhrasesVariables();
   }
 
-  public initNounsVariables(): void {
+  public initPhrasesVariables(): void {
     this._data = [];
     this._selectedData = [];
     this._currentItem = undefined;
@@ -42,24 +40,24 @@ export class NounsService {
     this._isValidData = true;
   }
 
-  get data(): Array<Noun> {
+  get data(): Array<Phrase> {
     return this._data;
   }
-  public setData(data: Array<Noun>): void {
+  public setData(data: Array<Phrase>): void {
     this._data = data;
   }
 
-  get selectedData(): Array<Noun> {
+  get selectedData(): Array<Phrase> {
     return this._selectedData;
   }
-  public setSelectedData(selectedData: Array<Noun>): void {
+  public setSelectedData(selectedData: Array<Phrase>): void {
     this._selectedData = selectedData;
   }
 
-  get currentItem(): Noun | undefined {
+  get currentItem(): Phrase | undefined {
     return this._currentItem;
   }
-  public setCurrentItem(currentItem: Noun | undefined): void {
+  public setCurrentItem(currentItem: Phrase | undefined): void {
     this._currentItem = currentItem;
   }
 

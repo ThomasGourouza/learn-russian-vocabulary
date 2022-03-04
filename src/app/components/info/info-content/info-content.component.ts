@@ -8,7 +8,7 @@ export class InfoContentComponent {
 
   @Input() public name!: { title: string; singular: string };
   @Input() public data!: Array<any>;
-  @Input() public currentData: any | undefined;
+  @Input() public currentItem: any | undefined;
   @Input() public counter!: number;
   @Input() public priority: number | undefined;
   @Input() public isValidData!: boolean;

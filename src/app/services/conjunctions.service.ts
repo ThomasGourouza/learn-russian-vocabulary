@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Index } from '../models';
-import { Noun } from '../models/noun';
+import { Conjunction } from '../models/conjunction';
 
 @Injectable()
-export class NounsService {
+export class ConjunctionsService {
 
   private _name: string;
   private _tabIndex: number;
-  private _data!: Array<Noun>;
-  private _selectedData!: Array<Noun>;
-  private _currentItem!: Noun | undefined;
+  private _data!: Array<Conjunction>;
+  private _selectedData!: Array<Conjunction>;
+  private _currentItem!: Conjunction | undefined;
   private _index!: Index;
   private _firstNext!: boolean;
   private _priority!: number | undefined;
@@ -18,20 +18,18 @@ export class NounsService {
   private _validKeys: Array<string>;
 
   constructor() {
-    this._name = 'noms';
-    this._tabIndex = 2;
+    this._name = 'conjonctions';
+    this._tabIndex = 4;
     this._validKeys = [
       'french',
       'russian',
-      'gender',
       'priority',
-      'declension',
       'show'
     ];
-    this.initNounsVariables();
+    this.initConjunctionsVariables();
   }
 
-  public initNounsVariables(): void {
+  public initConjunctionsVariables(): void {
     this._data = [];
     this._selectedData = [];
     this._currentItem = undefined;
@@ -42,24 +40,24 @@ export class NounsService {
     this._isValidData = true;
   }
 
-  get data(): Array<Noun> {
+  get data(): Array<Conjunction> {
     return this._data;
   }
-  public setData(data: Array<Noun>): void {
+  public setData(data: Array<Conjunction>): void {
     this._data = data;
   }
 
-  get selectedData(): Array<Noun> {
+  get selectedData(): Array<Conjunction> {
     return this._selectedData;
   }
-  public setSelectedData(selectedData: Array<Noun>): void {
+  public setSelectedData(selectedData: Array<Conjunction>): void {
     this._selectedData = selectedData;
   }
 
-  get currentItem(): Noun | undefined {
+  get currentItem(): Conjunction | undefined {
     return this._currentItem;
   }
-  public setCurrentItem(currentItem: Noun | undefined): void {
+  public setCurrentItem(currentItem: Conjunction | undefined): void {
     this._currentItem = currentItem;
   }
 

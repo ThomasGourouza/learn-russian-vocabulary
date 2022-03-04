@@ -13,24 +13,24 @@
     <tr>
         <td>
             <div class="wide vertical-align">
-                <span *ngIf="data.length > 0 && !!currentData">
-                    {{ currentData?.french }}
+                <span *ngIf="data.length > 0 && !!currentItem">
+                    {{ currentItem?.french }}
                 </span>&nbsp;
             </div>
         </td>
         <td>
             <div class="wide vertical-align">
-                <span *ngIf="data.length > 0 && !!currentData
+                <span *ngIf="data.length > 0 && !!currentItem
                             && firstNext">
-                    {{ currentData?.russian }}
+                    {{ currentItem?.russian }}
                 </span>
             </div>
         </td>
         <td>
             <div class="wide vertical-align">
-                <span *ngIf="data.length > 0 && !!currentData
+                <span *ngIf="data.length > 0 && !!currentItem
                             && firstNext">
-                    {{ print(currentData.gender) }}
+                    {{ print(currentItem.gender) }}
                 </span>
             </div>
         </td>

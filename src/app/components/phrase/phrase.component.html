@@ -1,1 +1,12 @@
-<p>phrases</p>
+<app-interactive-table [name]="phrasesService.name"
+                       [data]="phrasesService.data"
+                       [currentItem]="phrasesService.currentItem"
+                       [priority]="phrasesService.priority"
+                       [isValidData]="phrasesService.isValidData"
+                       [firstNext]="phrasesService.firstNext"
+                       [index]="phrasesService.index"
+                       (reload)="onReload()"
+                       (changePriority)="onChangePriority($event)"
+                       (previous)="onPrevious()"
+                       (next)="onNext()">
+</app-interactive-table>

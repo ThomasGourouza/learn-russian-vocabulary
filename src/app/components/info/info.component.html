@@ -2,21 +2,48 @@
     <div class="summary">
         <div *ngIf="[0, 1].includes(tabIndex)" class="summary-item">
             <app-info-content [name]="{ title: 'Verbes', singular: 'verbe' }"
-                                [data]="verbsService.verbs"
-                                [currentData]="verbsService.currentVerb"
-                                [counter]="verbsService.counter"
-                                [priority]="verbsService.priority"
-                                [isValidData]="verbsService.isValidData">
+                              [data]="verbsService.data"
+                              [currentItem]="verbsService.currentItem"
+                              [counter]="verbsService.counter"
+                              [priority]="verbsService.priority"
+                              [isValidData]="verbsService.isValidData">
             </app-info-content>
         </div>
         <div *ngIf="[0, 2].includes(tabIndex)" class="summary-item">
             <app-info-content [name]="{ title: 'Noms', singular: 'nom' }"
-                                [data]="verbsService.verbs"
-                                [currentData]="verbsService.currentVerb"
-                                [counter]="verbsService.counter"
-                                [priority]="verbsService.priority"
-                                [isValidData]="verbsService.isValidData">
+                              [data]="nounsService.data"
+                              [currentItem]="nounsService.currentItem"
+                              [counter]="nounsService.counter"
+                              [priority]="nounsService.priority"
+                              [isValidData]="nounsService.isValidData">
             </app-info-content>
+        </div>
+        <div *ngIf="[0, 3].includes(tabIndex)" class="summary-item">
+            <app-info-content [name]="{ title: 'Adjectif', singular: 'adjectif' }"
+                              [data]="adjectivesService.data"
+                              [currentItem]="adjectivesService.currentItem"
+                              [counter]="adjectivesService.counter"
+                              [priority]="adjectivesService.priority"
+                              [isValidData]="adjectivesService.isValidData">
+            </app-info-content>
+        </div>
+        <div *ngIf="[0, 4].includes(tabIndex)" class="summary-item">
+            <app-info-content [name]="{ title: 'Conjonctions', singular: 'conjonction' }"
+                              [data]="conjunctionsService.data"
+                              [currentItem]="conjunctionsService.currentItem"
+                              [counter]="conjunctionsService.counter"
+                              [priority]="conjunctionsService.priority"
+                              [isValidData]="conjunctionsService.isValidData">
+            </app-info-content>
+        </div>
+        <div *ngIf="[0, 5].includes(tabIndex)" class="summary-item">
+            <app-info-content [name]="{ title: 'Expressions', singular: 'expression' }"
+                              [data]="phrasesService.data"
+                              [currentItem]="phrasesService.currentItem"
+                              [counter]="phrasesService.counter"
+                              [priority]="phrasesService.priority"
+                              [isValidData]="phrasesService.isValidData">
+                              </app-info-content>
         </div>
     </div>
 </p-card>

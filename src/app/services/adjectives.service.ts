@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Index } from '../models';
-import { Noun } from '../models/noun';
+import { Adjective } from '../models/adjective';
 
 @Injectable()
-export class NounsService {
+export class AdjectivesService {
 
   private _name: string;
   private _tabIndex: number;
-  private _data!: Array<Noun>;
-  private _selectedData!: Array<Noun>;
-  private _currentItem!: Noun | undefined;
+  private _data!: Array<Adjective>;
+  private _selectedData!: Array<Adjective>;
+  private _currentItem!: Adjective | undefined;
   private _index!: Index;
   private _firstNext!: boolean;
   private _priority!: number | undefined;
@@ -18,20 +18,19 @@ export class NounsService {
   private _validKeys: Array<string>;
 
   constructor() {
-    this._name = 'noms';
-    this._tabIndex = 2;
+    this._name = 'adjectifs';
+    this._tabIndex = 3;
     this._validKeys = [
       'french',
       'russian',
-      'gender',
       'priority',
       'declension',
       'show'
     ];
-    this.initNounsVariables();
+    this.initAdjectivesVariables();
   }
 
-  public initNounsVariables(): void {
+  public initAdjectivesVariables(): void {
     this._data = [];
     this._selectedData = [];
     this._currentItem = undefined;
@@ -42,24 +41,24 @@ export class NounsService {
     this._isValidData = true;
   }
 
-  get data(): Array<Noun> {
+  get data(): Array<Adjective> {
     return this._data;
   }
-  public setData(data: Array<Noun>): void {
+  public setData(data: Array<Adjective>): void {
     this._data = data;
   }
 
-  get selectedData(): Array<Noun> {
+  get selectedData(): Array<Adjective> {
     return this._selectedData;
   }
-  public setSelectedData(selectedData: Array<Noun>): void {
+  public setSelectedData(selectedData: Array<Adjective>): void {
     this._selectedData = selectedData;
   }
 
-  get currentItem(): Noun | undefined {
+  get currentItem(): Adjective | undefined {
     return this._currentItem;
   }
-  public setCurrentItem(currentItem: Noun | undefined): void {
+  public setCurrentItem(currentItem: Adjective | undefined): void {
     this._currentItem = currentItem;
   }
 

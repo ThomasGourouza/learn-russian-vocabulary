@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 export class TableVerbComponent {
 
   @Input() public data!: Array<any>;
-  @Input() public currentData: any | undefined;
+  @Input() public currentItem: any | undefined;
   @Input() public firstNext!: boolean;
 
 }
