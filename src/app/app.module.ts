@@ -30,6 +30,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { InteractiveTableComponent } from './components/interactive-table/interactive-table.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MessageService } from 'primeng/api';
     WelcomeComponent,
     InfoComponent,
     InfoVerbsComponent,
-    InfoNounsComponent
+    InfoNounsComponent,
+    InteractiveTableComponent
   ],
   imports: [
     BrowserModule,
