@@ -23,11 +23,11 @@ export class InteractiveTableComponent {
     private excelService: ExcelService
   ) { }
 
+  public onUploadData(file: File): void {
+    this.excelService.excelToJSON(this.name, file);
+  }
   public onReload(): void {
     this.reload.emit();
-  }
-  public onUploadWords(file: File): void {
-    this.excelService.excelToJSON(this.name, file);
   }
   public onChangePriority(priority: string): void {
     this.changePriority.emit(priority);

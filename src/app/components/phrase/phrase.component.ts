@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Phrase } from 'src/app/models/phrase';
 import { PhrasesService } from 'src/app/services/phrases.service';
 import { ExcelService } from 'src/app/services/excel.service';
@@ -6,12 +6,15 @@ import { NavigationService } from 'src/app/services/navigation.service';
 import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-phrase',
   templateUrl: './phrase.component.html'
 })
-export class PhraseComponent implements OnInit {
+export class PhraseComponent implements OnInit, OnDestroy {
+
+  private excelSubscription = new Subscription();
 
   constructor(
     private excelService: ExcelService,
@@ -23,10 +26,14 @@ export class PhraseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.excelService.uploadedPhrases$.subscribe((phrases: Array<Phrase>) => {
+    this.excelSubscription = this.excelService.uploadedPhrases$.subscribe((phrases: Array<Phrase>) => {
       this.phrasesService.setData(phrases.filter((phrase) => phrase?.show !== '-'));
       this.checkData(this.phrasesService.data);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.excelSubscription.unsubscribe();
   }
 
   public onReload(): void {

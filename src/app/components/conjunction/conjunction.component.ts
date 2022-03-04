@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Conjunction } from 'src/app/models/conjunction';
 import { ConjunctionsService } from 'src/app/services/conjunctions.service';
 import { ExcelService } from 'src/app/services/excel.service';
@@ -6,12 +6,15 @@ import { NavigationService } from 'src/app/services/navigation.service';
 import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-conjunction',
   templateUrl: './conjunction.component.html'
 })
-export class ConjunctionComponent implements OnInit {
+export class ConjunctionComponent implements OnInit, OnDestroy {
+
+  private excelSubscription = new Subscription();
 
   constructor(
     private excelService: ExcelService,
@@ -23,10 +26,14 @@ export class ConjunctionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.excelService.uploadedConjunctions$.subscribe((conjunctions: Array<Conjunction>) => {
+    this.excelSubscription = this.excelService.uploadedConjunctions$.subscribe((conjunctions: Array<Conjunction>) => {
       this.conjunctionsService.setData(conjunctions.filter((conjunction) => conjunction?.show !== '-'));
       this.checkData(this.conjunctionsService.data);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.excelSubscription.unsubscribe();
   }
 
   public onReload(): void {

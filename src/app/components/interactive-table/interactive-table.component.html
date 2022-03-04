@@ -8,7 +8,7 @@
                 </div>
                 <ng-template #loadData>
                     <p-fileUpload mode="basic" [maxFileSize]="5000000" chooseIcon="pi-file-excel"
-                        chooseLabel="Charger des {{ name }}" (onSelect)="onUploadWords($event.currentFiles[0])"
+                        chooseLabel="Charger des {{ name }}" (onSelect)="onUploadData($event.currentFiles[0])"
                         [auto]="true" [disabled]="data.length > 0">
                     </p-fileUpload>
                 </ng-template>

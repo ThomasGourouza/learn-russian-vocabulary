@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Adjective } from 'src/app/models/adjective';
 import { AdjectivesService } from 'src/app/services/adjectives.service';
 import { ExcelService } from 'src/app/services/excel.service';
@@ -6,12 +6,15 @@ import { NavigationService } from 'src/app/services/navigation.service';
 import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-adjective',
   templateUrl: './adjective.component.html'
 })
-export class AdjectiveComponent implements OnInit {
+export class AdjectiveComponent implements OnInit, OnDestroy {
+
+  private excelSubscription = new Subscription();
 
   constructor(
     private excelService: ExcelService,
@@ -23,10 +26,14 @@ export class AdjectiveComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.excelService.uploadedAdjectives$.subscribe((adjectives: Array<Adjective>) => {
+    this.excelSubscription = this.excelService.uploadedAdjectives$.subscribe((adjectives: Array<Adjective>) => {
       this.adjectivesService.setData(adjectives.filter((adjective) => adjective?.show !== '-'));
       this.checkData(this.adjectivesService.data);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.excelSubscription.unsubscribe();
   }
 
   public onReload(): void {

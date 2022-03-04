@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Verb } from 'src/app/models/verb';
 import { VerbsService } from 'src/app/services/verbs.service';
 import { ExcelService } from 'src/app/services/excel.service';
@@ -6,12 +6,15 @@ import { NavigationService } from 'src/app/services/navigation.service';
 import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-verb',
   templateUrl: './verb.component.html'
 })
-export class VerbComponent implements OnInit {
+export class VerbComponent implements OnInit, OnDestroy {
+
+  private excelSubscription = new Subscription();
 
   constructor(
     private excelService: ExcelService,
@@ -23,10 +26,14 @@ export class VerbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.excelService.uploadedVerbs$.subscribe((verbs: Array<Verb>) => {
+    this.excelSubscription = this.excelService.uploadedVerbs$.subscribe((verbs: Array<Verb>) => {
       this.verbsService.setData(verbs.filter((verb) => verb?.show !== '-'));
       this.checkData(this.verbsService.data);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.excelSubscription.unsubscribe();
   }
 
   public onReload(): void {
