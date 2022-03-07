@@ -1,15 +1,6 @@
 <p-card>
     <div class="summary">
         <div *ngIf="[0, 1].includes(tabIndex)" class="summary-item">
-            <app-info-content [name]="{ title: 'Verbes', singular: 'verbe' }"
-                              [data]="verbsService.data"
-                              [currentItem]="verbsService.currentItem"
-                              [counter]="verbsService.counter"
-                              [priority]="verbsService.priority"
-                              [isValidData]="verbsService.isValidData">
-            </app-info-content>
-        </div>
-        <div *ngIf="[0, 2].includes(tabIndex)" class="summary-item">
             <app-info-content [name]="{ title: 'Noms', singular: 'nom' }"
                               [data]="nounsService.data"
                               [currentItem]="nounsService.currentItem"
@@ -18,7 +9,25 @@
                               [isValidData]="nounsService.isValidData">
             </app-info-content>
         </div>
+        <div *ngIf="[0, 2].includes(tabIndex)" class="summary-item">
+            <app-info-content [name]="{ title: 'Verbes', singular: 'verbe' }"
+                              [data]="verbsService.data"
+                              [currentItem]="verbsService.currentItem"
+                              [counter]="verbsService.counter"
+                              [priority]="verbsService.priority"
+                              [isValidData]="verbsService.isValidData">
+            </app-info-content>
+        </div>
         <div *ngIf="[0, 3].includes(tabIndex)" class="summary-item">
+            <app-info-content [name]="{ title: 'Adverbes', singular: 'adverbe' }"
+                              [data]="adverbsService.data"
+                              [currentItem]="adverbsService.currentItem"
+                              [counter]="adverbsService.counter"
+                              [priority]="adverbsService.priority"
+                              [isValidData]="adverbsService.isValidData">
+            </app-info-content>
+        </div>
+        <div *ngIf="[0, 4].includes(tabIndex)" class="summary-item">
             <app-info-content [name]="{ title: 'Adjectif', singular: 'adjectif' }"
                               [data]="adjectivesService.data"
                               [currentItem]="adjectivesService.currentItem"
@@ -27,7 +36,7 @@
                               [isValidData]="adjectivesService.isValidData">
             </app-info-content>
         </div>
-        <div *ngIf="[0, 4].includes(tabIndex)" class="summary-item">
+        <div *ngIf="[0, 5].includes(tabIndex)" class="summary-item">
             <app-info-content [name]="{ title: 'Conjonctions', singular: 'conjonction' }"
                               [data]="conjunctionsService.data"
                               [currentItem]="conjunctionsService.currentItem"
@@ -36,7 +45,7 @@
                               [isValidData]="conjunctionsService.isValidData">
             </app-info-content>
         </div>
-        <div *ngIf="[0, 5].includes(tabIndex)" class="summary-item">
+        <div *ngIf="[0, 6].includes(tabIndex)" class="summary-item">
             <app-info-content [name]="{ title: 'Expressions', singular: 'expression' }"
                               [data]="phrasesService.data"
                               [currentItem]="phrasesService.currentItem"

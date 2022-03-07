@@ -19,10 +19,11 @@ export class ConjunctionsService {
 
   constructor() {
     this._name = 'conjonctions';
-    this._tabIndex = 4;
+    this._tabIndex = 5;
     this._validKeys = [
       'french',
       'russian',
+      'case',
       'priority',
       'show'
     ];

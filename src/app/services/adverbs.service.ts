@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Index } from '../models';
-import { Phrase } from '../models/phrase';
+import { Adverb } from '../models/adverb';
 
 @Injectable()
-export class PhrasesService {
+export class AdverbsService {
 
   private _name: string;
   private _tabIndex: number;
-  private _data!: Array<Phrase>;
-  private _selectedData!: Array<Phrase>;
-  private _currentItem!: Phrase | undefined;
+  private _data!: Array<Adverb>;
+  private _selectedData!: Array<Adverb>;
+  private _currentItem!: Adverb | undefined;
   private _index!: Index;
   private _firstNext!: boolean;
   private _priority!: number | undefined;
@@ -18,18 +18,18 @@ export class PhrasesService {
   private _validKeys: Array<string>;
 
   constructor() {
-    this._name = 'expressions';
-    this._tabIndex = 6;
+    this._name = 'adverbes';
+    this._tabIndex = 3;
     this._validKeys = [
       'french',
       'russian',
       'priority',
       'show'
     ];
-    this.initPhrasesVariables();
+    this.initAdverbsVariables();
   }
 
-  public initPhrasesVariables(): void {
+  public initAdverbsVariables(): void {
     this._data = [];
     this._selectedData = [];
     this._currentItem = undefined;
@@ -40,24 +40,24 @@ export class PhrasesService {
     this._isValidData = true;
   }
 
-  get data(): Array<Phrase> {
+  get data(): Array<Adverb> {
     return this._data;
   }
-  public setData(data: Array<Phrase>): void {
+  public setData(data: Array<Adverb>): void {
     this._data = data;
   }
 
-  get selectedData(): Array<Phrase> {
+  get selectedData(): Array<Adverb> {
     return this._selectedData;
   }
-  public setSelectedData(selectedData: Array<Phrase>): void {
+  public setSelectedData(selectedData: Array<Adverb>): void {
     this._selectedData = selectedData;
   }
 
-  get currentItem(): Phrase | undefined {
+  get currentItem(): Adverb | undefined {
     return this._currentItem;
   }
-  public setCurrentItem(currentItem: Phrase | undefined): void {
+  public setCurrentItem(currentItem: Adverb | undefined): void {
     this._currentItem = currentItem;
   }
 

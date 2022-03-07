@@ -19,7 +19,7 @@ export class VerbsService {
 
   constructor() {
     this._name = 'verbes';
-    this._tabIndex = 1;
+    this._tabIndex = 2;
     this._validKeys = [
       'french',
       'imperfective',

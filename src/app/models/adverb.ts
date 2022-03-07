@@ -1,7 +1,6 @@
-export interface Conjunction {
+export interface Adverb {
     french: string;
     russian: string;
-    case: string;
     priority: number;
     show?: string;
 }

@@ -41,16 +41,22 @@
                             [firstNext]="firstNext">
             </app-table-noun>
         </div>
+        <div *ngSwitchCase="'conjonctions'">
+            <app-table-conjunction [data]="data" 
+                                   [currentItem]="currentItem"
+                                   [firstNext]="firstNext">
+            </app-table-conjunction>
+        </div>
         <div *ngSwitchDefault>
             <app-table-default [data]="data" 
-                            [currentItem]="currentItem"
-                            [firstNext]="firstNext">
+                               [currentItem]="currentItem"
+                               [firstNext]="firstNext">
             </app-table-default>
         </div>
     </div>
 </div>
 
-<div class="vertical-align d-flex justify-content-center">
+<div class="d-flex justify-content-center">
     <button class="btn btn-secondary space-around" [disabled]="index.previous === undefined || !currentItem"
         (click)="onPrevious()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>

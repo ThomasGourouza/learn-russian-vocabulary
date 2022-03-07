@@ -19,7 +19,7 @@ export class AdjectivesService {
 
   constructor() {
     this._name = 'adjectifs';
-    this._tabIndex = 3;
+    this._tabIndex = 4;
     this._validKeys = [
       'french',
       'russian',

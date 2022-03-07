@@ -19,7 +19,7 @@ export class NounsService {
 
   constructor() {
     this._name = 'noms';
-    this._tabIndex = 2;
+    this._tabIndex = 1;
     this._validKeys = [
       'french',
       'russian',

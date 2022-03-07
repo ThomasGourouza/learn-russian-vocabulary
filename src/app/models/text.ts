@@ -5,6 +5,7 @@ export enum Text {
     validNounsText = 'Noms chargés.',
     validAdjectivesText = 'Adjectifs chargés.',
     validConjunctionsText = 'Conjonctions chargées.',
+    validAdverbsText = 'Adverbes chargés.',
     validPhrasesText = 'Expressions chargées.',
     invalidText = 'Données invalides!',
     notEnoughText = 'Données insuffisantes!',

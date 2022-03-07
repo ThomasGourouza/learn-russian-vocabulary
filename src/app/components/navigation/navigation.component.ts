@@ -17,8 +17,9 @@ export class NavigationComponent implements OnInit {
     this.tabIndex = 0;
     this.tabItems = [
       { label: 'Accueil', icon: 'pi pi-fw pi-home', routerLink: '/welcome' },
-      { label: 'Verbes', icon: 'pi pi-fw pi-book', routerLink: '/verbs' },
       { label: 'Noms', icon: 'pi pi-fw pi-book', routerLink: '/nouns' },
+      { label: 'Verbes', icon: 'pi pi-fw pi-book', routerLink: '/verbs' },
+      { label: 'Adverbes', icon: 'pi pi-fw pi-book', routerLink: '/adverbs' },
       { label: 'Adjectifs', icon: 'pi pi-fw pi-book', routerLink: '/adjectives' },
       { label: 'Conjonctions', icon: 'pi pi-fw pi-book', routerLink: '/conjunctions' },
       { label: 'Expressions', icon: 'pi pi-fw pi-book', routerLink: '/phrases' }

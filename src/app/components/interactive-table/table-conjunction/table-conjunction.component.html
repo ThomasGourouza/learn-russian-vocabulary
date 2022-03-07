@@ -7,7 +7,7 @@
             <div class="adjust">Russe</div>
         </th>
         <th scope="col">
-            <div class="adjust">Genre</div>
+            <div class="adjust">Cas</div>
         </th>
     </tr>
     <tr>
@@ -30,7 +30,7 @@
             <div class="adjust">
                 <span *ngIf="data.length > 0 && !!currentItem
                             && firstNext">
-                    {{ print(currentItem.gender) }}
+                    {{ currentItem?.case }}
                 </span>
             </div>
         </td>

@@ -4,6 +4,7 @@ import { VerbsService } from 'src/app/services/verbs.service';
 import { NounsService } from 'src/app/services/nouns.service';
 import { AdjectivesService } from 'src/app/services/adjectives.service';
 import { ConjunctionsService } from 'src/app/services/conjunctions.service';
+import { AdverbsService } from 'src/app/services/adverbs.service';
 import { PhrasesService } from 'src/app/services/phrases.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class InfoComponent implements OnInit {
     public nounsService: NounsService,
     public adjectivesService: AdjectivesService,
     public conjunctionsService: ConjunctionsService,
+    public adverbsService: AdverbsService,
     public phrasesService: PhrasesService
   ) {
     this.tabIndex = 0;

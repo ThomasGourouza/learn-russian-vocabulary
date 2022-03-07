@@ -1,22 +1,22 @@
 <table class="fixed">
     <tr>
         <th scope="col">
-            <div class="wide">Français</div>
+            <div class="adjust">Français</div>
         </th>
         <th scope="col">
-            <div class="wide">Russe</div>
+            <div class="adjust">Russe</div>
         </th>
     </tr>
     <tr>
         <td>
-            <div class="wide vertical-align">
+            <div class="adjust">
                 <span *ngIf="data.length > 0 && !!currentItem">
                     {{ currentItem?.french }}
                 </span>&nbsp;
             </div>
         </td>
         <td>
-            <div class="wide vertical-align">
+            <div class="adjust">
                 <span *ngIf="data.length > 0 && !!currentItem
                             && firstNext">
                     {{ currentItem?.russian }}

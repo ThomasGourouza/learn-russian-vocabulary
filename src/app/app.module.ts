@@ -29,6 +29,7 @@ import { VerbsService } from './services/verbs.service';
 import { NounsService } from './services/nouns.service';
 import { AdjectivesService } from './services/adjectives.service';
 import { ConjunctionsService } from './services/conjunctions.service';
+import { AdverbsService } from './services/adverbs.service';
 import { PhrasesService } from './services/phrases.service';
 
 import { FileUploadModule } from 'primeng/fileupload';
@@ -38,6 +39,8 @@ import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { TableDefaultComponent } from './components/interactive-table/table-default/table-default.component';
+import { TableConjunctionComponent } from './components/interactive-table/table-conjunction/table-conjunction.component';
+import { AdverbComponent } from './components/adverb/adverb.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,9 @@ import { TableDefaultComponent } from './components/interactive-table/table-defa
     WelcomeComponent,
     InfoComponent,
     InfoContentComponent,
-    TableDefaultComponent
+    TableDefaultComponent,
+    TableConjunctionComponent,
+    AdverbComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +82,7 @@ import { TableDefaultComponent } from './components/interactive-table/table-defa
     NounsService,
     AdjectivesService,
     ConjunctionsService,
+    AdverbsService,
     PhrasesService,
     MessageService
   ],

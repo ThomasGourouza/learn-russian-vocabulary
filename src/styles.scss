@@ -20,16 +20,17 @@ table.fixed {
   table-layout: fixed;
   width: 100%;
 }
+table.fixed th {
+  overflow: hidden;
+  height: 50px;
+}
 table.fixed td {
   overflow: hidden;
+  height: 150px;
 }
-.wide {
+.adjust {
   margin-left: 1em;
   margin-right: 1em;
-}
-.vertical-align {
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 .medium {
   font-size: large;
@@ -60,5 +61,5 @@ table.fixed td {
   margin-bottom: 3em;
 }
 .summary .summary-item:not(:last-child) {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }

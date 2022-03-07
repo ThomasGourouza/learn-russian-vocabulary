@@ -1,30 +1,30 @@
 <table class="fixed">
     <tr>
         <th scope="col">
-            <div class="wide">Français</div>
+            <div class="adjust">Français</div>
         </th>
         <th scope="col">
-            <div class="wide">Imperfectif</div>
+            <div class="adjust">Imperfectif</div>
         </th>
         <th *ngIf="!(data.length > 0 && !!currentItem)
                    || (currentItem?.perfective !== '-')" scope="col">
-            <div class="wide">Perfectif</div>
+            <div class="adjust">Perfectif</div>
         </th>
         <th *ngIf="!!currentItem
                    && currentItem.undeterminated !== '-'" scope="col">
-            <div class="wide">Indéterminé</div>
+            <div class="adjust">Indéterminé</div>
         </th>
     </tr>
     <tr>
         <td>
-            <div class="wide vertical-align">
+            <div class="adjust">
                 <span *ngIf="data.length > 0 && !!currentItem">
                     {{ currentItem?.french }}
                 </span>&nbsp;
             </div>
         </td>
         <td>
-            <div class="wide vertical-align">
+            <div class="adjust">
                 <span *ngIf="data.length > 0 && !!currentItem
                             && firstNext">
                     {{ currentItem?.imperfective }}
@@ -33,7 +33,7 @@
         </td>
         <td *ngIf="!(data.length > 0 && !!currentItem) 
                    || (!!currentItem && currentItem.perfective !== '-')">
-            <div class="wide vertical-align">
+            <div class="adjust">
                 <span *ngIf="firstNext">
                     {{ currentItem?.perfective }}
                 </span>
@@ -41,7 +41,7 @@
         </td>
         <td *ngIf="!!currentItem 
                    && currentItem.undeterminated !== '-'">
-            <div *ngIf="firstNext" class="wide vertical-align">
+            <div *ngIf="firstNext" class="adjust">
                 <span>
                     {{ currentItem?.undeterminated }}
                 </span>

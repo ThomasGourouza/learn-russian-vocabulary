@@ -7,6 +7,7 @@ import { Noun } from '../models/noun';
 import { Adjective } from '../models/adjective';
 import { Conjunction } from '../models/conjunction';
 import { Phrase } from '../models/phrase';
+import { Adverb } from '../models/adverb';
 
 @Injectable()
 export class ExcelService {
@@ -15,6 +16,7 @@ export class ExcelService {
   private _uploadedNouns$ = new Subject<Array<Noun>>();
   private _uploadedAdjectives$ = new Subject<Array<Adjective>>();
   private _uploadedConjunctions$ = new Subject<Array<Conjunction>>();
+  private _uploadedAdverbs$ = new Subject<Array<Adverb>>();
   private _uploadedPhrases$ = new Subject<Array<Phrase>>();
   
   get uploadedVerbs$(): Observable<Array<Verb>> {
@@ -28,6 +30,9 @@ export class ExcelService {
   }
   get uploadedConjunctions$(): Observable<Array<Conjunction>> {
     return this._uploadedConjunctions$.asObservable();
+  }
+  get uploadedAdverbs$(): Observable<Array<Adverb>> {
+    return this._uploadedAdverbs$.asObservable();
   }
   get uploadedPhrases$(): Observable<Array<Phrase>> {
     return this._uploadedPhrases$.asObservable();
@@ -57,6 +62,9 @@ export class ExcelService {
             break;
           case 'conjonctions':
             this._uploadedConjunctions$.next(sheet);
+            break;
+          case 'adverbes':
+            this._uploadedAdverbs$.next(sheet);
             break;
           case 'expressions':
             this._uploadedPhrases$.next(sheet);

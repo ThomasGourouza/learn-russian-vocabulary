@@ -1,0 +1,12 @@
+<app-interactive-table [name]="adverbsService.name"
+                       [data]="adverbsService.data"
+                       [currentItem]="adverbsService.currentItem"
+                       [priority]="adverbsService.priority"
+                       [isValidData]="adverbsService.isValidData"
+                       [firstNext]="adverbsService.firstNext"
+                       [index]="adverbsService.index"
+                       (reload)="onReload()"
+                       (changePriority)="onChangePriority($event)"
+                       (previous)="onPrevious()"
+                       (next)="onNext()">
+</app-interactive-table>
