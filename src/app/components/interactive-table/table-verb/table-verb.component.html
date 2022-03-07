@@ -1,4 +1,4 @@
-<table>
+<table class="fixed">
     <tr>
         <th scope="col">
             <div class="wide">Français</div>
@@ -33,11 +33,11 @@
         </td>
         <td *ngIf="!(data.length > 0 && !!currentItem) 
                    || (!!currentItem && currentItem.perfective !== '-')">
-                <div class="wide vertical-align">
-                    <span *ngIf="firstNext">
-                        {{ currentItem?.perfective }}
-                    </span>
-                </div>
+            <div class="wide vertical-align">
+                <span *ngIf="firstNext">
+                    {{ currentItem?.perfective }}
+                </span>
+            </div>
         </td>
         <td *ngIf="!!currentItem 
                    && currentItem.undeterminated !== '-'">

@@ -16,6 +16,13 @@ th {
 td {
   background-color: rgb(247, 251, 255);
 }
+table.fixed {
+  table-layout: fixed;
+  width: 100%;
+}
+table.fixed td {
+  overflow: hidden;
+}
 .wide {
   margin-left: 1em;
   margin-right: 1em;
@@ -42,6 +49,12 @@ td {
   margin-right: 1em;
   margin-top: 1em;
   margin-bottom: 1em;
+}
+.more-space-around {
+  margin-left: 3em;
+  margin-right: 3em;
+  margin-top: 1em;
+  margin-bottom: 2em;
 }
 .space-bellow {
   margin-bottom: 3em;
