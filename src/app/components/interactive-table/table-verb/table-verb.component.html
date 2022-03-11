@@ -1,30 +1,30 @@
 <table class="fixed">
     <tr>
         <th scope="col">
-            <div class="adjust">Français</div>
+            <div class="d-flex justify-content-center">Français</div>
         </th>
         <th scope="col">
-            <div class="adjust">Imperfectif</div>
+            <div class="d-flex justify-content-center">Imperfectif</div>
         </th>
         <th *ngIf="!(data.length > 0 && !!currentItem)
                    || (currentItem?.perfective !== '-')" scope="col">
-            <div class="adjust">Perfectif</div>
+            <div class="d-flex justify-content-center">Perfectif</div>
         </th>
         <th *ngIf="!!currentItem
                    && currentItem.undeterminated !== '-'" scope="col">
-            <div class="adjust">Indéterminé</div>
+            <div class="d-flex justify-content-center">Indéterminé</div>
         </th>
     </tr>
     <tr>
         <td>
-            <div class="adjust">
+            <div class="d-flex justify-content-center arial biggest">
                 <span *ngIf="data.length > 0 && !!currentItem">
                     {{ currentItem?.french }}
                 </span>&nbsp;
             </div>
         </td>
         <td>
-            <div class="adjust">
+            <div class="d-flex justify-content-center arial answer biggest">
                 <span *ngIf="data.length > 0 && !!currentItem
                             && firstNext">
                     {{ currentItem?.imperfective }}
@@ -33,7 +33,7 @@
         </td>
         <td *ngIf="!(data.length > 0 && !!currentItem) 
                    || (!!currentItem && currentItem.perfective !== '-')">
-            <div class="adjust">
+            <div class="d-flex justify-content-center arial answer biggest">
                 <span *ngIf="firstNext">
                     {{ currentItem?.perfective }}
                 </span>
@@ -41,7 +41,7 @@
         </td>
         <td *ngIf="!!currentItem 
                    && currentItem.undeterminated !== '-'">
-            <div *ngIf="firstNext" class="adjust">
+            <div *ngIf="firstNext" class="d-flex justify-content-center arial answer biggest">
                 <span>
                     {{ currentItem?.undeterminated }}
                 </span>

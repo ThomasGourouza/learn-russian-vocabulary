@@ -18,8 +18,10 @@ export class TableNounComponent {
         return 'Féminin';
       case 'N':
         return 'Neutre';
+      case 'P':
+        return 'Pluriel';
       default:
-        return '';
+        return '?';
     }
   }
 

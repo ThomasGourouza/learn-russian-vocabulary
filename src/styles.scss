@@ -28,9 +28,11 @@ table.fixed td {
   overflow: hidden;
   height: 150px;
 }
-.adjust {
-  margin-left: 1em;
-  margin-right: 1em;
+.arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.answer {
+  color: rgb(23, 111, 114);
 }
 .medium {
   font-size: large;
