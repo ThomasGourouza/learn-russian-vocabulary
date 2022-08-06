@@ -18,10 +18,15 @@ export class InteractiveTableComponent {
   @Output() changePriority: EventEmitter<string> = new EventEmitter();
   @Output() previous: EventEmitter<undefined> = new EventEmitter();
   @Output() next: EventEmitter<undefined> = new EventEmitter();
+  public priorities: Array<number> = [];
 
   constructor(
     private excelService: ExcelService
-  ) { }
+  ) { 
+    this.excelService.priorities$.subscribe((priorities) =>
+      this.priorities = priorities
+    );
+  }
 
   public onUploadData(file: File): void {
     this.excelService.excelToJSON(this.name, file);

@@ -17,10 +17,11 @@
                 <strong>Priorité:</strong>
                 <select class="form-select" [ngModel]="priority" (ngModelChange)="onChangePriority($event)"
                     [disabled]="data.length === 0 || !isValidData">
-                    <option selected value="0"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    <option *ngFor="let priority of priorities"
+                            [selected]="priority === 0"
+                            [value]="priority"
+                            [label]="priority">
+                    </option>
                 </select>
             </div>
         </div>
