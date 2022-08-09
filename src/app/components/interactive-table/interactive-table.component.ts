@@ -45,8 +45,10 @@ export class InteractiveTableComponent {
     this.changePriority.emit(priority);
   }
   public onChangeTime(): void {
-    this.subscription.unsubscribe();
-    this.onPlay();
+    if (this.isPlaying) {
+      this.subscription.unsubscribe();
+      this.onPlay();
+    }
   }
   public onPrevious(): void {
     this.previous.emit();
