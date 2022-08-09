@@ -30,6 +30,7 @@ export class InteractiveTableComponent {
   ) {
     this.times = [1000, 2000, 3000, 5000, 10000];
     this.time = 3000;
+    this.priorities = this.excelService.priorities;
     this.excelService.priorities$.subscribe((priorities) =>
       this.priorities = priorities
     );

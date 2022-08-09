@@ -19,6 +19,7 @@ export class ExcelService {
   private _uploadedAdverbs$ = new Subject<Array<Adverb>>();
   private _uploadedPhrases$ = new Subject<Array<Phrase>>();
   private _priorities$ = new Subject<Array<number>>();
+  private _priorities: Array<number> = [];
   
   get uploadedVerbs$(): Observable<Array<Verb>> {
     return this._uploadedVerbs$.asObservable();
@@ -41,6 +42,9 @@ export class ExcelService {
   get priorities$(): Observable<Array<number>> {
     return this._priorities$.asObservable();
   }
+  get priorities(): Array<number> {
+    return this._priorities;
+  }
 
   public excelToJSON(name: string, file: File): void {
     const reader = new FileReader();
@@ -61,6 +65,7 @@ export class ExcelService {
           }
         });
         this._priorities$.next(priorities);
+        this._priorities = priorities;
         switch (name) {
           case 'verbes':
             this._uploadedVerbs$.next(sheet);
