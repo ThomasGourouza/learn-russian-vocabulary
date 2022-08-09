@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import { Index } from 'src/app/models';
 import { ExcelService } from 'src/app/services/excel.service';
 @Component({
@@ -11,6 +12,7 @@ export class InteractiveTableComponent {
   @Input() public data!: Array<any>;
   @Input() public currentItem: any | undefined;
   @Input() public priority: number | undefined;
+  @Input() public time: number | undefined;
   @Input() public isValidData!: boolean;
   @Input() public firstNext!: boolean;
   @Input() public index!: Index;
@@ -19,10 +21,15 @@ export class InteractiveTableComponent {
   @Output() previous: EventEmitter<undefined> = new EventEmitter();
   @Output() next: EventEmitter<undefined> = new EventEmitter();
   public priorities: Array<number> = [];
+  public times: Array<number>;
+  private subscription = new Subscription();
+  public isPlaying = false;
 
   constructor(
     private excelService: ExcelService
-  ) { 
+  ) {
+    this.times = [1000, 2000, 3000, 5000, 10000];
+    this.time = 3000;
     this.excelService.priorities$.subscribe((priorities) =>
       this.priorities = priorities
     );
@@ -37,11 +44,25 @@ export class InteractiveTableComponent {
   public onChangePriority(priority: string): void {
     this.changePriority.emit(priority);
   }
+  public onChangeTime(): void {
+    this.subscription.unsubscribe();
+    this.onPlay();
+  }
   public onPrevious(): void {
     this.previous.emit();
   }
   public onNext(): void {
     this.next.emit();
+  }
+  public onPlay(): void {
+    this.isPlaying = true;
+    this.subscription = interval(this.time).subscribe(() => 
+      this.onNext()
+    );
+  }
+  public onStop(): void {
+    this.isPlaying = false;
+    this.subscription.unsubscribe();
   }
 
 }

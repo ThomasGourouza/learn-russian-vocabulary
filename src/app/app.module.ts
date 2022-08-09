@@ -41,6 +41,7 @@ import { MessageService } from 'primeng/api';
 import { TableDefaultComponent } from './components/interactive-table/table-default/table-default.component';
 import { TableConjunctionComponent } from './components/interactive-table/table-conjunction/table-conjunction.component';
 import { AdverbComponent } from './components/adverb/adverb.component';
+import { TimePipe } from './pipes/time.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AdverbComponent } from './components/adverb/adverb.component';
     InfoContentComponent,
     TableDefaultComponent,
     TableConjunctionComponent,
-    AdverbComponent
+    AdverbComponent,
+    TimePipe
   ],
   imports: [
     BrowserModule,
