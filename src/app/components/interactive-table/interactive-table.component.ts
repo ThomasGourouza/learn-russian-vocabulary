@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { Index } from 'src/app/models';
 import { ExcelService } from 'src/app/services/excel.service';
+import { ReaderSpeakerService } from 'src/app/services/reader-speaker.service';
 @Component({
   selector: 'app-interactive-table',
   templateUrl: './interactive-table.component.html'
@@ -26,7 +27,8 @@ export class InteractiveTableComponent {
   public isPlaying = false;
 
   constructor(
-    private excelService: ExcelService
+    private excelService: ExcelService,
+    private readerSpeakerService: ReaderSpeakerService
   ) {
     this.times = [1000, 2000, 3000, 5000, 10000];
     this.time = 3000;
@@ -56,6 +58,7 @@ export class InteractiveTableComponent {
   }
   public onNext(): void {
     this.next.emit();
+    this.onSpeak(this.currentItem?.russian);
   }
   public onPlay(): void {
     this.isPlaying = true;
@@ -66,6 +69,12 @@ export class InteractiveTableComponent {
   public onStop(): void {
     this.isPlaying = false;
     this.subscription.unsubscribe();
+  }
+
+  public onSpeak(word: string): void {
+    this.readerSpeakerService.getVoice(word).subscribe((audioFile) =>
+      console.log(audioFile)
+    );
   }
 
 }

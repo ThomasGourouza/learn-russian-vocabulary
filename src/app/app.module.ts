@@ -42,6 +42,7 @@ import { TableDefaultComponent } from './components/interactive-table/table-defa
 import { TableConjunctionComponent } from './components/interactive-table/table-conjunction/table-conjunction.component';
 import { AdverbComponent } from './components/adverb/adverb.component';
 import { TimePipe } from './pipes/time.pipe';
+import { ReaderSpeakerService } from './services/reader-speaker.service';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { TimePipe } from './pipes/time.pipe';
   ],
   providers: [
     ExcelService,
+    ReaderSpeakerService,
     NavigationService,
     VerbsService,
     NounsService,

@@ -73,11 +73,15 @@
     <button class="btn btn-secondary space-around" [disabled]="!currentItem || isPlaying" (click)="onNext()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
     </button>
-    <button class="btn btn-primary space-around" [disabled]="!currentItem || isPlaying" (click)="onPlay()">
+    <button class="btn btn-primary space-around" *ngIf="currentItem && !isPlaying" (click)="onPlay()">
         <span class="biggest">&nbsp;Lancer&nbsp;</span>
     </button>
-    <button class="btn btn-danger space-around" [disabled]="!currentItem || !isPlaying"
+    <button class="btn btn-danger space-around" *ngIf="currentItem && isPlaying"
         (click)="onStop()">
         <span class="biggest">&nbsp;Arrêter&nbsp;</span>
+    </button>
+    <button class="btn btn-success space-around" [disabled]="!currentItem || !isPlaying"
+        (click)="onSpeak(currentItem?.russian)">
+        <span class="biggest">&nbsp;Lire&nbsp;</span>
     </button>
 </div>
