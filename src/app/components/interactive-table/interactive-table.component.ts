@@ -58,11 +58,11 @@ export class InteractiveTableComponent {
   }
   public onNext(): void {
     this.next.emit();
-    this.onSpeak(this.currentItem?.russian);
+    // this.onSpeak(this.currentItem?.russian);
   }
   public onPlay(): void {
     this.isPlaying = true;
-    this.subscription = interval(this.time).subscribe(() => 
+    this.subscription = interval(this.time).subscribe(() =>
       this.onNext()
     );
   }
@@ -72,8 +72,8 @@ export class InteractiveTableComponent {
   }
 
   public onSpeak(word: string): void {
-    this.readerSpeakerService.getVoice(word).subscribe((audioFile) =>
-      console.log(audioFile)
+    this.readerSpeakerService.getVoice(word).subscribe((audioFileUrl) =>
+      console.log(audioFileUrl)
     );
   }
 

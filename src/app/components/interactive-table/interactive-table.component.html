@@ -80,7 +80,7 @@
         (click)="onStop()">
         <span class="biggest">&nbsp;Arrêter&nbsp;</span>
     </button>
-    <button class="btn btn-success space-around" [disabled]="!currentItem || !isPlaying"
+    <button class="btn btn-success space-around" [disabled]="!currentItem"
         (click)="onSpeak(currentItem?.russian)">
         <span class="biggest">&nbsp;Lire&nbsp;</span>
     </button>
