@@ -12,6 +12,7 @@ export class InteractiveTableComponent {
   @Input() public name!: string;
   @Input() public data!: Array<any>;
   @Input() set currentItem(item: any) {
+    this.isLoaded = false;
     this.item = item;
     this.canReadSpeak = false;
     if (!!item) {
@@ -36,6 +37,7 @@ export class InteractiveTableComponent {
   public openReadSpeaker = false;
   public canReadSpeak = false;
   public isPrevious = false;
+  public isLoaded = false;
 
   constructor(
     private excelService: ExcelService,
@@ -91,6 +93,7 @@ export class InteractiveTableComponent {
 
   private loadAudioUrl(word: string): void {
     this.readerSpeakerService.getVoice(word).subscribe((audioFileUrl) => {
+      this.isLoaded = true;
       this.audioUrl = audioFileUrl;
       if (this.isPrevious) {
         this.onReadSpeak();
@@ -99,10 +102,10 @@ export class InteractiveTableComponent {
   }
 
   public onReadSpeak(): void {
-    this.openReadSpeaker = true;
+    this.openReadSpeaker = false;
     setTimeout(() => {
-      this.openReadSpeaker = false;
-    }, 3000);
+      this.openReadSpeaker = true;
+    }, 100);
   }
 
 }

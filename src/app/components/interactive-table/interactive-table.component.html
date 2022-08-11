@@ -55,10 +55,10 @@
 
 <div class="d-flex justify-content-center">
     <button class="btn btn-secondary space-around"
-        [disabled]="index.previous === undefined || !item || isPlaying" (click)="onPrevious()">
+        [disabled]="index.previous === undefined || !item || isPlaying || !isLoaded" (click)="onPrevious()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>
     </button>
-    <button class="btn btn-secondary space-around" [disabled]="!item || isPlaying" (click)="onNext()">
+    <button class="btn btn-secondary space-around" [disabled]="!item || isPlaying || !isLoaded" (click)="onNext()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
     </button>
     <button class="btn btn-primary space-around" *ngIf="!isPlaying" [disabled]="!item" (click)="onPlay()">
@@ -67,7 +67,7 @@
     <button class="btn btn-danger space-around" *ngIf="item && isPlaying" (click)="onStop()">
         <span class="biggest">&nbsp;Arrêter&nbsp;</span>
     </button>
-    <button class="btn btn-success space-around" [disabled]="!audioUrl || !(canReadSpeak || isPrevious)" (click)="onReadSpeak()">
+    <button class="btn btn-success space-around" [disabled]="!audioUrl || !(canReadSpeak || isPrevious) || isPlaying" (click)="onReadSpeak()">
         <span class="biggest">&nbsp;Lire&nbsp;</span>
     </button>
     <audio *ngIf="openReadSpeaker" controls autoplay hidden>

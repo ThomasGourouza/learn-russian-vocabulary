@@ -7,6 +7,7 @@ import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
 import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-conjunction',
@@ -20,7 +21,8 @@ export class ConjunctionComponent implements OnInit, OnDestroy {
     private excelService: ExcelService,
     private navigationService: NavigationService,
     public conjunctionsService: ConjunctionsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private globalService: GlobalService
   ) {
     this.navigationService.setTabIndex(this.conjunctionsService.tabIndex);
   }
@@ -91,9 +93,7 @@ export class ConjunctionComponent implements OnInit, OnDestroy {
         if (this.conjunctionsService.index.next !== undefined) {
           index.current = this.conjunctionsService.index.next;
         } else {
-          do {
-            index.current = this.getRandomInt(this.conjunctionsService.selectedData.length);
-          } while (index.current === index.previous);
+          index.current = this.globalService.getNext(this.conjunctionsService.selectedData.length);
         }
         this.conjunctionsService.setIndex(index);
         this.selectCurrentItem();
@@ -137,10 +137,6 @@ export class ConjunctionComponent implements OnInit, OnDestroy {
     if (currentIndex !== undefined) {
       this.conjunctionsService.setCurrentItem(this.conjunctionsService.selectedData[currentIndex]);
     }
-  }
-
-  private getRandomInt(max: number): number {
-    return Math.floor(Math.random() * max);
   }
 
 }

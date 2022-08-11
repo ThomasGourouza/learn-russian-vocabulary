@@ -31,6 +31,7 @@ import { AdjectivesService } from './services/adjectives.service';
 import { ConjunctionsService } from './services/conjunctions.service';
 import { AdverbsService } from './services/adverbs.service';
 import { PhrasesService } from './services/phrases.service';
+import { GlobalService } from './services/global.service';
 
 import { FileUploadModule } from 'primeng/fileupload';
 import { TabMenuModule } from 'primeng/tabmenu';
@@ -88,6 +89,7 @@ import { ReaderSpeakerService } from './services/reader-speaker.service';
     ConjunctionsService,
     AdverbsService,
     PhrasesService,
+    GlobalService,
     MessageService
   ],
   bootstrap: [AppComponent]
