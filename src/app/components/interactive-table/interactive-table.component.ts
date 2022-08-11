@@ -11,7 +11,13 @@ export class InteractiveTableComponent {
 
   @Input() public name!: string;
   @Input() public data!: Array<any>;
-  @Input() public currentItem: any | undefined;
+  @Input() set currentItem(item: any) {
+    this.item = item;
+    this.canReadSpeak = false;
+    if (!!item) {
+      this.loadAudioUrl(item.russian);
+    }
+  }
   @Input() public priority: number | undefined;
   @Input() public time: number | undefined;
   @Input() public isValidData!: boolean;
@@ -21,16 +27,21 @@ export class InteractiveTableComponent {
   @Output() changePriority: EventEmitter<string> = new EventEmitter();
   @Output() previous: EventEmitter<undefined> = new EventEmitter();
   @Output() next: EventEmitter<undefined> = new EventEmitter();
+  public item: any | undefined;
   public priorities: Array<number> = [];
   public times: Array<number>;
   private subscription = new Subscription();
   public isPlaying = false;
+  public audioUrl: undefined | string;
+  public openReadSpeaker = false;
+  public canReadSpeak = false;
+  public isPrevious = false;
 
   constructor(
     private excelService: ExcelService,
     private readerSpeakerService: ReaderSpeakerService
   ) {
-    this.times = [1000, 2000, 3000, 5000, 10000];
+    this.times = [3000, 5000, 10000];
     this.time = 3000;
     this.priorities = this.excelService.priorities;
     this.excelService.priorities$.subscribe((priorities) =>
@@ -54,11 +65,17 @@ export class InteractiveTableComponent {
     }
   }
   public onPrevious(): void {
+    this.isPrevious = true;
     this.previous.emit();
   }
   public onNext(): void {
+    this.canReadSpeak = true;
     this.next.emit();
-    // this.onSpeak(this.currentItem?.russian);
+    setTimeout(() => {
+      if (this.canReadSpeak) {
+        this.onReadSpeak();
+      }
+    }, 100);
   }
   public onPlay(): void {
     this.isPlaying = true;
@@ -71,10 +88,21 @@ export class InteractiveTableComponent {
     this.subscription.unsubscribe();
   }
 
-  public onSpeak(word: string): void {
-    this.readerSpeakerService.getVoice(word).subscribe((audioFileUrl) =>
-      console.log(audioFileUrl)
-    );
+  private loadAudioUrl(word: string): void {
+    this.readerSpeakerService.getVoice(word).subscribe((audioFileUrl) => {
+      this.audioUrl = audioFileUrl;
+      if (this.isPrevious) {
+        this.onReadSpeak();
+        this.isPrevious = false;
+      }
+    });
+  }
+
+  public onReadSpeak(): void {
+    this.openReadSpeaker = true;
+    setTimeout(() => {
+      this.openReadSpeaker = false;
+    }, 3000);
   }
 
 }

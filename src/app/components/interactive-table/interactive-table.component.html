@@ -17,18 +17,14 @@
                 <strong>Priorité:</strong>
                 <select class="form-select" [(ngModel)]="priority" (ngModelChange)="onChangePriority($event)"
                     [disabled]="data.length === 0 || !isValidData">
-                    <option *ngFor="let priority of priorities"
-                            [value]="priority"
-                            [label]="priority">
+                    <option *ngFor="let priority of priorities" [value]="priority" [label]="priority">
                     </option>
                 </select>
             </div>
             <div class="col-3">
                 <strong>Temps:</strong>
                 <select class="form-select" [(ngModel)]="time" (ngModelChange)="onChangeTime()">
-                    <option *ngFor="let time of times"
-                            [value]="time"
-                            [label]="time | time">
+                    <option *ngFor="let time of times" [value]="time" [label]="time | time">
                     </option>
                 </select>
             </div>
@@ -39,49 +35,42 @@
 <div class="big more-space-around">
     <div [ngSwitch]="name">
         <div *ngSwitchCase="'verbes'">
-            <app-table-verb [data]="data" 
-                            [currentItem]="currentItem" 
-                            [firstNext]="firstNext">
+            <app-table-verb [data]="data" [currentItem]="item" [firstNext]="firstNext">
             </app-table-verb>
         </div>
         <div *ngSwitchCase="'noms'">
-            <app-table-noun [data]="data" 
-                            [currentItem]="currentItem"
-                            [firstNext]="firstNext">
+            <app-table-noun [data]="data" [currentItem]="item" [firstNext]="firstNext">
             </app-table-noun>
         </div>
         <div *ngSwitchCase="'conjonctions'">
-            <app-table-conjunction [data]="data" 
-                                   [currentItem]="currentItem"
-                                   [firstNext]="firstNext">
+            <app-table-conjunction [data]="data" [currentItem]="item" [firstNext]="firstNext">
             </app-table-conjunction>
         </div>
         <div *ngSwitchDefault>
-            <app-table-default [data]="data" 
-                               [currentItem]="currentItem"
-                               [firstNext]="firstNext">
+            <app-table-default [data]="data" [currentItem]="item" [firstNext]="firstNext">
             </app-table-default>
         </div>
     </div>
 </div>
 
 <div class="d-flex justify-content-center">
-    <button class="btn btn-secondary space-around" [disabled]="index.previous === undefined || !currentItem || isPlaying"
-        (click)="onPrevious()">
+    <button class="btn btn-secondary space-around"
+        [disabled]="index.previous === undefined || !item || isPlaying" (click)="onPrevious()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>
     </button>
-    <button class="btn btn-secondary space-around" [disabled]="!currentItem || isPlaying" (click)="onNext()">
+    <button class="btn btn-secondary space-around" [disabled]="!item || isPlaying" (click)="onNext()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
     </button>
-    <button class="btn btn-primary space-around" *ngIf="currentItem && !isPlaying" (click)="onPlay()">
+    <button class="btn btn-primary space-around" *ngIf="!isPlaying" [disabled]="!item" (click)="onPlay()">
         <span class="biggest">&nbsp;Lancer&nbsp;</span>
     </button>
-    <button class="btn btn-danger space-around" *ngIf="currentItem && isPlaying"
-        (click)="onStop()">
+    <button class="btn btn-danger space-around" *ngIf="item && isPlaying" (click)="onStop()">
         <span class="biggest">&nbsp;Arrêter&nbsp;</span>
     </button>
-    <button class="btn btn-success space-around" [disabled]="!currentItem"
-        (click)="onSpeak(currentItem?.russian)">
+    <button class="btn btn-success space-around" [disabled]="!audioUrl || !canReadSpeak" (click)="onReadSpeak()">
         <span class="biggest">&nbsp;Lire&nbsp;</span>
     </button>
+    <audio *ngIf="openReadSpeaker" controls autoplay hidden>
+        <source [src]="audioUrl" type="audio/mpeg">
+    </audio>
 </div>
