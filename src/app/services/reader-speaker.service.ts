@@ -12,7 +12,7 @@ export class ReaderSpeakerService {
   constructor(
     private readonly http: HttpClient
   ) {
-    this.apiKey = '1a6607fa46809c9416cdbf1a85c7136f';
+    this.apiKey = 'c2d08064c16f772c6572ab6f15151223';
     this.baseUrl = 'https://scapi-eu.readspeaker.com/a/speak';
   }
 
