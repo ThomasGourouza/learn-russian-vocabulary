@@ -70,6 +70,7 @@ export class InteractiveTableComponent {
   }
   public onNext(): void {
     this.canReadSpeak = true;
+    this.isPrevious = false;
     this.next.emit();
     setTimeout(() => {
       if (this.canReadSpeak) {
@@ -93,7 +94,6 @@ export class InteractiveTableComponent {
       this.audioUrl = audioFileUrl;
       if (this.isPrevious) {
         this.onReadSpeak();
-        this.isPrevious = false;
       }
     });
   }

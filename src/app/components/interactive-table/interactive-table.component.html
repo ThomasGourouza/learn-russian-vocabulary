@@ -67,7 +67,7 @@
     <button class="btn btn-danger space-around" *ngIf="item && isPlaying" (click)="onStop()">
         <span class="biggest">&nbsp;Arrêter&nbsp;</span>
     </button>
-    <button class="btn btn-success space-around" [disabled]="!audioUrl || !canReadSpeak" (click)="onReadSpeak()">
+    <button class="btn btn-success space-around" [disabled]="!audioUrl || !(canReadSpeak || isPrevious)" (click)="onReadSpeak()">
         <span class="biggest">&nbsp;Lire&nbsp;</span>
     </button>
     <audio *ngIf="openReadSpeaker" controls autoplay hidden>
