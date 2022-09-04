@@ -35,19 +35,19 @@
 <div class="big more-space-around">
     <div [ngSwitch]="name">
         <div *ngSwitchCase="'verbes'">
-            <app-table-verb [data]="data" [currentItem]="item" [firstNext]="firstNext">
+            <app-table-verb [data]="data" [currentItem]="currentItem" [firstNext]="firstNext">
             </app-table-verb>
         </div>
         <div *ngSwitchCase="'noms'">
-            <app-table-noun [data]="data" [currentItem]="item" [firstNext]="firstNext">
+            <app-table-noun [data]="data" [currentItem]="currentItem" [firstNext]="firstNext">
             </app-table-noun>
         </div>
         <div *ngSwitchCase="'conjonctions'">
-            <app-table-conjunction [data]="data" [currentItem]="item" [firstNext]="firstNext">
+            <app-table-conjunction [data]="data" [currentItem]="currentItem" [firstNext]="firstNext">
             </app-table-conjunction>
         </div>
         <div *ngSwitchDefault>
-            <app-table-default [data]="data" [currentItem]="item" [firstNext]="firstNext">
+            <app-table-default [data]="data" [currentItem]="currentItem" [firstNext]="firstNext">
             </app-table-default>
         </div>
     </div>
@@ -55,16 +55,16 @@
 
 <div class="d-flex justify-content-center">
     <button class="btn btn-secondary space-around"
-        [disabled]="index.previous === undefined || !item || isPlaying || !isLoaded" (click)="onPrevious()">
+        [disabled]="index.previous === undefined || !currentItem || isPlaying" (click)="onPrevious()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;←&nbsp;&nbsp;&nbsp;</span>
     </button>
-    <button class="btn btn-secondary space-around" [disabled]="!item || isPlaying || !isLoaded" (click)="onNext()">
+    <button class="btn btn-secondary space-around" [disabled]="!currentItem || isPlaying" (click)="onNext()">
         <span class="biggest">&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;</span>
     </button>
-    <button class="btn btn-primary space-around" *ngIf="!isPlaying" [disabled]="!item" (click)="onPlay()">
+    <button class="btn btn-primary space-around" *ngIf="!isPlaying" [disabled]="!currentItem" (click)="onPlay()">
         <span class="biggest">&nbsp;Lancer&nbsp;</span>
     </button>
-    <button class="btn btn-danger space-around" *ngIf="item && isPlaying" (click)="onStop()">
+    <button class="btn btn-danger space-around" *ngIf="currentItem && isPlaying" (click)="onStop()">
         <span class="biggest">&nbsp;Arrêter&nbsp;</span>
     </button>
     <button class="btn btn-success space-around" [disabled]="!audioUrl || !(canReadSpeak || isPrevious) || isPlaying" (click)="onReadSpeak()">
