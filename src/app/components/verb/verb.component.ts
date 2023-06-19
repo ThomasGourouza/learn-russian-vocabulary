@@ -7,6 +7,7 @@ import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
 import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-verb',
@@ -20,7 +21,8 @@ export class VerbComponent implements OnInit, OnDestroy {
     private excelService: ExcelService,
     private navigationService: NavigationService,
     public verbsService: VerbsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private globalService: GlobalService
   ) {
     this.navigationService.setTabIndex(this.verbsService.tabIndex);
   }
@@ -91,9 +93,7 @@ export class VerbComponent implements OnInit, OnDestroy {
         if (this.verbsService.index.next !== undefined) {
           index.current = this.verbsService.index.next;
         } else {
-          do {
-            index.current = this.getRandomInt(this.verbsService.selectedData.length);
-          } while (index.current === index.previous);
+          index.current = this.globalService.getNext(this.verbsService.selectedData.length);
         }
         this.verbsService.setIndex(index);
         this.selectCurrentItem();
@@ -137,10 +137,6 @@ export class VerbComponent implements OnInit, OnDestroy {
     if (currentIndex !== undefined) {
       this.verbsService.setCurrentItem(this.verbsService.selectedData[currentIndex]);
     }
-  }
-
-  private getRandomInt(max: number): number {
-    return Math.floor(Math.random() * max);
   }
 
 }

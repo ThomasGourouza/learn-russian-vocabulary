@@ -7,6 +7,7 @@ import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
 import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-adjective',
@@ -20,7 +21,8 @@ export class AdjectiveComponent implements OnInit, OnDestroy {
     private excelService: ExcelService,
     private navigationService: NavigationService,
     public adjectivesService: AdjectivesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private globalService: GlobalService
   ) {
     this.navigationService.setTabIndex(this.adjectivesService.tabIndex);
   }
@@ -91,9 +93,7 @@ export class AdjectiveComponent implements OnInit, OnDestroy {
         if (this.adjectivesService.index.next !== undefined) {
           index.current = this.adjectivesService.index.next;
         } else {
-          do {
-            index.current = this.getRandomInt(this.adjectivesService.selectedData.length);
-          } while (index.current === index.previous);
+          index.current = this.globalService.getNext(this.adjectivesService.selectedData.length);
         }
         this.adjectivesService.setIndex(index);
         this.selectCurrentItem();
@@ -137,10 +137,6 @@ export class AdjectiveComponent implements OnInit, OnDestroy {
     if (currentIndex !== undefined) {
       this.adjectivesService.setCurrentItem(this.adjectivesService.selectedData[currentIndex]);
     }
-  }
-
-  private getRandomInt(max: number): number {
-    return Math.floor(Math.random() * max);
   }
 
 }

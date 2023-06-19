@@ -7,6 +7,7 @@ import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
 import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-noun',
@@ -20,7 +21,8 @@ export class NounComponent implements OnInit, OnDestroy {
     private excelService: ExcelService,
     private navigationService: NavigationService,
     public nounsService: NounsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private globalService: GlobalService
   ) {
     this.navigationService.setTabIndex(this.nounsService.tabIndex);
   }
@@ -91,9 +93,7 @@ export class NounComponent implements OnInit, OnDestroy {
         if (this.nounsService.index.next !== undefined) {
           index.current = this.nounsService.index.next;
         } else {
-          do {
-            index.current = this.getRandomInt(this.nounsService.selectedData.length);
-          } while (index.current === index.previous);
+          index.current = this.globalService.getNext(this.nounsService.selectedData.length);
         }
         this.nounsService.setIndex(index);
         this.selectCurrentItem();
@@ -137,10 +137,6 @@ export class NounComponent implements OnInit, OnDestroy {
     if (currentIndex !== undefined) {
       this.nounsService.setCurrentItem(this.nounsService.selectedData[currentIndex]);
     }
-  }
-
-  private getRandomInt(max: number): number {
-    return Math.floor(Math.random() * max);
   }
 
 }

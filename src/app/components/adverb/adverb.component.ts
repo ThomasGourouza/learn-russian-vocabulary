@@ -7,6 +7,7 @@ import { Index } from 'src/app/models';
 import { MessageService } from 'primeng/api';
 import { Text } from 'src/app/models/text';
 import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-adverb',
@@ -20,7 +21,8 @@ export class AdverbComponent implements OnInit, OnDestroy {
     private excelService: ExcelService,
     private navigationService: NavigationService,
     public adverbsService: AdverbsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private globalService: GlobalService
   ) {
     this.navigationService.setTabIndex(this.adverbsService.tabIndex);
   }
@@ -91,9 +93,7 @@ export class AdverbComponent implements OnInit, OnDestroy {
         if (this.adverbsService.index.next !== undefined) {
           index.current = this.adverbsService.index.next;
         } else {
-          do {
-            index.current = this.getRandomInt(this.adverbsService.selectedData.length);
-          } while (index.current === index.previous);
+          index.current = this.globalService.getNext(this.adverbsService.selectedData.length);
         }
         this.adverbsService.setIndex(index);
         this.selectCurrentItem();
@@ -137,10 +137,6 @@ export class AdverbComponent implements OnInit, OnDestroy {
     if (currentIndex !== undefined) {
       this.adverbsService.setCurrentItem(this.adverbsService.selectedData[currentIndex]);
     }
-  }
-
-  private getRandomInt(max: number): number {
-    return Math.floor(Math.random() * max);
   }
 
 }
