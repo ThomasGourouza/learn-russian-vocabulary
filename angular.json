@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "deutsch": {
+    "russian": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/deutsch",
+            "outputPath": "dist/russian",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -93,10 +93,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "deutsch:build:production"
+              "browserTarget": "russian:build:production"
             },
             "development": {
-              "browserTarget": "deutsch:build:development"
+              "browserTarget": "russian:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -104,7 +104,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "deutsch:build"
+            "browserTarget": "russian:build"
           }
         },
         "test": {
@@ -130,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "deutsch"
+  "defaultProject": "russian"
 }
